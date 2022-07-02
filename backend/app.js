@@ -11,10 +11,12 @@
 // })
 
 const mongoose=require('mongoose')
-const User=require('./User');
+const User=require('./user');
 const product=require('./product')
 
-mongoose.connect("mongodb://localhost:27017/fastshopping",()=>{
+const connect_string="mongodb+srv://karthik:yH9WpQBFZkV1g129@cluster0.xahhd.mongodb.net/fastshopping"
+
+mongoose.connect(connect_string,()=>{
     console.log("connect")
     run(),error=>{
         console.log(error)

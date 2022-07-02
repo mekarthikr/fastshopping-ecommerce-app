@@ -38,6 +38,7 @@ export default function Adminpanel() {
           {products &&
             products.map((product) => {
               return (
+                // add this in a seperate component
                 <div className="single-product card">
                   <img src={product.image} alt="product" />
                   <div className="inline">

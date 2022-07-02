@@ -1,5 +1,6 @@
 
 import UserHeader from "./Userheader";
+import Adminheader from "./Adminheader"
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,7 +22,7 @@ export default function Header() {
   function navbarView() {
     console.log("data:" + isLogin)
     if (isLogin) {
-      return <UserHeader />
+      return <Adminheader />
     }
     // else if(isAdminLogin)
     // {
