@@ -1,0 +1,59 @@
+{
+  "user": [
+    {
+      "firstname": "Jamison",
+      "lastname": "Schimmel",
+      "email": "Natalia_Murray81@gmail.com",
+      "password": "GB5vwteYaiVPGDh",
+      "id": 1
+    },
+    {
+      "firstname": "K",
+      "lastname": "R",
+      "email": "user",
+      "password": "user",
+      "id": 2
+    },
+    {
+      "firstname": "edwin",
+      "lastname": "gnana",
+      "email": "e@m.com",
+      "password": "mmmmmmm",
+      "id": 3
+    },
+    {
+      "firstname": "Karthik",
+      "lastname": "R",
+      "email": "iamjustkarthik@gmail.com",
+      "password": "Karthik@123",
+      "confirmpassword": "",
+      "id": 4
+    },
+    {
+      "firstname": "karthik",
+      "lastname": "reghu",
+      "email": "iamjustkarthik@gmail.com",
+      "password": "Karthik@13",
+      "confirmpassword": "Karthik@13",
+      "id": 5
+    }
+  ],
+  "products": [
+    {
+      "productname": "a",
+      "image": "a",
+      "color": "a",
+      "price": "123",
+      "id": 1
+    }
+  ],
+  "admin": [
+    {
+      "firstname": "admin",
+      "lastname": "admin",
+      "email": "admin",
+      "password": "admin",
+      "id": 1
+    }
+  ]
+}

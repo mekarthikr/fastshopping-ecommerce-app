@@ -1,0 +1,50 @@
+.cart-container {
+    margin: 60px 130px 60px 130px;
+}
+
+.cart-container h1 {
+    font-size: 45px;
+    font-weight: 700;
+}
+
+.cart-container p {
+    font-weight: 400;
+}
+
+.cart-card {
+    margin: 2% 0;
+}
+
+.cart-card img {
+    width: 100%;
+}
+
+.cart-card h2 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.cart-product-details {
+    margin: 10px 0;
+    position: relative;
+}
+
+.cart-product-details button {
+    margin: 5px 0px;
+}
+
+.cart-product-details h6 {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 5px 10px;
+}
+
+.cart-product-details img {
+    width: 20px;
+    float: right;
+}
+
+.cart-img {
+    width: 100%;
+}

@@ -1,0 +1,21 @@
+.main-container
+{
+    padding:1% 5%;
+    background-color: rgb(225, 225, 225);
+}
+.profile-details{
+    margin: 0 5%;
+}
+.profile-details h3{
+    display: inline;
+    font-weight: 700;
+    font-size: 45px;
+}
+.profile-details button{
+    float: right;
+    border: 0px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 700;
+    width: 150px;
+}

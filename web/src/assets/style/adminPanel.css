@@ -1,0 +1,43 @@
+.single-product {
+    margin: 10px;
+    padding: 10px;
+    display: inline;
+    background-color: #001233;
+    color: rgb(239, 224, 202);
+    border-radius: 10px;
+}
+
+.single-product button {
+    display: inline;
+    float: right;
+    margin: 2rem 1rem;
+    height: 2rem;
+    width: 7rem;
+    border: 0;
+    border-radius: 3px;
+    background-color: rgb(239, 224, 202);
+}
+
+.single-product img {
+    width: 100px;
+    border-radius: 10px;
+}
+
+.single-product h5 {
+    margin-left: 15px;
+}
+
+.product {
+    padding: 0px;
+    margin-top: 1rem;
+    border: 0;
+}
+
+.admin-button {
+    margin: 1rem 19.93%;
+    height: 3rem;
+    width: 8rem;
+    border-radius: 0%;
+    color: rgb(239, 224, 202);
+    background-color: #001233;
+}

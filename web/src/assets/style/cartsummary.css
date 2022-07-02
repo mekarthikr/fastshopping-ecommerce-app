@@ -1,0 +1,26 @@
+.summary {
+    padding: 5%;
+    margin: 0 0 0 0;
+}
+
+.summary h3 {
+    font-size: 30px;
+    font-weight: 500;
+    margin: 5% 5%;
+}
+
+.summary h4 {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 2% 5%;
+}
+
+.summary p {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 2% 5%;
+}
+
+.summary-section {
+    margin-top: 15px;
+}

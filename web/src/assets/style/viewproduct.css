@@ -1,0 +1,35 @@
+.main-view-product img {
+    /* border: 2px solid black; */
+}
+
+.main-view-product h1 {
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.main-view-product h2 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.main-view-product p {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.main-detail-product {
+    margin-left: 5%;
+}
+
+.main-view-product {
+    margin-top: 5%;
+
+}
+
+.main-detail-product button {
+    height: 64px;
+    width: 100%;
+    font-size: 24px;
+    font-weight: 500;
+    border: 0;
+}

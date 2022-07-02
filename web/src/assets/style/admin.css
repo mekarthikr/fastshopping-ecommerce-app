@@ -1,0 +1,50 @@
+.admin-block {
+    margin: 5% 30%;
+    background-color: rgb(0, 18, 51);
+    padding: 5% 5% 5% 5%;
+}
+
+.admin-block h1 {
+    text-align: center;
+    color: rgb(239, 224, 202);
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.admin-block p {
+    text-align: center;
+    color: rgb(239, 224, 202);
+    font-size: 20px;
+}
+
+.admin-label {
+    margin: 1%;
+    color: rgb(239, 224, 202);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.admin-form-input {
+    border: 2px solid rgb(239, 224, 202);
+    border-radius: 0;
+}
+
+.admin-line {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgb(239, 224, 202);
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+}
+
+.admin-line span {
+    background: rgb(239, 224, 202);
+    padding: 0 10px;
+}
+
+.admin-login-button {
+    border: 0;
+    width: 50%;
+    margin: 5% 25%;
+    height: 45px;
+}

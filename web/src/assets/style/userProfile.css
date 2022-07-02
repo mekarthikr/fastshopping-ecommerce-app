@@ -1,0 +1,46 @@
+.profile-user
+{
+    margin:5% 5%;
+    padding:5% 5%
+}
+.profile-user h1{
+    text-align: center;
+}
+.profile-img
+{
+    /* background-color: black;
+    color: white; */
+    text-align: center;
+    width: 8em;
+    margin: auto;
+    height: 8em;
+    border-radius: 50%;
+    overflow: hidden;
+    /* max-width: ; */
+}
+.profile-img h2
+{
+    /* color: red; */
+    padding: 10%;
+    font-size:5em;
+}
+.profile-user table
+{
+    border: 1px solid black;
+}
+.profile-user table tr
+{
+    border: 1px solid black;
+}
+.profile-user table tr td
+{
+    border: 1px solid black;
+}
+.user-details{
+
+}
+.user-details h2{
+    font-size: 40px;
+    font-weight: 400;
+    /* font-style: italic; */
+}

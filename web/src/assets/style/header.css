@@ -1,0 +1,53 @@
+.a {
+  color: rgb(239, 224, 202);
+  padding: 0 10px 0 10px;
+  text-decoration: none;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.a:hover {
+  color: rgb(239, 224, 202);
+  text-decoration: none;
+}
+
+.header-name:hover {
+  color: rgb(239, 224, 202) !important;
+}
+
+nav {
+  background-color: #001233;
+}
+
+.nav-bar {
+  padding: 20px 30px !important;
+}
+
+.red {
+  color: rgb(255, 89, 90);
+  font-size: 25px
+}
+
+;
+
+.icon {
+  background-color: #001233;
+  height: 60px;
+  width: 60px;
+}
+
+.button {
+  background-color: #001233;
+  border: 0px !important;
+  box-shadow: none;
+}
+
+.button:focus {
+  box-shadow: none !important;
+}
+
+a {
+  text-decoration: none;
+}
