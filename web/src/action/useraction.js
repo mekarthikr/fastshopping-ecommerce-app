@@ -52,7 +52,7 @@ export const deleteUser = (id) => {
 export const addUser = (user) => {
   return function (dispatch) {
     axios
-      .post(API, user)
+      .post('http://localhost:3000/users/', user) //changed from API
       .then((resp) => {
         console.log("resp", resp);
         dispatch(userAdded());
