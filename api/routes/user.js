@@ -30,8 +30,15 @@ userRouter.get('/:id',async (req,res)=>{
 })
 
 userRouter.post('/',async (req,res)=>{
-    const user=new userSchema({firstname:req.body.firstname,lastname:req.body.lastname,email:req.body.email,password:req.body.password,phonenumber:req.body.phonenumber})
+    
+    
     try{
+        let user=await userSchema.findOne({email:req.body.email})
+        if(user)
+        {
+            throw "email already exisiting"
+        }
+        user=new userSchema({firstname:req.body.firstname,lastname:req.body.lastname,email:req.body.email,password:req.body.password,phonenumber:req.body.phonenumber})
         const data=await user.save()
         res.json(data)
     }
@@ -64,6 +71,30 @@ userRouter.delete('/:id',async (req,res)=>{
     catch(err)
     {
         res.send('Error'+err)
+    }
+})
+
+userRouter.post('/login',async(req,res)=>{
+    const {email,password}=req.body
+    try{
+        //const user=await userSchema.findOne({email:email})
+        // res.send(req.body)
+        user=await userSchema.findOne({email:req.body.email})
+        if(user==null)
+        {
+            throw "user not found"
+        }
+        if(req.body.password==user.password)
+        {
+            res.send("success")
+        }
+        else
+        {
+            throw "wrong password"
+        }
+    }
+    catch(err){
+        res.send(err)
     }
 })
 

@@ -3,8 +3,10 @@ const mongoose=require('mongoose')
 const app=express()
 
 const userRouter=require('./routes/user')
+const productRouter=require('./routes/product')
 app.use(express.json())
 app.use('/users',userRouter)
+app.use('/products',productRouter)
 
 
 // app.listen(3000,()=>{
@@ -34,25 +36,25 @@ mongoose.connect(connect_string,()=>{
 
 
 
-async function run()
-{
-    try{
-        const useradded=await User.create({firstname:"{type:String}",
-        lastname:"{type:String}",
-        email:"{type:String}",
-        password:"{type:String}",
-        phonenumber:"{type:String}",
-        cart:[{"productid":111,"quantity":2},{"productid":111,"quantity":2},{"productid":111,"quantity":2}]})
-    // const useradded = new User({firstname:"String"})
-    // await useradded.save()
-    console.log(useradded)
-    }
-    catch(error)
-    {
-console.log(error.message)
-    }
+// async function run()
+// {
+//     try{
+//         const useradded=await User.create({firstname:"{type:String}",
+//         lastname:"{type:String}",
+//         email:"{type:String}",
+//         password:"{type:String}",
+//         phonenumber:"{type:String}",
+//         cart:[{"productid":111,"quantity":2},{"productid":111,"quantity":2},{"productid":111,"quantity":2}]})
+//     // const useradded = new User({firstname:"String"})
+//     // await useradded.save()
+//     console.log(useradded)
+//     }
+//     catch(error)
+//     {
+// console.log(error.message)
+//     }
     
-}
+// }
 
 app.listen(3000,()=>{
     console.log("server running")
