@@ -1,6 +1,6 @@
 import * as types from "./actionType";
 import axios from "axios";
-import { API, API_PRODUCTS } from "../api/api";
+import { API } from "../api/api";
 
 const getUsers = (users) => ({
   type: types.GET_USERS,
