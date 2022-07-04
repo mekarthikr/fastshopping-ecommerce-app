@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { userLoggedOut } from "../redux/actions";  //admin logout have to be added
+import { userLoggedOut } from "../action/useraction";  //admin logout have to be added
 import { Tooltip } from "@mui/material";
 
 import "../assets/style/header.css";

@@ -15,6 +15,7 @@ export default function Register() {
     firstname: "",
     lastname: "",
     email: "",
+    phonenumber:"",
     password: "",
     confirmpassword: "",
   });
@@ -23,17 +24,18 @@ export default function Register() {
     firstnameError: "",
     lastnameError: "",
     emailError: "",
+    phonenumberError:"",
     passwordError: "",
     passwordConfirmError: ""
   }
 
   const [
-    { firstnameError, lastnameError, emailError, passwordError, passwordConfirmError },
+    { firstnameError, lastnameError, emailError, phonenumberError, passwordError, passwordConfirmError },
     setError
   ] = useState(defaultError);
 
 
-  const { firstname, lastname, email, password } = state;
+  const { firstname, lastname, email,phonenumber, password } = state;
 
   const handleInputChange = (e) => {
     let { name, value } = e.target;
@@ -48,8 +50,10 @@ export default function Register() {
     const validate = ValidateRegister(state)
     if (validate === true) {
       clearState()
+      delete state.confirmpassword
+      console.log(state)
       dispatch(addUser(state));
-      navigate("/login");
+      //navigate("/login");
     }
     else {
       setError(validate)
@@ -102,10 +106,10 @@ export default function Register() {
             <input
               className="form-control form-input"
               type={"text"}
-              name="email"
+              name="phonenumber"
               onChange={handleInputChange}
             />
-            <p className="register-error color-red" >{emailError}</p>
+            <p className="register-error color-red" >{phonenumberError}</p>
           </div>
         </div>
         <div className="row">

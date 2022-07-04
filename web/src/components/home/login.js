@@ -1,10 +1,10 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { API } from "../../api/api";
 import { useNavigate, Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import "../../assets/style/login.css";
-import { userLoggedIn } from "../../action/useraction";
+import { userLoggedIn,} from "../../action/useraction";
 
 function Login() {
   let navigate = useNavigate();
@@ -18,8 +18,8 @@ function Login() {
   const [error, setError] = useState("");
   const { email, password } = state;
   const [user, setUser] = useState("");
-
-  useEffect(() => getUser(), []); // eslint-disable-line react-hooks/exhaustive-deps
+  const { loggedInSuccess,loggedInFailed } = useSelector((state) => state.user);
+  useEffect(() =>{}, [error,loggedInSuccess,loggedInFailed ]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getUser = () => {
     axios.get(API).then((res) => {
@@ -27,24 +27,30 @@ function Login() {
       setUser(allUser);
     });
   };
+ 
+  useEffect(() =>{}, [error]); // eslint-disable-line react-hooks/exhaustive-deps
+
 
   const handleInputChange = (e) => {
     let { name, value } = e.target;
     setState({ ...state, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    let profile = user.find(
-      (index) => index.email === email && index.password === password
-    );
-    if (profile !== undefined) {
-      localStorage.setItem("id", profile.id);
-      setError("");
-      dispatch(userLoggedIn());
-      navigate("/product", { profile });
-    } else {
-      setError("Invalid Login Credentials");
+    await dispatch(userLoggedIn(state))
+    console.log("after dispatch")
+    
+    console.log(loggedInFailed,loggedInSuccess)
+    if(loggedInFailed)
+    {
+      setError("Invalid Login Credentials")
+      console.log(loggedInFailed)
+    }
+    else if(loggedInSuccess)
+    {
+      setError("")
+      console.log("Correct Credentials")
     }
   };
 

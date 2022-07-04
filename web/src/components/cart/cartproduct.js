@@ -1,4 +1,4 @@
-import { removeProductFromCart } from "../../redux/actions";
+import { removeProductFromCart } from "../../action/productaction";
 import { useDispatch } from "react-redux";
 
 import "../../assets/style/productcard.css";

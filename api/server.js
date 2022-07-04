@@ -2,10 +2,12 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 const jwt = require('jsonwebtoken')
+const cors = require('cors')
 const userRouter = require('./routes/userroutes')
 const productRouter = require('./routes/productroutes')
 const adminRouter = require('./routes/adminroutes')
 app.use(express.json())
+app.use(cors())
 app.use('/users', userRouter)
 app.use('/products', productRouter)
 app.use('/admin', adminRouter)
@@ -19,6 +21,6 @@ mongoose.connect(connect_string, () => {
         }
 })
 
-app.listen(3000, () => {
+app.listen(5000, () => {
     console.log("server running at 3000")
 })

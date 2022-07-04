@@ -27,7 +27,7 @@ const getProduct = (product) => ({
 export const loadProducts = () => {
   return function (dispatch) {
     axios
-      .get(API_PRODUCTS)
+      .get("http://localhost:5000/products/")
       .then((resp) => {
         console.log("resp", resp);
         dispatch(getProducts(resp.data));

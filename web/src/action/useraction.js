@@ -19,6 +19,14 @@ const userUpdated = () => ({
   type: types.UPDATE_USER,
 });
 
+const userLoggedInSuccess=()=>({
+  type:types.USER_LOGGED_IN_SUCCESS,
+})
+
+const userLoggedInFailed=()=>({
+  type:types.USER_LOGGED_IN_FAILED,
+})
+
 const getUser = (user) => ({
   type: types.GET_SINGLE_USER,
   payload: user,
@@ -50,13 +58,15 @@ export const deleteUser = (id) => {
 };
 
 export const addUser = (user) => {
+ // user=JSON.stringify(user)
+  console.log(user)
   return function (dispatch) {
     axios
-      .post(API, user) //changed from API
+      .post("http://localhost:5000/users/", user) //changed from API
       .then((resp) => {
         console.log("resp", resp);
         dispatch(userAdded());
-        dispatch(loadUsers());
+       // dispatch(loadUsers());
       })
       .catch((error) => console.log(error));
   };
@@ -86,11 +96,43 @@ export const updateUser = (user, id) => {
   };
 };
 
-export const userLoggedIn = () => (
+export const userLoggedIn = (credentials) => {
+  return async function (dispatch)
   {
-    type:types.USER_LOGGED_IN
-  }
-);
+    await axios
+    .post("http://localhost:5000/users/login", credentials)
+    .then((res)=>{
+      console.log(res.status)
+      if(res.status===200)
+      {
+        dispatch(userLoggedInSuccess())
+      }
+      else
+      {
+        console.log("false")
+      }
+    })
+    .catch(async(error)=>{  
+      console.log(error.response.status)
+      if(error.response.status===404)
+      {
+        console.log("user not found")
+        await dispatch(userLoggedInFailed())  
+        console.log("after action dispatch")  
+      }
+      else
+      {
+        console.log("server error")
+      }
+    })
+  };
+};
+
+// export const userLoggingIn=()=>(
+//   {
+//     type:types.USER_LOGING_IN
+//   }
+// )
 
 export const userLoggedOut = () => (
   {

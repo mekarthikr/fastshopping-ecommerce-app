@@ -8,7 +8,9 @@ const initialState = {
 //   cart:[],
   value:[],
   isLogin:true,
-  isAdminLogin:true
+  isAdminLogin:true,
+  loggedInSuccess:false,
+  loggedInFailed:false
 };
 
 
@@ -58,6 +60,18 @@ const usersReducers = (state = initialState, action) => {
             ...state,
             isLogin:true
           }
+          case types.USER_LOGGED_IN_SUCCESS:
+            return{
+              ...state,
+              loggedInSuccess:true,
+              loggedInFailed:false
+            }
+            case types.USER_LOGGED_IN_FAILED:
+              return{
+                ...state,
+                loggedInSuccess:false,
+                loggedInFailed:true
+              }
           case types.USER_LOGGED_OUT:
           return{
             ...state,

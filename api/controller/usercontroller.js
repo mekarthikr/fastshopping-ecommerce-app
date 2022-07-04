@@ -31,7 +31,7 @@ const getUser=async (req,res)=>{
     }
 }
 
-const addUser=async (req,res)=>{
+const addUser=async (req,res)=>{ //completed
     
     
     try{
@@ -40,13 +40,16 @@ const addUser=async (req,res)=>{
         {
             throw "email already exisiting"
         }
-        user=new User({firstname:req.body.firstname,lastname:req.body.lastname,email:req.body.email,password:req.body.password,phonenumber:req.body.phonenumber})
+       user=new User({firstname:req.body.firstname,lastname:req.body.lastname,email:req.body.email,password:req.body.password,phonenumber:req.body.phonenumber})
         const data=await user.save()
-        res.json(data)
+        const message="Succesfully signed up"
+        console.log(message)
+        res.status(201).json({success:message})
     }
     catch(err)
     {
-        res.send('Error'+err)
+        console.log(err)
+        res.status(400).json({error:err})
     }
 }
 
@@ -81,7 +84,7 @@ const loginUser=async(req,res)=>{
     console.log(req.body);
     try{
         const user=await User.findOne({email:req.body.email})
-        console.log(user)
+        // console.log(user)
         if(user==null)
         {
             throw "user not found"
@@ -89,18 +92,19 @@ const loginUser=async(req,res)=>{
         if(req.body.password==user.password)
         {
             const result = jwt.sign({id : user.id},process.env.ACCESS_TOKEN)
-            // console.log(user.id)
             console.log(result)
-            res.json({Token : result})
-            // res.send("hello")
+            const message="Succesfully logged in"
+            console.log(message)
+            res.status(200).json({success:message,token:result})
         }
         else
         {
             throw "wrong password"
         }
     }
-    catch(err){
-        res.send(err)
+    catch(error){
+        console.log(error)
+        res.status(404).json({error:error})
     }
 }
 
