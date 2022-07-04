@@ -7,4 +7,4 @@ const productSchema=new mongoose.Schema({
     imageurl:String
 })
 
-module.export=mongoose.model("product",productSchema)
+module.exports=mongoose.model("product",productSchema)

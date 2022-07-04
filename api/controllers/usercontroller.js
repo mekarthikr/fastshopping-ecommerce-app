@@ -53,8 +53,6 @@ userRouter.post('/',async (req,res)=>{
 userRouter.put('/:id',async (req,res)=>{
     const id=req.params.id;
     try{
-        // const data=await user.save()
-        // res.json(data)
         const user=await userSchema.findByIdAndUpdate(req.params.id,req.body)
         const data=await user.save()
         console.log(data)
@@ -79,8 +77,6 @@ userRouter.delete('/:id',async (req,res)=>{
 userRouter.post('/login',async(req,res)=>{
     const {email,password}=req.body
     try{
-        //const user=await userSchema.findOne({email:email})
-        // res.send(req.body)
         user=await userSchema.findOne({email:req.body.email})
         if(user==null)
         {
@@ -88,12 +84,6 @@ userRouter.post('/login',async(req,res)=>{
         }
         if(req.body.password==user.password)
         {
-            // console.log("user id : ",user,user.id)
-            // const userid={id:user.id}
-            // const accessToken= jwt.sign(user,process.env.ACCESS_TOKEN)
-            // console.log(accessToken)
-            // // const token=generateAccessToken(access)
-            // // console.log(accessToken)
             const result = jwt.sign({id : user.id},process.env.ACCESS_TOKEN)
             console.log(user.id)
             console.log(result)
@@ -124,8 +114,6 @@ function authenticateToken(req,res,next)
         {
             res.send("Token expired")
         }
-        // req.user=user
-        //res.send('logged in')
         console.log(id)
 
         next()
