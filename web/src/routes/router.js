@@ -14,14 +14,23 @@ import  ValidateSession from "../validation/validateSession";
 import Footer from "../shared/footer";
 import { Routes, Route } from "react-router-dom";
 import { Admin } from "../components/admin/admin";
+import Protected from "./protectedRoute";
+import { useSelector } from "react-redux";
+
+
 
 export function Router() {
-  // ValidateSession()
+  ValidateSession()
+  const {isUserLogin}=useSelector((state) => state.user)
+  console.log(isUserLogin)
+
   return (
     <>
       <Header />
       <Routes>
-        <Route path="/product" element={<Productlist />} />
+        <Route path="/product" element={ <Protected isLoggedIn={isUserLogin}>
+        <Productlist />
+ </Protected>} />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

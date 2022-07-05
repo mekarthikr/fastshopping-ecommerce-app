@@ -7,7 +7,7 @@ const initialState = {
   loading: true,
 //   cart:[],
   value:[],
-  isLogin:true,
+  isUserLogin:false,
   isAdminLogin:true,
   loggedInSuccess:false,
   loggedInFailed:false,
@@ -25,6 +25,11 @@ const usersReducers = (state = initialState, action) => {
           users: action.payload,
           loading: false,
         };
+        case types.USER_IS_LOGGED_IN:
+          return{
+            ...state,
+            isUserLogin:true,
+          }
         // case types.GET_PRODUCTS:
         // return {
         //   ...state,

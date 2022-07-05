@@ -85,7 +85,7 @@ export const getSingleUser = (id) => {   //change method name
       .get(`http://localhost:5000/users/${id}`)
       .then((resp) => {
         console.log("resp", resp);
-        dispatch(getUser(resp.data));
+       // dispatch(getUser(resp.data));
       })
       .catch((error) => console.log(error));
   };
@@ -167,3 +167,9 @@ export const userLoggedOut = () => (
     payload: false
   }
 );
+
+export const  userIsLoggedIn=()=>(
+  {
+    type:types.USER_IS_LOGGED_IN,
+  }
+)
