@@ -16,7 +16,7 @@ export default function Cartsummary() {
         <div>
           <h3>Summary</h3>
           {value.map((value) => (
-            <h4> {value.productname} </h4>
+            <h4> {value.name} </h4>
           ))}
           <hr />
           <p>Total price is {getTotal(value)}</p>

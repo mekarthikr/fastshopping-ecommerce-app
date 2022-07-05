@@ -1,5 +1,5 @@
-import { removeProductFromCart } from "../../action/productaction";
-import { useDispatch } from "react-redux";
+import { getSingleProduct, removeProductFromCart } from "../../action/productaction";
+import { useDispatch,useSelector } from "react-redux";
 
 import "../../assets/style/productcard.css";
 import "../../assets/style/cart.css";
@@ -7,16 +7,18 @@ import close from "../../assets/image/close.png";
 
 export default function Cartproduct(props) {
   let dispatch = useDispatch();
-
+  const { products } = useSelector((state) => state.product);
+  // console.log("details",props)
+  // console.log(products[0])
   const removeFromCart = () => {
-    dispatch(removeProductFromCart(props.details.id));
+    dispatch(getSingleProduct(props.details.id));
   };
 
   return (
     <div className="cart-card">
       <div className="row">
         <div className="col-md-4">
-          <img src={props.details.image} alt="product" />
+          <img src={props.details.imageurl} alt="product" />
         </div>
         <div className="col-md-8 cart-product-details">
           <h2 className="inline">{props.details.productname}</h2>

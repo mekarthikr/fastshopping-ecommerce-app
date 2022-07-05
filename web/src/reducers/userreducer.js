@@ -11,7 +11,8 @@ const initialState = {
   isAdminLogin:true,
   loggedInSuccess:false,
   loggedInFailed:false,
-  loginError:""
+  loginError:"",
+  userCart:[]
 };
 
 
@@ -38,6 +39,13 @@ const usersReducers = (state = initialState, action) => {
           ...state,
           loading: false,
         };
+        case types.INSERT_TO_CART:
+          const val=[...state.userCart,action.payload]
+          console.log("payload",action.payload)
+          return{
+            ...state,
+            userCart:val
+          }
       case types.GET_SINGLE_USER:
         return {
           ...state,

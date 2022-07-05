@@ -68,7 +68,7 @@ export const getSingleProduct = (id) => {
     axios
       .get(`http://localhost:5000/products/${id}`)
       .then((resp) => {
-        //console.log("resp", resp.data);
+        console.log("resp", resp.data);
         dispatch(getProduct(resp.data));
       })
       .catch((error) => console.log(error));

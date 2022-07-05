@@ -11,6 +11,11 @@ const userDeleted = () => ({
   type: types.DELETE_USER,
 });
 
+const insertToCart = (product) => ({
+  type: types.INSERT_TO_CART,
+  payload: product
+});
+
 const userAdded = () => ({
   type: types.ADD_USER,
 });
@@ -89,7 +94,7 @@ export const getSingleUser = (id) => {   //change method name
 export const updateUser = (user, id) => {
   return function (dispatch) {
     axios
-      .put(`${API}/${id}`, user)
+      .put(`http://localhost:5000/users//${id}`, user)
       .then((resp) => {
         console.log("resp", resp);
         dispatch(userUpdated());
@@ -135,11 +140,20 @@ export const addProductToCart=(productid,user)=>{
       user.cart.push({productid:productid,quantity:1})
       console.log(user.cart)
     }
-    console.log(user.cart)
+    //console.log(user._id)
+    dispatch(updateUser(user,user._id))
     // if()
   }
 }
 
+
+export const insertCart=(product,cartproduct)=>{
+  return async function(dispatch){
+   product["quantity"]=cartproduct.quantity;
+   console.log(product)
+   await dispatch(insertToCart(product))
+  }
+}
 
 // export const userLoggingIn=()=>(
 //   {
