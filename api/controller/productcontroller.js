@@ -11,7 +11,7 @@ const getProducts=async (req,res)=>{
         console.log("came")
         const products=await Product.find()
         console.log(products)
-        res.json(products)
+        res.json({products})
         
     }
     catch(err)

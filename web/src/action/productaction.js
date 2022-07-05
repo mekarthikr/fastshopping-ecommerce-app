@@ -30,7 +30,7 @@ export const loadProducts = () => {
       .get("http://localhost:5000/products/")
       .then((resp) => {
         console.log("resp", resp);
-        dispatch(getProducts(resp.data));
+        dispatch(getProducts(resp.data.products));
       })
       .catch((error) => console.log("Error",error));
   };

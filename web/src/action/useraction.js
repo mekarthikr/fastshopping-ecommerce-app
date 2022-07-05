@@ -121,6 +121,26 @@ export const userLoggedIn = (credentials) => {
   };
 };
 
+export const addProductToCart=(productid,user)=>{
+  return async function(dispatch){
+    console.log("cart action",productid,user)
+    if(user.cart.some(index => index.productid === productid))
+    {
+      const index = user.cart.findIndex(i => i.productid === productid)
+      user.cart[index].quantity=user.cart[index].quantity+1;
+      
+    }
+    else
+    {
+      user.cart.push({productid:productid,quantity:1})
+      console.log(user.cart)
+    }
+    console.log(user.cart)
+    // if()
+  }
+}
+
+
 // export const userLoggingIn=()=>(
 //   {
 //     type:types.USER_LOGING_IN

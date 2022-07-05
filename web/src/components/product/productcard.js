@@ -1,16 +1,18 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { addProductToCart } from "../../action/productaction";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useSearchParams } from "react-router-dom";
+import { addProductToCart } from "../../action/useraction";
 import "../../assets/style/productcard.css";
+
 
 export default function Productcard(props) {
 
   let dispatch = useDispatch();
+  const { user } = useSelector((state) => state.user);
   console.log(props.details._id)
   const addToCart = (e) => {
     e.preventDefault();
-    addProductToCart
+    dispatch(addProductToCart(props.details._id,user))
   };
 
   return (
