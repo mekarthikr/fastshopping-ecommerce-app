@@ -91,7 +91,7 @@ const loginUser=async(req,res)=>{
         }
         if(req.body.password==user.password)
         {
-            const result = jwt.sign({id : user.id},process.env.ACCESS_TOKEN)
+            const result = jwt.sign({id : user.id,role:"user"},process.env.ACCESS_TOKEN)
             console.log(result)
             const message="Succesfully logged in"
             console.log(message)

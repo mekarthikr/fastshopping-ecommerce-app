@@ -20,15 +20,15 @@ export default function Header() {
   useEffect(() => { }, [isLogin, value])
 
   function navbarView() {
-    console.log("data:" + isLogin)
-    if (isLogin) {
-      return <Adminheader />
-    }
-    // else if(isAdminLogin)
-    // {
-    //   return <AdminHeader/>
+    // console.log("data:" + isLogin)
+    // if (isLogin) {
+      return <UserHeader />
     // }
-    return false
+    // // else if(isAdminLogin)
+    // // {
+    // //   return <AdminHeader/>
+    // // }
+    // return false
   }
   // function handlelogout(e) {
   //   dispatch(userLoggedOut())
@@ -58,9 +58,7 @@ export default function Header() {
             <img src={coll} className="icon" width={"60px"} alt="img" />
           </span>
         </button>
-        {navbarView()
-
-        }
+        {navbarView()}
       </nav>
   );
 

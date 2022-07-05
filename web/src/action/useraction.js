@@ -1,7 +1,7 @@
 import * as types from "./actionType";
 import axios from "axios";
 import { API } from "../api/api";
-
+import jwtDecode from 'jwt-decode'
 const getUsers = (users) => ({
   type: types.GET_USERS,
   payload: users,
@@ -19,12 +19,13 @@ const userUpdated = () => ({
   type: types.UPDATE_USER,
 });
 
-const userLoggedInSuccess=()=>({
-  type:types.USER_LOGGED_IN_SUCCESS,
+const userLoggedInSuccess = () => ({
+  type: types.USER_LOGGED_IN_SUCCESS,
 })
 
-const userLoggedInFailed=()=>({
-  type:types.USER_LOGGED_IN_FAILED,
+const userLoggedInFailed = (error) => ({
+  type: types.USER_LOGGED_IN_FAILED,
+  payload: error,
 })
 
 const getUser = (user) => ({
@@ -58,7 +59,7 @@ export const deleteUser = (id) => {
 };
 
 export const addUser = (user) => {
- // user=JSON.stringify(user)
+  // user=JSON.stringify(user)
   console.log(user)
   return function (dispatch) {
     axios
@@ -66,16 +67,17 @@ export const addUser = (user) => {
       .then((resp) => {
         console.log("resp", resp);
         dispatch(userAdded());
-       // dispatch(loadUsers());
+        // dispatch(loadUsers());
       })
       .catch((error) => console.log(error));
   };
 };
 
-export const getSingleUser = (id) => {
-  return function (dispatch) {
-    axios
-      .get(`${API}/${id}`)
+export const getSingleUser = (id) => {   //change method name
+  return async function (dispatch) {
+    console.log("user id",id)
+    await axios
+      .get(`http://localhost:5000/users/${id}`)
       .then((resp) => {
         console.log("resp", resp);
         dispatch(getUser(resp.data));
@@ -97,34 +99,25 @@ export const updateUser = (user, id) => {
 };
 
 export const userLoggedIn = (credentials) => {
-  return async function (dispatch)
-  {
+  return async function (dispatch) {
     await axios
-    .post("http://localhost:5000/users/login", credentials)
-    .then((res)=>{
-      console.log(res.status)
-      if(res.status===200)
-      {
-        dispatch(userLoggedInSuccess())
-      }
-      else
-      {
-        console.log("false")
-      }
-    })
-    .catch(async(error)=>{  
-      console.log(error.response.status)
-      if(error.response.status===404)
-      {
-        console.log("user not found")
-        await dispatch(userLoggedInFailed())  
-        console.log("after action dispatch")  
-      }
-      else
-      {
-        console.log("server error")
-      }
-    })
+      .post("http://localhost:5000/users/login", credentials)
+      .then((res) => {
+        console.log(res)
+        if (res) {
+          window.localStorage.setItem('token', res.data.token);
+          const decoded = jwtDecode(res.data.token)
+          dispatch(userLoggedInSuccess())
+          dispatch(getSingleUser(decoded.id))
+        }
+        else {
+          console.log("false")
+        }
+      })
+      .catch(async (error) => {
+        console.log("Login Error", error.response.data.error)
+        await dispatch(userLoggedInFailed(error.response.data.error))
+      })
   };
 };
 
@@ -136,7 +129,7 @@ export const userLoggedIn = (credentials) => {
 
 export const userLoggedOut = () => (
   {
-    type:types.USER_LOGGED_OUT,
-    payload:false
+    type: types.USER_LOGGED_OUT,
+    payload: false
   }
 );

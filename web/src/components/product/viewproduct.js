@@ -1,7 +1,7 @@
 import React, {useState, useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { addProductToCart, getSingleProduct } from "../../action/productaction";
+import { addProductToCart, getSingleProduct,clearProducts } from "../../action/productaction";
 import "../../assets/style/register.css";
 import "../../assets/style/viewproduct.css";
 import arrow from "../../assets/image/arrowleft.svg";
@@ -37,9 +37,10 @@ export default function Viewproduct() {
     e.preventDefault();
     dispatch(addProductToCart(product));
   };
-
+console.log(product)
   function goBack() {
-    console.log("back");
+    // console.log("back");
+    dispatch(clearProducts());
     navigate(-1);
   }
   
@@ -54,13 +55,13 @@ export default function Viewproduct() {
               alt="product"
               width={680}
               height={680}
-              src={state.image}
+              src={product.imageurl}
             />
           </div>
           <div className="col main-detail-product">
-            <h1>{state.productname}</h1>
-            <h2>{state.color}</h2>
-            <p>{state.price}</p>
+            <h1>{product.productname}</h1>
+            <h2>{product.color}</h2>
+            <p>{product.price}</p>
             <button className="color-white bg-blue" onClick={addToCart}>
               ADD
             </button>

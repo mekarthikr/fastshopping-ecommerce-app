@@ -8,8 +8,9 @@ require('dotenv').config()
 
 const getProducts=async (req,res)=>{
     try{
-        // console.log("came")
+        console.log("came")
         const products=await Product.find()
+        console.log(products)
         res.json(products)
         
     }

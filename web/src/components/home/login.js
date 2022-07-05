@@ -2,33 +2,47 @@ import axios from "axios";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { API } from "../../api/api";
 import { useNavigate, Link } from "react-router-dom";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "../../assets/style/login.css";
-import { userLoggedIn,} from "../../action/useraction";
+import { userLoggedIn, } from "../../action/useraction";
+import ReactJsAlert from "reactjs-alert";
+// import { useAlert } from "react-alert";
+import { ReactNotifications, Store } from 'react-notifications-component'
 
 function Login() {
   let navigate = useNavigate();
   let dispatch = useDispatch();
+  // const alert = useAlert();
 
   const [state, setState] = useState({
     email: "",
     password: "",
   });
-
+  const [status, setStatus] = useState(false);
+  const [type, setType] = useState("success");
+  const [title, setTitle] = useState("This is a alert");
   const [error, setError] = useState("");
   const { email, password } = state;
   const [user, setUser] = useState("");
-  const { loggedInSuccess,loggedInFailed } = useSelector((state) => state.user);
-  useEffect(() =>{}, [error,loggedInSuccess,loggedInFailed ]); // eslint-disable-line react-hooks/exhaustive-deps
+  const { loggedInSuccess, loggedInFailed,loginError } = useSelector((state) => state.user);
 
-  const getUser = () => {
-    axios.get(API).then((res) => {
-      const allUser = res.data;
-      setUser(allUser);
-    });
-  };
- 
-  useEffect(() =>{}, [error]); // eslint-disable-line react-hooks/exhaustive-deps
+  // const getUser = () => {
+  //   axios.get(API).then((res) => {
+  //     const allUser = res.data;
+  //     setUser(allUser);
+  //   });
+  // };
+
+  useEffect(() => {
+    if (loggedInFailed) {
+      alert(loginError)
+      console.log(loggedInFailed)
+    }
+    else if (loggedInSuccess) {
+      console.log("Correct Credentials")
+      navigate('/product')
+    }
+  }, [loginError,loggedInSuccess]); // eslint-disable-line react-hooks/exhaustive-deps
 
 
   const handleInputChange = (e) => {
@@ -36,23 +50,13 @@ function Login() {
     setState({ ...state, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    await dispatch(userLoggedIn(state))
-    console.log("after dispatch")
-    
-    console.log(loggedInFailed,loggedInSuccess)
-    if(loggedInFailed)
-    {
-      setError("Invalid Login Credentials")
-      console.log(loggedInFailed)
-    }
-    else if(loggedInSuccess)
-    {
-      setError("")
-      console.log("Correct Credentials")
-    }
+    dispatch(userLoggedIn(state))
+    // console.log("after dispatch")
+    // console.log(loggedInFailed, loggedInSuccess)
   };
+ 
 
   return (
     <div className="login-block">

@@ -16,7 +16,7 @@ import { Routes, Route } from "react-router-dom";
 import { Admin } from "../components/admin/admin";
 
 export function Router() {
-  ValidateSession()
+  // ValidateSession()
   return (
     <>
       <Header />

@@ -5,14 +5,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from "react-redux";
+// import { positions   } from "react-alert";
+// import AlertTemplate from "react-alert-template-basic";
 import store from "./store/store"
-
+// const options = {
+//   timeout: 5000,
+//   position: positions.BOTTOM_CENTER
+// };
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={store} >
         <App />
       </Provider>
   </React.StrictMode>

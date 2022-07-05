@@ -82,6 +82,12 @@ const productReducer = (state = initialState, action) => {
                 ...state,
                 value:newbasket,
               }
+              case types.CLEAR_PRODUCT:
+                return{
+                  ...state,
+                  product:[]
+                }
+                
       default:
         return state;
     }

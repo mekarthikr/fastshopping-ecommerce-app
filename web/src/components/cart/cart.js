@@ -8,6 +8,8 @@ import "../../assets/style/cart.css";
 
 export default function Cart() {
   const { value } = useSelector((state) => state.product);
+  const { user } = useSelector((state) => state.user);
+  console.log(user)
   return (
     <div className="cart-container">
       <h1>Your Cart</h1>

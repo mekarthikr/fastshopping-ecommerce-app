@@ -10,7 +10,8 @@ const initialState = {
   isLogin:true,
   isAdminLogin:true,
   loggedInSuccess:false,
-  loggedInFailed:false
+  loggedInFailed:false,
+  loginError:""
 };
 
 
@@ -32,29 +33,17 @@ const usersReducers = (state = initialState, action) => {
       case types.DELETE_USER:
     //   case types.DELETE_PRODUCT:
       case types.ADD_USER:
-    //   case types.ADD_PRODUCT:
       case types.UPDATE_USER:
         return {
           ...state,
           loading: false,
         };
-        // case types.UPDATE_PRODUCT:
-        //   return {
-        //     ...state,
-        //     loading: false,
-        //   };
       case types.GET_SINGLE_USER:
         return {
           ...state,
           user: action.payload,
           loading: false,
         };
-        // case types.GET_SINGLE_PRODUCT:
-        // return {
-        //   ...state,
-        //   product: action.payload,
-        //   loading: false,
-        // };
         case types.USER_LOGGED_IN:
           return{
             ...state,
@@ -64,13 +53,15 @@ const usersReducers = (state = initialState, action) => {
             return{
               ...state,
               loggedInSuccess:true,
-              loggedInFailed:false
+              loggedInFailed:false,
+              loginError:""
             }
             case types.USER_LOGGED_IN_FAILED:
               return{
                 ...state,
                 loggedInSuccess:false,
-                loggedInFailed:true
+                loggedInFailed:true,
+                loginError:action.payload
               }
           case types.USER_LOGGED_OUT:
           return{

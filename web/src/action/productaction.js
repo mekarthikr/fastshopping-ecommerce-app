@@ -25,14 +25,14 @@ const getProduct = (product) => ({
 });
 
 export const loadProducts = () => {
-  return function (dispatch) {
-    axios
+  return async function (dispatch) {
+    await axios
       .get("http://localhost:5000/products/")
       .then((resp) => {
         console.log("resp", resp);
         dispatch(getProducts(resp.data));
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log("Error",error));
   };
 };
 
@@ -64,11 +64,11 @@ export const addProduct = (product) => {
 
 export const getSingleProduct = (id) => {
   return function (dispatch) {
-    console.log("called")
+    //console.log("called")
     axios
-      .get(`${API_PRODUCTS}/${id}`)
+      .get(`http://localhost:5000/products/${id}`)
       .then((resp) => {
-        console.log("resp", resp.data);
+        //console.log("resp", resp.data);
         dispatch(getProduct(resp.data));
       })
       .catch((error) => console.log(error));
@@ -104,3 +104,7 @@ export const removeProductFromCart = (id) => (
     payload:id
   }
 );
+
+export const clearProducts=()=>({
+  type:types.CLEAR_PRODUCT,
+})
