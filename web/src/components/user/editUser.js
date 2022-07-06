@@ -4,11 +4,7 @@ import { useDispatch ,useSelector} from "react-redux";
 import { useLocation ,useNavigate} from "react-router-dom"
 import "../../assets/style/register.css";
 
-import {
-  updateUser,
-  getSingleUser,
-  userLoggedOut,
-} from "../../action/useraction";
+import {updateUser, getSingleUser, userLoggedOut,} from "../../action/useraction";
 
 export default function Edituser() {
 
@@ -24,11 +20,11 @@ export default function Edituser() {
 
   const { user } = useSelector((state) => state.user);
   let dispatch = useDispatch();
-  const { firstname, lastname, email, password } = state;
+  const { firstname, lastname, email, password ,phonenumber} = state;
 
-  useEffect(() => {
-    dispatch(getSingleUser(location.state.id));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getSingleUser(location.state.id));
+  // }, []);
 
   useEffect(() => {
     if (user) {
@@ -46,10 +42,10 @@ export default function Edituser() {
     if (!firstname || !lastname || !email || !password) {
       console.log("enter form");
     } else {
-      dispatch(updateUser(state, location.state.id));
-      localStorage.clear();
-      dispatch(userLoggedOut());
-      navigate("/login");
+      dispatch(updateUser(state, user._id));
+      // localStorage.clear();
+      // dispatch(userLoggedOut());
+      // navigate("/login");
     }
   };
 
@@ -81,7 +77,8 @@ export default function Edituser() {
               />
             </div>
           </div>
-          <div className="form-group">
+          <div className="row">
+          <div className="form-group col-md-6">
             <label>EMAIL ADDERSS</label>
             <input
               className="form-control form-input"
@@ -90,6 +87,17 @@ export default function Edituser() {
               value={email || ""}
               onChange={handleInputChange}
             />
+          </div>
+          <div className="form-group col-md-6">
+            <label>PHONE NUMBER</label>
+            <input
+              className="form-control form-input"
+              type={"text"}
+              name="phonenumber"
+              value={phonenumber || ""}
+              onChange={handleInputChange}
+            />
+          </div>
           </div>
           <div className="form-group">
             <label>PASSWORD</label>

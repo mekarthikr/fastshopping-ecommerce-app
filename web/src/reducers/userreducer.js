@@ -2,6 +2,7 @@ import * as types from "../action/actionType";
 const initialState = {
   users: [],
   user: {},
+  cart:[],
 //   products: [],
 //   product: {},
   loading: true,
@@ -11,7 +12,10 @@ const initialState = {
   isAdminLogin:true,
   loggedInSuccess:false,
   loggedInFailed:false,
+  adminloggedInSuccess:false,
+  adminloggedInFailed:false,
   loginError:"",
+  adminloginError:"",
   userCart:[]
 };
 
@@ -29,6 +33,7 @@ const usersReducers = (state = initialState, action) => {
           return{
             ...state,
             isUserLogin:true,
+            loading: false,
           }
         // case types.GET_PRODUCTS:
         // return {
@@ -69,6 +74,13 @@ const usersReducers = (state = initialState, action) => {
               loggedInFailed:false,
               loginError:""
             }
+            case types.ADMIN_LOGGED_IN_SUCCESS:
+              return{
+                ...state,
+                adminloggedInSuccess:true,
+                adminloggedInFailed:false,
+                loginError:""
+              }
             case types.USER_LOGGED_IN_FAILED:
               return{
                 ...state,
@@ -76,12 +88,25 @@ const usersReducers = (state = initialState, action) => {
                 loggedInFailed:true,
                 loginError:action.payload
               }
+              case types.ADMIN_LOGGED_IN_FAILED:
+                  console.log("error",action.payload)
+                return{
+                  ...state,
+                  adminloggedInSuccess:false,
+                  adminloggedInFailed:true,
+                  adminloginError:action.payload
+                }
           case types.USER_LOGGED_OUT:
           return{
             ...state,
             isLogin:action.payload,
             user:{}
           }
+          case types.SET_CART:
+            return{
+              ...state,
+              cart:action.payload
+            }
         //   case types.ADD_TO_CART:
         //     if(!action.payload.quantity)
         //     {

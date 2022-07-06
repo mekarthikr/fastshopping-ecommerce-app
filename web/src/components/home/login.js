@@ -18,20 +18,16 @@ function Login() {
     email: "",
     password: "",
   });
+
   const [status, setStatus] = useState(false);
   const [type, setType] = useState("success");
   const [title, setTitle] = useState("This is a alert");
   const [error, setError] = useState("");
   const { email, password } = state;
   const [user, setUser] = useState("");
-  const { loggedInSuccess, loggedInFailed,loginError } = useSelector((state) => state.user);
 
-  // const getUser = () => {
-  //   axios.get(API).then((res) => {
-  //     const allUser = res.data;
-  //     setUser(allUser);
-  //   });
-  // };
+  
+  const { loggedInSuccess, loggedInFailed,loginError } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (loggedInFailed) {
@@ -53,8 +49,6 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(userLoggedIn(state))
-    // console.log("after dispatch")
-    // console.log(loggedInFailed, loggedInSuccess)
   };
  
 

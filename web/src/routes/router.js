@@ -20,7 +20,7 @@ import { useSelector } from "react-redux";
 
 
 export function Router() {
-  ValidateSession()
+ // ValidateSession()
   const {isUserLogin}=useSelector((state) => state.user)
   console.log(isUserLogin)
 
@@ -28,7 +28,7 @@ export function Router() {
     <>
       <Header />
       <Routes>
-        <Route path="/product" element={ <Protected isLoggedIn={isUserLogin}>
+        <Route path="/product" element={ <Protected role={"user"}>
         <Productlist />
  </Protected>} />
         <Route path="/" element={<Home />} />

@@ -11,6 +11,11 @@ const userDeleted = () => ({
   type: types.DELETE_USER,
 });
 
+const setUser = (data) => ({
+  type: types.SET_CART,
+  payload:data
+});
+
 const insertToCart = (product) => ({
   type: types.INSERT_TO_CART,
   payload: product
@@ -26,6 +31,15 @@ const userUpdated = () => ({
 
 const userLoggedInSuccess = () => ({
   type: types.USER_LOGGED_IN_SUCCESS,
+})
+
+const adminLoggedInSuccess = () => ({
+  type: types.ADMIN_LOGGED_IN_SUCCESS,
+})
+
+const adminLoggedInFailed = (error) => ({
+  type: types.ADMIN_LOGGED_IN_FAILED,
+  payload: error,
 })
 
 const userLoggedInFailed = (error) => ({
@@ -85,7 +99,7 @@ export const getSingleUser = (id) => {   //change method name
       .get(`http://localhost:5000/users/${id}`)
       .then((resp) => {
         console.log("resp", resp);
-       // dispatch(getUser(resp.data));
+       dispatch(getUser(resp.data));
       })
       .catch((error) => console.log(error));
   };
@@ -93,11 +107,12 @@ export const getSingleUser = (id) => {   //change method name
 
 export const updateUser = (user, id) => {
   return function (dispatch) {
+    console.log(user,id)
     axios
-      .put(`http://localhost:5000/users//${id}`, user)
+      .put(`http://localhost:5000/users/${id}`, user)
       .then((resp) => {
         console.log("resp", resp);
-        dispatch(userUpdated());
+       // dispatch(userUpdated());
       })
       .catch((error) => console.log(error));
   };
@@ -126,23 +141,46 @@ export const userLoggedIn = (credentials) => {
   };
 };
 
+export const adminLoggedIn=(credentials)=>{
+  return async function (dispatch) {
+    await axios
+      .post("http://localhost:5000/admin/login", credentials)
+      .then((res) => {
+        console.log(res)
+        if (res) {
+          window.localStorage.setItem('token', res.data.token);
+          const decoded = jwtDecode(res.data.token)
+          dispatch(adminLoggedInSuccess())
+          //dispatch(getSingleUser(decoded.id))
+        }
+        else {
+          console.log("false")
+        }
+      })
+      .catch(async (error) => {
+        console.log("Login Error", error.response.data.error)
+        await dispatch(adminLoggedInFailed(error.response.data.error))
+      })
+  };
+}
+
 export const addProductToCart=(productid,user)=>{
   return async function(dispatch){
     console.log("cart action",productid,user)
+    // console.log("cart user",user.cart[0].productid)
     if(user.cart.some(index => index.productid === productid))
     {
       const index = user.cart.findIndex(i => i.productid === productid)
       user.cart[index].quantity=user.cart[index].quantity+1;
-      
+      console.log(user.cart[index].quantity)
+      //console.log('exists at',index)
     }
     else
     {
       user.cart.push({productid:productid,quantity:1})
-      console.log(user.cart)
+      console.log("pushed")
     }
-    //console.log(user._id)
     dispatch(updateUser(user,user._id))
-    // if()
   }
 }
 
@@ -173,3 +211,17 @@ export const  userIsLoggedIn=()=>(
     type:types.USER_IS_LOGGED_IN,
   }
 )
+
+
+export const getUserCart = (id) => {   //change method name
+  return async function (dispatch) {
+    console.log("user id",id)
+    await axios
+      .get(`http://localhost:5000/users/cart/${id}`)
+      .then((resp) => {
+        console.log("response data", resp.data);
+        dispatch(setUser(resp.data))
+      })
+      .catch((error) => console.log(error));
+  };
+};

@@ -5,10 +5,23 @@ const userRouter=express.Router()
 const User=require('../model/usermodel')
 const jwt=require('jsonwebtoken')
 require('dotenv').config()
+const Product=require('../model/productmodel')
 
 const getUsers=async (req,res)=>{
     try{
         const users=await User.find()
+        res.json(users)
+        
+    }
+    catch(err)
+    {
+        res.send('Error'+err)
+    }
+}
+
+const getCartDetails=async (req,res)=>{
+    try{
+        const users=await User.findById(req.params.id).populate('cart.productid').select('cart')
         res.json(users)
         
     }
@@ -129,5 +142,5 @@ function authenticateToken(req,res,next)
 }
 
 module.exports={
-    getUser,getUsers,loginUser,deleteUser,editUser,addUser,authenticateToken
+    getUser,getUsers,loginUser,deleteUser,editUser,addUser,authenticateToken,getCartDetails
 }

@@ -27,6 +27,7 @@ export default function Adminpanel() {
   function addProduct() {
     navigate("/addProduct");
   }
+  console.log(products)
 
   return (
     <>
@@ -40,11 +41,11 @@ export default function Adminpanel() {
               return (
                 // add this in a seperate component
                 <div className="single-product card">
-                  <img src={product.image} alt="product" />
+                  <img src={product.imageurl} alt="product" />
                   <div className="inline">
-                    <h5 className="inline">{product.productname}</h5>
-                    <button onClick={() => handleEdit(product.id)}>EDIT</button>
-                    <button onClick={() => handleDelete(product.id)}>
+                    <h5 className="inline">{product.name}</h5>
+                    <button onClick={() => handleEdit(product._id)}>EDIT</button>
+                    <button onClick={() => handleDelete(product._id)}>
                       DELETE
                     </button>
                   </div>

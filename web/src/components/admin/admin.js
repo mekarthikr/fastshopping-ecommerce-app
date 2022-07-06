@@ -2,8 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { API_ADMIN } from "../../api/api";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { userLoggedIn } from "../../action/useraction";
+import { useDispatch, useSelector } from "react-redux";
+import { adminLoggedIn, userLoggedIn } from "../../action/useraction";
 
 import "../../assets/style/admin.css";
 
@@ -11,23 +11,39 @@ import "../../assets/style/admin.css";
 export function Admin() {
   let navigate = useNavigate();
   const dispatch = useDispatch();
+
   const [state, setState] = useState({
     email: "",
     password: "",
   });
 
-  const { email, password } = state;
+  const { adminloggedInSuccess, adminloggedInFailed,adminloginError } = useSelector((state) => state.user);
+  //console.log(adminloggedInSuccess,adminloggedInFailed,adminLogged)
 
-  const [user, setUser] = useState("");
+  useEffect(() => {
+    if (adminloggedInFailed) {
+      console.log("alert")
+      alert(adminloginError)
+      console.log(adminloginError)
+    }
+    else if (adminloggedInSuccess) {
+      console.log("Correct Credentials")
+      navigate('/adminpanel') 
+    } 
+  }, [adminloginError,adminloggedInSuccess]); 
 
-  useEffect(() => getUser(), []);
+  // const { email, password } = state;
 
-  const getUser = () => {
-    axios.get(API_ADMIN).then((res) => {
-      const allUser = res.data;
-      setUser(allUser);
-    });
-  };
+  // const [user, setUser] = useState("");
+
+  // useEffect(() => getUser(), []);
+
+  // const getUser = () => {
+  //   axios.get(API_ADMIN).then((res) => {
+  //     const allUser = res.data;
+  //     setUser(allUser);
+  //   });
+  // };
 
   const handleInputChange = (e) => {
     let { name, value } = e.target;
@@ -36,13 +52,15 @@ export function Admin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(userLoggedIn())
-    let profile = user.find(
-      (index) => index.email === email && index.password === password
-    );
-    if (profile !== undefined) {
-      navigate("/adminpanel", { profile });
-    }
+    
+    dispatch(adminLoggedIn(state))
+
+    // let profile = user.find(
+    //   (index) => index.email === email && index.password === password
+    // );
+    // if (profile !== undefined) {
+    //   navigate("/adminpanel", { profile });
+    // }
   };
 
   return (
