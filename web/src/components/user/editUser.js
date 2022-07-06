@@ -45,7 +45,7 @@ export default function Edituser() {
       dispatch(updateUser(state, user._id));
       // localStorage.clear();
       // dispatch(userLoggedOut());
-      // navigate("/login");
+      navigate("/login");
     }
   };
 

@@ -12,37 +12,17 @@ export default function Cart() {
   const { user, userCart,cart } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch()
-  useEffect(()=>{  dispatch(getUserCart(user._id))},[user])
+  useEffect(()=>{  dispatch(getUserCart(user._id))},[])
+  useEffect(()=>{},[user])
 
   // console.log(user.cart)
   const goback=()=>{
-    navigate(-1);
+    navigate('/login');
   }
-  console.log("cart",cart.cart)
+  console.log("cart", cart)
   return (
     <div className="cart-container">
       <button onClick={goback}>back</button>
-      <h1>Your Cart</h1>
-      <p>
-        {cart.cartlength===0
-          ? "Cart is Empty"
-          : `${cart.cart.length} item ships at checkout`}
-      </p>
-      <div className="cart-main">
-        <div className="row">
-          <div className="col-md-7">
-            <hr />
-            <>
-              {cart.cart.map((value) => (
-                <Cartproduct key={value.id} details={value} />
-              ))}
-            </>
-          </div>
-          <div className="col-md-5 summary-section">
-            {cart.cart.length !== 0 && <Cartsummary />}
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

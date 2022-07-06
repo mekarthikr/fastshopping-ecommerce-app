@@ -105,7 +105,7 @@ const usersReducers = (state = initialState, action) => {
           case types.SET_CART:
             return{
               ...state,
-              cart:action.payload
+              cart:action.payload.cart
             }
         //   case types.ADD_TO_CART:
         //     if(!action.payload.quantity)

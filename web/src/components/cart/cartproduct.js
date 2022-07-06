@@ -1,15 +1,15 @@
 import { getSingleProduct, removeProductFromCart } from "../../action/productaction";
 import { useDispatch,useSelector } from "react-redux";
 
-
 import "../../assets/style/productcard.css";
 import "../../assets/style/cart.css";
 import close from "../../assets/image/close.png";
 import { useEffect, useState } from "react";
+import { addProductToCart } from "../../action/useraction";
 
 export default function Cartproduct(props) {
   let dispatch = useDispatch();
-  const { product } = useSelector((state) => state.product);
+  const { user } = useSelector((state) => state.user);
   //useEffect(()=>{dispatch(getSingleProduct(props.details.productid));},[])
   const [state, setState] = useState({
     name: "",
@@ -17,14 +17,17 @@ export default function Cartproduct(props) {
     color: "",
     imageurl: "",
   });
-  console.log(props.details)
+  console.log("props",props.details)
   //const productname=product._id;
   //console.log("name",productname)
   
-  
+  // useEffect(()=>{},[user])
   //console.log(props.details.productid)
-  const removeFromCart = () => {
-    dispatch(getSingleProduct(props.details.productid.id));
+  const removeFromCart = (e) => {
+        // e.preventDefault();
+ //   console.log("click",props.details.productid._id,user)
+
+    // dispatch(addProductToCart(props.details.productid.id,user))
   };
 
   return (
@@ -41,6 +44,8 @@ export default function Cartproduct(props) {
           <p>{props.details.quantity}</p>
         </div>
       </div>
+      <button onClick={removeFromCart}>+</button>
+      <button>-</button>
       <hr />
     </div>
   );

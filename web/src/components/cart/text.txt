@@ -1,0 +1,21 @@
+      <h1>Your Cart</h1>
+      <p>
+        {cart.length===0
+          ? "Cart is Empty"
+          : `${cart.length} item ships at checkout`}
+      </p>
+      <div className="cart-main">
+        <div className="row">
+          <div className="col-md-7">
+            <hr />
+            <>
+              {cart.map((value) => (
+                <Cartproduct key={value.id} details={value} />
+              ))}
+            </>
+          </div>
+          <div className="col-md-5 summary-section">
+            {/* {cart.length !== 0 && <Cartsummary />} */}
+          </div>
+        </div>
+      </div>
