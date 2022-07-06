@@ -225,3 +225,16 @@ export const getUserCart = (id) => {   //change method name
       .catch((error) => console.log(error));
   };
 };
+
+export const setUserDetail=(userid)=>{
+  return async function (dispatch) {
+    console.log("userid",userid.length)
+    await axios
+      .get(`http://localhost:5000/users/${userid}`)
+      .then((resp) => {
+        console.log("response data", resp);
+        dispatch(getUser(resp.data));
+      })
+      .catch((error) => console.log(error));
+  };
+}

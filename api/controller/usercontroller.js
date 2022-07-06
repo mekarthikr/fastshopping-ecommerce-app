@@ -32,9 +32,12 @@ const getCartDetails=async (req,res)=>{
 }
 
 const getUser=async (req,res)=>{
+    //console.log(req)
     const id=req.params.id;
+    console.log(id)
     try{
-       const user=await User.findById(req.params.id)
+       const user=await User.findById(id)
+       console.log(user)
         res.json(user)
         
     }
