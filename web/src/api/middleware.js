@@ -8,9 +8,6 @@ const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzJjOGVmMTc3MjA1ZT
 
 const axiosInstance=axios.create({
     baseURL:baseURL
-    // headers:{
-    //     Authen
-    // }
 })
 
 axiosInstance.interceptors.request.use((request)=>{
