@@ -47,10 +47,21 @@ const userLoggedInFailed = (error) => ({
   payload: error,
 })
 
+const addUserToken=(token)=>({
+  type: types.ADD_USER_TOKEN,
+  payload: token
+})
+
 const getUser = (user) => ({
   type: types.GET_SINGLE_USER,
   payload: user,
 });
+
+export const userLogout=()=>(
+  {
+    type: types.USER_IS_LOGGED_OUT
+  }
+)
 
 export const loadUsers = () => {
   return function (dispatch) {
@@ -107,7 +118,7 @@ export const getSingleUser = (id) => {   //change method name
 
 export const updateUser = (user, id) => {
   return function (dispatch) {
-    console.log(user,id)
+    console.log("update",user,id)
     axios
       .put(`http://localhost:5000/users/${id}`, user)
       .then((resp) => {
@@ -126,9 +137,10 @@ export const userLoggedIn = (credentials) => {
         console.log(res)
         if (res) {
           window.localStorage.setItem('token', res.data.token);
-          const decoded = jwtDecode(res.data.token)
+         // const decoded = jwtDecode(res.data.token)
+          dispatch(addUserToken(res.data.token))
           dispatch(userLoggedInSuccess())
-          dispatch(getSingleUser(decoded.id))
+          // dispatch(getSingleUser(decoded.id))
         }
         else {
           console.log("false")
@@ -193,11 +205,7 @@ export const insertCart=(product,cartproduct)=>{
   }
 }
 
-// export const userLoggingIn=()=>(
-//   {
-//     type:types.USER_LOGING_IN
-//   }
-// )
+
 
 export const userLoggedOut = () => (
   {
@@ -213,6 +221,8 @@ export const  userIsLoggedIn=()=>(
 )
 
 
+
+
 export const getUserCart = (id) => {   //change method name
   return async function (dispatch) {
     console.log("user id",id)
@@ -225,6 +235,8 @@ export const getUserCart = (id) => {   //change method name
       .catch((error) => console.log(error));
   };
 };
+
+
 
 export const setUserDetail=(userid)=>{
   return async function (dispatch) {

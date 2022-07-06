@@ -4,26 +4,30 @@ import Adminheader from "./Adminheader"
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { userLoggedOut } from "../action/useraction";
+import { setUserDetail, userLoggedOut } from "../action/useraction";
 
 import "../assets/style/header.css";
 import coll from "../assets/image/coll.svg";
 import remove from "../assets/image/bag.svg";
+import jwtDecode from "jwt-decode";
 
 export default function Header() {
 
-  const { isLogin, value, user, isAdminLogin } = useSelector((state) => state.user)
+  const { isLogin, value,tokenId, user,userLoggedin, isAdminLogin } = useSelector((state) => state.user)
 
   let dispatch = useDispatch();
   let navigate = useNavigate();
 
-  useEffect(() => { }, [isLogin, value])
+  //useEffect(() => {dispatch(setUserDetail(jwtDecode(localStorage.getItem("token")).id)) }, [isLogin, value])
+  // const token = 
+  // console.log(token)
+
 
   function navbarView() {
     // console.log("data:" + isLogin)
-    // if (isLogin) {
+    if (userLoggedin) {
       return <UserHeader />
-    // }
+    }
     // // else if(isAdminLogin)
     // // {
     // //   return <AdminHeader/>

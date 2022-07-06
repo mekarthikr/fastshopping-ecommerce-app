@@ -30,6 +30,8 @@ export default function UserProfile() {
                         <h2 className="col-6 color-blue">{user.lastname}</h2>
                         <h2 className="col-6 color-blue">Email ID </h2>
                         <h2 className="col-6 color-blue">{user.email}</h2>
+                        <h2 className="col-6 color-blue">Phone Number </h2>
+                        <h2 className="col-6 color-blue">{user.phonenumber}</h2>
                     </div>
                 </div>
             </div>

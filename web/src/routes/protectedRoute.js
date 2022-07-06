@@ -8,12 +8,13 @@ import { setUserDetail } from "../action/useraction";
 const Protected = ({ role, children }) => {
     const isAuthenticated = localStorage.getItem("token");
     const dispatch=useDispatch()
+    console.log(isAuthenticated)
     if (isAuthenticated) {
         const token = jwtDecode(isAuthenticated)
         console.log(token)
         if (token.role === role) {
             console.log(token.id)
-            dispatch(setUserDetail(token.id))
+           // dispatch(setUserDetail(token.id))
             return children
         }
         else {

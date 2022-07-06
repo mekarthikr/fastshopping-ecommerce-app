@@ -5,6 +5,7 @@ const userRouter=express.Router()
 const User=require('../model/usermodel')
 const jwt=require('jsonwebtoken')
 require('dotenv').config()
+const jwtdecode =require('jwt-decode')
 const Product=require('../model/productmodel')
 
 const getUsers=async (req,res)=>{
@@ -84,6 +85,21 @@ const editUser=async (req,res)=>{
     }
 }
 
+// const editUser=async (req,res)=>{
+//     const id=req.params.id;
+//     console.log("id");
+//     try{
+//         const user=await User.findByIdAndUpdate(req.params.id,req.body)
+//         const data=await user.save()
+//         console.log(data)
+//         res.send("modified")
+//     }
+//     catch(err)
+//     {
+//         res.send('Error'+err)
+//     }
+// }
+
 const deleteUser=async (req,res)=>{
     const id=req.params.id;
     try{
@@ -109,6 +125,8 @@ const loginUser=async(req,res)=>{
         {
             const result = jwt.sign({id : user.id,role:"user"},process.env.ACCESS_TOKEN)
             console.log(result)
+           // const user = jwtdecode(result)
+            console.log(jwtdecode(result))
             const message="Succesfully logged in"
             console.log(message)
             res.status(200).json({success:message,token:result})

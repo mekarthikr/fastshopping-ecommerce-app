@@ -43,9 +43,8 @@ export default function Edituser() {
       console.log("enter form");
     } else {
       dispatch(updateUser(state, user._id));
-      // localStorage.clear();
-      // dispatch(userLoggedOut());
-      navigate("/login");
+      // dispatch(userLoggedOut())
+      // navigate("/login");
     }
   };
 
@@ -99,7 +98,8 @@ export default function Edituser() {
             />
           </div>
           </div>
-          <div className="form-group">
+          <div className="row">
+          <div className="form-group col-md-6">
             <label>PASSWORD</label>
             <input
               className="form-control form-input"
@@ -108,6 +108,17 @@ export default function Edituser() {
               value={password || ""}
               onChange={handleInputChange}
             />
+          </div>
+          <div className="form-group col-md-6">
+            <label>PASSWORD</label>
+            <input
+              className="form-control form-input"
+              type={"password"}
+              name="password"
+              value={password || ""}
+              onChange={handleInputChange}
+            />
+          </div>
           </div>
           <button type="submit" className="login-button">UPDATE</button>
         </form>
