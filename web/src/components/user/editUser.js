@@ -4,7 +4,7 @@ import { useDispatch ,useSelector} from "react-redux";
 import { useLocation ,useNavigate} from "react-router-dom"
 import "../../assets/style/register.css";
 
-import {updateUser, getSingleUser, userLoggedOut,} from "../../action/useraction";
+import {updateUser, getSingleUser, userLoggedOut, userLogout} from "../../action/useraction";
 
 export default function Edituser() {
 
@@ -45,6 +45,8 @@ export default function Edituser() {
       dispatch(updateUser(state, user._id));
       // dispatch(userLoggedOut())
       // navigate("/login");
+      dispatch(userLogout());
+      navigate("/login");
     }
   };
 

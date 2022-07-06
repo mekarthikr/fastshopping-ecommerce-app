@@ -52,6 +52,11 @@ const addUserToken=(token)=>({
   payload: token
 })
 
+const addAdminToken=(token)=>({
+  type: types.ADD_ADMIN_TOKEN,
+  payload: token
+})
+
 const getUser = (user) => ({
   type: types.GET_SINGLE_USER,
   payload: user,
@@ -161,7 +166,8 @@ export const adminLoggedIn=(credentials)=>{
         console.log(res)
         if (res) {
           window.localStorage.setItem('token', res.data.token);
-          const decoded = jwtDecode(res.data.token)
+          //const decoded = jwtDecode(res.data.token)
+          dispatch(addAdminToken(res.data.token))
           dispatch(adminLoggedInSuccess())
           //dispatch(getSingleUser(decoded.id))
         }

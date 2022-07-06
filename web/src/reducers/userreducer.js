@@ -3,6 +3,7 @@ import jwtdecode from 'jwt-decode'
 const initialState = {
   users: [],
   user: {},
+  admin:{},
   cart: [],
   //   products: [],
   //   product: {},
@@ -136,24 +137,6 @@ const usersReducers = (state = initialState, action) => {
           loggedInSuccess:false,
           userLoggedin:false
         }
-    //   case types.ADD_TO_CART:
-    //     if(!action.payload.quantity)
-    //     {
-    //       action.payload.quantity=1;
-    //     }
-    //     const val=[...state.value,action.payload]
-    //     return{
-    //       ...state,
-    //       value:val
-    //     }
-    //     case types.REMOVE_FROM_CART:
-    //       const newbasket=[...state.value];
-    //       const index=state.value.findIndex((item)=>item.id===action.payload)
-    //       newbasket.splice(index,1)
-    //       return{
-    //         ...state,
-    //         value:newbasket,
-    //       }
     default:
       return state;
   }

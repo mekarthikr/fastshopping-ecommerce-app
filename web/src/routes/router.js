@@ -28,9 +28,10 @@ export function Router() {
     <>
       <Header />
       <Routes>
-        <Route path="/product" element={ <Protected role={"user"}>
-        <Productlist />
- </Protected>} />
+        <Route path="/product" element={ 
+        <Protected role={"user"}>
+          <Productlist />
+        </Protected>} />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
