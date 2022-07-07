@@ -7,7 +7,8 @@ const {
   deleteUser,
   loginUser,
   getCartDetails,
-  authenticateToken,
+  // getCategoryProduct,
+  authenticateToken
 } = require("../controller/usercontroller");
 
 const userRouter = express.Router();
@@ -19,5 +20,6 @@ userRouter.put("/:id", editUser);
 userRouter.post("/login", loginUser);
 userRouter.delete("/", deleteUser);
 userRouter.get("/cart/:id", getCartDetails);
+// userRouter.get("/cart/:id", getCategoryProduct);
 
 module.exports = userRouter;
