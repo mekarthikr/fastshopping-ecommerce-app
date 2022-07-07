@@ -8,7 +8,8 @@ export default function Home() {
   const navigate = useNavigate()
 
   function navigateTo() {
-    isLogin ? navigate("product") : navigate("login")
+    // isLogin ? navigate("product") :
+     navigate("/product")
   }
   
   return (

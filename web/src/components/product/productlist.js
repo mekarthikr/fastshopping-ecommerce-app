@@ -14,7 +14,7 @@ export default function PersonList() {
   const { products } = useSelector((state) => state.product);
   useEffect(() => {
     dispatch(loadProducts())
-  }, [products]);
+  }, []);
 
   
 

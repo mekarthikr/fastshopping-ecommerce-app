@@ -1,11 +1,15 @@
-import React, {useState, useEffect } from "react";
-import { useDispatch,useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { addProductToCart, getSingleProduct,clearProducts,deleteProduct } from "../../action/productaction";
+import {
+  getSingleProduct,
+  clearProducts,
+  deleteProduct,
+} from "../../action/productaction";
+
 import "../../assets/style/register.css";
 import "../../assets/style/viewproduct.css";
 import arrow from "../../assets/image/arrowleft.svg";
-
 
 export default function Productview() {
   const navigate = useNavigate();
@@ -25,14 +29,14 @@ export default function Productview() {
 
   useEffect(() => {
     dispatch(getSingleProduct(id));
-  }, []); 
+  }, []);
 
   useEffect(() => {
     if (product) {
       setState({ ...product });
     }
   }, [product]);
-console.log(product)
+  console.log(product);
   function goBack() {
     dispatch(clearProducts());
     navigate(-1);
@@ -43,11 +47,10 @@ console.log(product)
   };
 
   function handleEdit() {
-    console.log("id on edit",id)
+    console.log("id on edit", id);
     navigate(`/editproduct/${id}`);
   }
 
-  
   return (
     <>
       <div className="container main-view-product">
@@ -69,7 +72,11 @@ console.log(product)
             <button className="color-white bg-blue" onClick={handleDelete}>
               DELETE
             </button>
-            <button className="color-white bg-blue" style={{margin:"10px"}} onClick={handleEdit}>
+            <button
+              className="color-white bg-blue"
+              style={{ margin: "10px" }}
+              onClick={handleEdit}
+            >
               EDIT
             </button>
           </div>

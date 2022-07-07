@@ -1,6 +1,5 @@
 import * as types from "./actionType";
 import axios from "axios";
-import { API_PRODUCTS } from "../api/api";
 import axiosInstance from "../api/middleware";
 
 const getProducts = (products) => ({
@@ -27,24 +26,22 @@ const getProduct = (product) => ({
 
 export const loadProducts = () => {
   return async function (dispatch) {
-    await 
-      axiosInstance({url:'products/'})
+    await axiosInstance({ url: "products/" })
       .then((resp) => {
         console.log("resp", resp);
         dispatch(getProducts(resp.data.products));
       })
-      .catch((error) => console.log("Error",error));
+      .catch((error) => console.log("Error", error));
   };
 };
 
 export const deleteProduct = (id) => {
   return function (dispatch) {
-    console.log(id)
+    console.log(id);
     axios
       .delete(`http://localhost:5000/products/${id}`)
       .then((resp) => {
         console.log("resp", resp);
-        //dispatch(productDeleted());
         dispatch(loadProducts());
       })
       .catch((error) => console.log(error));
@@ -53,12 +50,12 @@ export const deleteProduct = (id) => {
 
 export const addProduct = (product) => {
   return function (dispatch) {
+    console.log("product post", product);
     axios
       .post("http://localhost:5000/products/", product)
       .then((resp) => {
         console.log("resp", resp);
         dispatch(productAdded());
-        // dispatch(loadUsers());
       })
       .catch((error) => console.log(error));
   };
@@ -66,7 +63,6 @@ export const addProduct = (product) => {
 
 export const getSingleProduct = (id) => {
   return function (dispatch) {
-    //console.log("called")
     axios
       .get(`http://localhost:5000/products/${id}`)
       .then((resp) => {
@@ -82,31 +78,23 @@ export const updateProduct = (product, id) => {
     axios
       .put(`http://localhost:5000/products/${id}`, product)
       .then((resp) => {
-        //console.log("resp", resp);
-       // dispatch(productUpdated());
       })
       .catch((error) => console.log(error));
   };
 };
 
-export const addToCart = (item) => (
-  console.log(item)
-);
+export const addToCart = (item) => console.log(item);
 
-export const addProductToCart = (value) => (
-  {
-    type:types.ADD_TO_CART,
-    payload:value
-  }
-);
+export const addProductToCart = (value) => ({
+  type: types.ADD_TO_CART,
+  payload: value,
+});
 
-export const removeProductFromCart = (id) => (
-  {
-    type:types.REMOVE_FROM_CART,
-    payload:id
-  }
-);
+export const removeProductFromCart = (id) => ({
+  type: types.REMOVE_FROM_CART,
+  payload: id,
+});
 
-export const clearProducts=()=>({
-  type:types.CLEAR_PRODUCT,
-})
+export const clearProducts = () => ({
+  type: types.CLEAR_PRODUCT,
+});

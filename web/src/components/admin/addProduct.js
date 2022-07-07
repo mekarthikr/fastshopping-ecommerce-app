@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addProduct } from "../../action/productaction";
+import FileBase64 from "react-file-base64";
 
 import "../../assets/style/register.css";
 
@@ -11,12 +12,13 @@ export default function AddProduct() {
     imageurl: "",
     color: "",
     price: "",
+    category: "",
   });
 
   let dispatch = useDispatch();
   let navigate = useNavigate();
 
-  const { name, imageurl, color, price } = state;
+  const { name, imageurl, color, price, category } = state;
 
   const handleInputChange = (e) => {
     let { name, value } = e.target;
@@ -25,7 +27,7 @@ export default function AddProduct() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name || !imageurl || !color || !price) {
+    if (!name || !imageurl || !color || !price || !category) {
     } else {
       dispatch(addProduct(state));
       navigate("/adminpanel");
@@ -80,6 +82,22 @@ export default function AddProduct() {
                   onChange={handleInputChange}
                 />
               </div>
+              <div className="form-group row">
+                <label className="color-white">category</label>
+                <select
+                  class="form-select"
+                  onChange={handleInputChange}
+                  name="category"
+                  aria-label="Default select example"
+                >
+                  <option selected value="smartphone">
+                    smartphone
+                  </option>
+                  <option value="laptops">laptops</option>
+                  <option value="headphone">headphone</option>
+                  <option value="accessories">accessories</option>
+                </select>
+              </div>
             </div>
             <div className="col edit-product-view">
               <div className="bg-blue edit-product-card">
@@ -89,6 +107,7 @@ export default function AddProduct() {
                 <p className="color-white">{price}</p>
               </div>
             </div>
+            <div></div>
           </div>
           <button type="submit" className="login-button">
             {" "}

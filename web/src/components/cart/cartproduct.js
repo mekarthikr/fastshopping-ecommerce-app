@@ -10,6 +10,7 @@ import { addProductToCart } from "../../action/useraction";
 export default function Cartproduct(props) {
   let dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
+  
   //useEffect(()=>{dispatch(getSingleProduct(props.details.productid));},[])
   const [state, setState] = useState({
     name: "",
@@ -17,17 +18,9 @@ export default function Cartproduct(props) {
     color: "",
     imageurl: "",
   });
-  console.log("props",props.details)
-  //const productname=product._id;
-  //console.log("name",productname)
-  
-  // useEffect(()=>{},[user])
-  //console.log(props.details.productid)
+ 
   const removeFromCart = (e) => {
-        // e.preventDefault();
- //   console.log("click",props.details.productid._id,user)
 
-    // dispatch(addProductToCart(props.details.productid.id,user))
   };
 
   return (

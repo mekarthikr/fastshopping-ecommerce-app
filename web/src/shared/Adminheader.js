@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { userLogout } from "../action/useraction";
+import { adminLogout, userLogout } from "../action/useraction";
 import { Tooltip } from "@mui/material";
 import "../assets/style/header.css";
 import logout from "../assets/image/logout.svg";
@@ -21,8 +21,8 @@ export default function AdminHeader() {
   }
 
   function handlelogout(e) {
-    dispatch(userLogout());
-    navigate("/login");
+    dispatch(adminLogout());
+    navigate("/admin");
   }
 
   return (

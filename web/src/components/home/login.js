@@ -36,7 +36,7 @@ function Login() {
     }
     else if (loggedInSuccess) {
       console.log("Correct Credentials")
-      navigate('/product')
+      navigate('/home')
     }
   }, [loginError,loggedInSuccess]); // eslint-disable-line react-hooks/exhaustive-deps
 

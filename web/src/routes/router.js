@@ -18,9 +18,6 @@ import Protected from "./protectedRoute";
 import { useSelector } from "react-redux";
 import Productview from "../components/admin/productview";
 
-
-
-
 export function Router() {
  // ValidateSession()
   const {isUserLogin}=useSelector((state) => state.user)
@@ -34,8 +31,8 @@ export function Router() {
         <Protected role={"user"}>
           <Productlist />
         </Protected>} />
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/edit" element={<Edituser />} />
         <Route path="/admin" element={<Admin />} />

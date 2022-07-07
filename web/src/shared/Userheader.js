@@ -46,7 +46,7 @@ export default function UserHeader() {
   function handlelogout(e) {
     console.log(isLogin + value + user);
     dispatch(userLogout());
-    navigate("/login");
+    navigate("/");
   }
 
   return (

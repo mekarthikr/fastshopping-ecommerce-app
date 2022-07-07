@@ -145,6 +145,15 @@ const usersReducers = (state = initialState, action) => {
           loggedInSuccess:false,
           userLoggedin:false
         }
+        case types.ADMIN_IS_LOGGED_OUT:
+          localStorage.removeItem("token")
+          return{
+            ...state,
+            tokenid:"",
+            admin:{},
+            adminloggedInSuccess:false,
+            adminLoggedIn:false
+          }
     default:
       return state;
   }

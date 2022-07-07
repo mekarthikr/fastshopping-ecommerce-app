@@ -41,8 +41,7 @@ export default function Editproduct() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name || !imageurl || !color || !price) {
-    }
-    else {
+    } else {
       dispatch(updateProduct(state, id));
       navigate("/adminpanel");
     }
@@ -105,7 +104,9 @@ export default function Editproduct() {
             </div>
           </div>
         </div>
-        <button type="submit" className="login-button">UPDATE</button>
+        <button type="submit" className="login-button">
+          UPDATE
+        </button>
       </form>
     </div>
   );

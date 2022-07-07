@@ -9,17 +9,21 @@ import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
   const { products } = useSelector((state) => state.product);
-  const { user, userCart,cart } = useSelector((state) => state.user);
-  const navigate = useNavigate();
-  const dispatch = useDispatch()
-  useEffect(()=>{  dispatch(getUserCart(user._id))},[])
-  useEffect(()=>{},[user])
+  const { user, userCart, cart } = useSelector((state) => state.user);
 
-  // console.log(user.cart)
-  const goback=()=>{
-    navigate('/login');
-  }
-  console.log("cart", cart)
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserCart(user._id));
+  }, []);
+
+  useEffect(() => {}, [user]);
+
+  const goback = () => {
+    navigate(-1);
+  };
+  
   return (
     <div className="cart-container">
       <button onClick={goback}>back</button>

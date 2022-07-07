@@ -46,7 +46,7 @@ export default function Edituser() {
       // dispatch(userLoggedOut())
       // navigate("/login");
       dispatch(userLogout());
-      navigate("/login");
+      navigate("/");
     }
   };
 
