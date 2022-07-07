@@ -67,6 +67,7 @@ const editProduct=async (req,res)=>{
 
 const deleteProduct=async (req,res)=>{
     const id=req.params.id;
+    console.log(id)
     try{
         const product=await Product.findByIdAndDelete(req.params.id)
     }

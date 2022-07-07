@@ -11,12 +11,12 @@ import { loadProducts } from "../../action/productaction";
 
 export default function PersonList() {
   let dispatch = useDispatch();
-
+  const { products } = useSelector((state) => state.product);
   useEffect(() => {
     dispatch(loadProducts())
-  }, []);
+  }, [products]);
 
-  const { products } = useSelector((state) => state.product);
+  
 
   return (
     <div className="main-container profile">

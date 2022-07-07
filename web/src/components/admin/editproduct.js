@@ -14,15 +14,15 @@ export default function Editproduct() {
   let { id } = useParams();
 
   const [state, setState] = useState({
-    productname: "",
-    image: "",
+    name: "",
+    imageurl: "",
     color: "",
     price: "",
   });
 
   const { product } = useSelector((state) => state.product);
 
-  const { productname, image, color, price } = state;
+  const { name, imageurl, color, price } = state;
   useEffect(() => {
     dispatch(getSingleProduct(id));
   }, []);
@@ -40,7 +40,7 @@ export default function Editproduct() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!productname || !image || !color || !price) {
+    if (!name || !imageurl || !color || !price) {
     }
     else {
       dispatch(updateProduct(state, id));
@@ -60,8 +60,8 @@ export default function Editproduct() {
               <input
                 className="form-control form-input"
                 type={"text"}
-                name="productname"
-                value={productname || ""}
+                name="name"
+                value={name || ""}
                 onChange={handleInputChange}
               />
             </div>
@@ -70,8 +70,8 @@ export default function Editproduct() {
               <input
                 className="form-control form-input"
                 type={"text"}
-                name="image"
-                value={image || ""}
+                name="imageurl"
+                value={imageurl || ""}
                 onChange={handleInputChange}
               />
             </div>
@@ -98,8 +98,8 @@ export default function Editproduct() {
           </div>
           <div className="col edit-product-view">
             <div className="bg-blue edit-product-card">
-              <img src={image} alt="image_product" />
-              <h3 className="color-white">{productname}</h3>
+              <img src={imageurl} alt="image_product" />
+              <h3 className="color-white">{name}</h3>
               <p className="color-white">{color}</p>
               <p className="color-white">{price}</p>
             </div>

@@ -1,9 +1,9 @@
 const jwt=require('jsonwebtoken')
 require('dotenv').config()
 
-function authenticateToken(req,res,next)
+const authenticateToken= async (req,res,next)=>
 {
-    const authHeader=req.headers['authorization']
+    const authHeader=req.headers['Authorization']
     const token=authHeader && authHeader
     console.log(token)
     if(token==null)
@@ -14,7 +14,17 @@ function authenticateToken(req,res,next)
         if(err)
         {
             res.send("Token expired")
+            next()
         }
-        next()
+        else
+        {
+            console.log("has token")
+            next()
+        }
+        console.log("has")
+         next()
     })
 }
+module.exports = {
+    authenticateToken
+  }

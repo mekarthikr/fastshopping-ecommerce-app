@@ -7,7 +7,7 @@ import "../assets/style/header.css";
 import logout from "../assets/image/logout.svg";
 import add from "../assets/image/add.svg";
 
-export default function Adminheader() {
+export default function AdminHeader() {
 
   const { isLogin, value, user } = useSelector((state) => state.user);
 

@@ -1,10 +1,10 @@
 
 import UserHeader from "./Userheader";
-import Adminheader from "./Adminheader"
+import AdminHeader from "./Adminheader"
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserDetail, userLoggedOut } from "../action/useraction";
+import { adminLoggedIn, setUserDetail, userLoggedOut } from "../action/useraction";
 
 import "../assets/style/header.css";
 import coll from "../assets/image/coll.svg";
@@ -13,7 +13,7 @@ import jwtDecode from "jwt-decode";
 
 export default function Header() {
 
-  const { isLogin, value,tokenId, user,userLoggedin, isAdminLogin } = useSelector((state) => state.user)
+  const { isLogin, value,tokenId, user,userLoggedin, adminLoggedIn,isAdminLogin } = useSelector((state) => state.user)
 
   let dispatch = useDispatch();
   let navigate = useNavigate();
@@ -28,9 +28,13 @@ export default function Header() {
     if (userLoggedin) {
       return <UserHeader />
     }
+    else if(adminLoggedIn)
+    {
+      return <AdminHeader/>
+    }
     // // else if(isAdminLogin)
     // // {
-    // //   return <AdminHeader/>
+    // //   
     // // }
     // return false
   }

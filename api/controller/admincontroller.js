@@ -7,10 +7,8 @@ require('dotenv').config()
 
 const loginAdmin=async(req,res)=>{
     const {email,password}=req.body
-    console.log(req.body);
     try{
         const admin=await Admin.findOne({email:req.body.email})
-     //   console.log(admin)
         if(admin==null)
         {
             throw "user not found"
@@ -18,8 +16,6 @@ const loginAdmin=async(req,res)=>{
         if(req.body.password==admin.password)
         {
             const result = jwt.sign({id : admin.id},process.env.ACCESS_TOKEN)
-            //console.log(result)
-            //res.json({Token : result})
             res.status(200).json({success:"Admin logged in",token:result})
         }
         else
@@ -28,7 +24,6 @@ const loginAdmin=async(req,res)=>{
         }
     }
     catch(error){
-        console.log(error)
         res.status(404).json({error:error})
     }
 }

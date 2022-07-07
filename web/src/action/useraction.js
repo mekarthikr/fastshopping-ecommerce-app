@@ -2,6 +2,7 @@ import * as types from "./actionType";
 import axios from "axios";
 import { API } from "../api/api";
 import jwtDecode from 'jwt-decode'
+import axiosInstance from "../api/middleware";
 const getUsers = (users) => ({
   type: types.GET_USERS,
   payload: users,
@@ -111,8 +112,8 @@ export const addUser = (user) => {
 export const getSingleUser = (id) => {   //change method name
   return async function (dispatch) {
     console.log("user id",id)
-    await axios
-      .get(`http://localhost:5000/users/${id}`)
+    axiosInstance({url:`users/${id}`,method:'get',data:id})
+      //.get(`http://localhost:5000/users/${id}`)
       .then((resp) => {
         console.log("resp", resp);
        dispatch(getUser(resp.data));
@@ -135,8 +136,8 @@ export const updateUser = (user, id) => {
 };
 
 export const userLoggedIn = (credentials) => {
-  return async function (dispatch) {
-    await axios
+  return function (dispatch) {
+     axios
       .post("http://localhost:5000/users/login", credentials)
       .then((res) => {
         console.log(res)

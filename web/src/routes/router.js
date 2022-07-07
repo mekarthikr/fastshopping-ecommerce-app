@@ -16,6 +16,8 @@ import { Routes, Route } from "react-router-dom";
 import { Admin } from "../components/admin/admin";
 import Protected from "./protectedRoute";
 import { useSelector } from "react-redux";
+import Productview from "../components/admin/productview";
+
 
 
 
@@ -39,6 +41,7 @@ export function Router() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/adminpanel" element={<Adminpanel />} />
         <Route path="/editproduct/:id" element={<Editproduct />} />
+        <Route path="/admin/viewproduct/:id" element={<Productview />} />
         <Route path="/addProduct" element={<AddProduct />} />
         <Route path="/product/:id" element={<Viewproduct />} />
         <Route path="/cart" element={<Cart />} />

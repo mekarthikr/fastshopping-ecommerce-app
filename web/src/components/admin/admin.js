@@ -7,7 +7,6 @@ import { adminLoggedIn, userLoggedIn } from "../../action/useraction";
 
 import "../../assets/style/admin.css";
 
-
 export function Admin() {
   let navigate = useNavigate();
   const dispatch = useDispatch();
@@ -17,33 +16,19 @@ export function Admin() {
     password: "",
   });
 
-  const { adminloggedInSuccess, adminloggedInFailed,adminloginError } = useSelector((state) => state.user);
-  //console.log(adminloggedInSuccess,adminloggedInFailed,adminLogged)
+  const { adminloggedInSuccess, adminloggedInFailed, adminloginError } =
+    useSelector((state) => state.user);
 
   useEffect(() => {
     if (adminloggedInFailed) {
-      console.log("alert")
-      alert(adminloginError)
-      console.log(adminloginError)
+      console.log("alert");
+      alert(adminloginError);
+      console.log(adminloginError);
+    } else if (adminloggedInSuccess) {
+      console.log("Correct Credentials");
+      navigate("/adminpanel");
     }
-    else if (adminloggedInSuccess) {
-      console.log("Correct Credentials")
-      navigate('/adminpanel') 
-    } 
-  }, [adminloginError,adminloggedInSuccess]); 
-
-  // const { email, password } = state;
-
-  // const [user, setUser] = useState("");
-
-  // useEffect(() => getUser(), []);
-
-  // const getUser = () => {
-  //   axios.get(API_ADMIN).then((res) => {
-  //     const allUser = res.data;
-  //     setUser(allUser);
-  //   });
-  // };
+  }, [adminloginError, adminloggedInSuccess]);
 
   const handleInputChange = (e) => {
     let { name, value } = e.target;
@@ -52,15 +37,7 @@ export function Admin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    dispatch(adminLoggedIn(state))
-
-    // let profile = user.find(
-    //   (index) => index.email === email && index.password === password
-    // );
-    // if (profile !== undefined) {
-    //   navigate("/adminpanel", { profile });
-    // }
+    dispatch(adminLoggedIn(state));
   };
 
   return (

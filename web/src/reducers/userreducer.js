@@ -22,7 +22,8 @@ const initialState = {
   userLoggedin: false,
   //userToken:localStorage.getItem("token")
   token: localStorage.getItem("token"),
-  tokenId:""
+  tokenId:"",
+  adminLoggedIn:false
 };
 
 
@@ -55,6 +56,13 @@ const usersReducers = (state = initialState, action) => {
         ...state,
         loading: false,
       };
+      case types.ADD_ADMIN_TOKEN:
+        const admin=jwtdecode(action.payload)
+        return{
+          ...state,
+          adminLoggedIn:true,
+          tokenId:admin.id
+        }
     case types.INSERT_TO_CART:
       const val = [...state.userCart, action.payload]
       console.log("payload", action.payload)

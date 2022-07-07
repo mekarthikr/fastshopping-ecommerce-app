@@ -5,6 +5,7 @@ import { loadProducts, deleteProduct } from "../../action/productaction";
 
 import "../../assets/style/adminPanel.css";
 import "../../assets/style/home.css";
+import Productcard from "./productCard";
 
 export default function Adminpanel() {
 
@@ -31,25 +32,26 @@ export default function Adminpanel() {
 
   return (
     <>
-      <button className="admin-button" onClick={() => addProduct()}>
+      {/* <button className="admin-button" onClick={() => addProduct()}>
         ADD PRODUCT
       </button>
-      <button className="admin-button">LOGOUT</button>
+      <button className="admin-button">LOGOUT</button> */}
       <div className="product card">
           {products &&
             products.map((product) => {
               return (
+                <Productcard props={product}/>
                 // add this in a seperate component
-                <div className="single-product card">
-                  <img src={product.imageurl} alt="product" />
-                  <div className="inline">
-                    <h5 className="inline">{product.name}</h5>
-                    <button onClick={() => handleEdit(product._id)}>EDIT</button>
-                    <button onClick={() => handleDelete(product._id)}>
-                      DELETE
-                    </button>
-                  </div>
-                </div>
+                // <div className="single-product card">
+                //   <img src={product.imageurl} alt="product" />
+                //   <div className="inline">
+                //     <h5 className="inline">{product.name}</h5>
+                //     <button onClick={() => handleEdit(product._id)}>EDIT</button>
+                //     <button onClick={() => handleDelete(product._id)}>
+                //       DELETE
+                //     </button>
+                //   </div>
+                // </div>
               );
             })}
       </div>

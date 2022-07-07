@@ -7,8 +7,8 @@ import "../../assets/style/register.css";
 
 export default function AddProduct() {
   const [state, setState] = useState({
-    productname: "",
-    image: "",
+    name: "",
+    imageurl: "",
     color: "",
     price: "",
   });
@@ -16,7 +16,7 @@ export default function AddProduct() {
   let dispatch = useDispatch();
   let navigate = useNavigate();
 
-  const { productname, image, color, price } = state;
+  const { name, imageurl, color, price } = state;
 
   const handleInputChange = (e) => {
     let { name, value } = e.target;
@@ -25,7 +25,7 @@ export default function AddProduct() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!productname || !image || !color || !price) {
+    if (!name || !imageurl || !color || !price) {
     } else {
       dispatch(addProduct(state));
       navigate("/adminpanel");
@@ -45,8 +45,8 @@ export default function AddProduct() {
                 <input
                   className="form-control form-input"
                   type={"text"}
-                  name="productname"
-                  value={productname || ""}
+                  name="name"
+                  value={name || ""}
                   onChange={handleInputChange}
                 />
               </div>
@@ -55,8 +55,8 @@ export default function AddProduct() {
                 <input
                   className="form-control form-input"
                   type={"text"}
-                  name="image"
-                  value={image || ""}
+                  name="imageurl"
+                  value={imageurl || ""}
                   onChange={handleInputChange}
                 />
               </div>
@@ -83,8 +83,8 @@ export default function AddProduct() {
             </div>
             <div className="col edit-product-view">
               <div className="bg-blue edit-product-card">
-                <img alt="product" src={image} />
-                <h3 className="color-white">{productname}</h3>
+                <img alt="product" src={imageurl} />
+                <h3 className="color-white">{name}</h3>
                 <p className="color-white">{color}</p>
                 <p className="color-white">{price}</p>
               </div>

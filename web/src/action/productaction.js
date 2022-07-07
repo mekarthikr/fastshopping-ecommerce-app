@@ -1,6 +1,7 @@
 import * as types from "./actionType";
 import axios from "axios";
 import { API_PRODUCTS } from "../api/api";
+import axiosInstance from "../api/middleware";
 
 const getProducts = (products) => ({
   type: types.GET_PRODUCTS,
@@ -26,8 +27,8 @@ const getProduct = (product) => ({
 
 export const loadProducts = () => {
   return async function (dispatch) {
-    await axios
-      .get("http://localhost:5000/products/")
+    await 
+      axiosInstance({url:'products/'})
       .then((resp) => {
         console.log("resp", resp);
         dispatch(getProducts(resp.data.products));
@@ -38,11 +39,12 @@ export const loadProducts = () => {
 
 export const deleteProduct = (id) => {
   return function (dispatch) {
+    console.log(id)
     axios
-      .delete(`${API_PRODUCTS}/${id}`)
+      .delete(`http://localhost:5000/products/${id}`)
       .then((resp) => {
         console.log("resp", resp);
-        dispatch(productDeleted());
+        //dispatch(productDeleted());
         dispatch(loadProducts());
       })
       .catch((error) => console.log(error));
@@ -52,7 +54,7 @@ export const deleteProduct = (id) => {
 export const addProduct = (product) => {
   return function (dispatch) {
     axios
-      .post(API_PRODUCTS, product)
+      .post("http://localhost:5000/products/", product)
       .then((resp) => {
         console.log("resp", resp);
         dispatch(productAdded());
@@ -78,10 +80,10 @@ export const getSingleProduct = (id) => {
 export const updateProduct = (product, id) => {
   return function (dispatch) {
     axios
-      .put(`${API_PRODUCTS}/${id}`, product)
+      .put(`http://localhost:5000/products/${id}`, product)
       .then((resp) => {
-        console.log("resp", resp);
-        dispatch(productUpdated());
+        //console.log("resp", resp);
+       // dispatch(productUpdated());
       })
       .catch((error) => console.log(error));
   };
