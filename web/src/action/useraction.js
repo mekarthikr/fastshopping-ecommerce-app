@@ -97,13 +97,14 @@ export const deleteUser = (id) => {
 
 export const addUser = (user) => {
   return function (dispatch) {
+  //  console.log(user)
     axios
       .post("http://localhost:5000/users/", user)
       .then((resp) => {
         dispatch(userAdded());
       })
       .catch((error) => console.log(error));
-  };
+  };  
 };
 
 export const getSingleUser = (id) => {

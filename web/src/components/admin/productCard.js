@@ -14,7 +14,7 @@ export default function Productcard(props)
   let dispatch = useDispatch();
   let navigate = useNavigate();
 
-  function viewProduct(id) {
+  function viewProduct(id){
     navigate(`/admin/viewproduct/${id}`);
   }
 
@@ -23,7 +23,7 @@ export default function Productcard(props)
       <img src={props.props.imageurl} alt="product" />
       <div className="inline">
         <h5 className="inline">{props.props.name}</h5>
-        <button onClick={() => viewProduct(props.props._id)}>VIEW</button>
+        <button onClick={()=>{viewProduct(props.props._id)}}>VIEW</button>
       </div>
     </div>
   );

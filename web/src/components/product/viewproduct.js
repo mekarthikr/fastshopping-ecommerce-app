@@ -22,7 +22,7 @@ export default function Viewproduct() {
     dispatch(addProductToCart(product));
   };
 
-  function goBack() {
+  const goBack=()=> {
     dispatch(clearProducts());
     navigate(-1);
   }
@@ -30,7 +30,7 @@ export default function Viewproduct() {
   return (
     <>
       <div className="container main-view-product">
-        <img src={arrow} width={"40px"} onClick={() => goBack()} />
+        <img src={arrow} width={"40px"} onClick={goBack} />
         <div className="row">
           <div className="col">
             <img

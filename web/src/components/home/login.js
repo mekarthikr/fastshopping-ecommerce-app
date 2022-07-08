@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import ReactJsAlert from "reactjs-alert";
+
 import "../../assets/style/login.css";
 import { userLoggedIn } from "../../action/useraction";
 
@@ -12,6 +14,9 @@ function Login() {
     email: "",
     password: "",
   });
+  const [status, setStatus] = useState(false);
+  const [type, setType] = useState("success");
+  const [title, setTitle] = useState("This is a alert");
 
   const [error, setError] = useState("");
 
@@ -23,7 +28,10 @@ function Login() {
     if (loggedInFailed) {
       alert(loginError);
     } else if (loggedInSuccess) {
-      navigate("/home");
+      setStatus(true);
+            setType("success");
+            setTitle("This is a success alert");
+
     }
   }, [loginError, loggedInSuccess]);
 
@@ -72,6 +80,16 @@ function Login() {
       <Link to={"/register"}>
         <button className="login-button">SIGN UP</button>
       </Link>
+      <ReactJsAlert
+          status={status} // true or false
+          type={type} // success, warning, error, info
+          title={title}
+          quotes={true}
+          quote="Logged in Successfully"
+          Close={() => {setStatus(false)
+            navigate("/home");
+          }}
+        />
     </div>
   );
 }

@@ -5,12 +5,12 @@ const {  authenticateUserToken } = require("../middleware/accessauth");
 const userRouter = express.Router();
 
 userRouter.get("/", getUsers);
-userRouter.get("/:id", authenticateUserToken, getUser);
+userRouter.get("/:id",  getUser);
 userRouter.post("/", addUser);
 userRouter.put("/:id", authenticateUserToken, editUser);
 userRouter.post("/login", loginUser);
 userRouter.delete("/", deleteUser);
-userRouter.get("/cart/:id", authenticateUserToken, getCartDetails);
+userRouter.get("/cart/:id",  getCartDetails);
 
 module.exports = userRouter;
 

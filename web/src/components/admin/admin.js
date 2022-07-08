@@ -21,7 +21,7 @@ export function Admin() {
     if (adminloggedInFailed) {
       alert(adminloginError);
     } else if (adminloggedInSuccess) {
-      navigate("/adminpanel");
+      navigate("/adminpanel")
     }
   }, [adminloginError, adminloggedInSuccess]);
 

@@ -113,11 +113,37 @@ export default function Home() {
           <h2 className="title">JOIN OUR CLUB OF ONE MILLION CUSTOMER</h2>
         </div>
         <div>
-          <img
+          {/* <img
             className="banner"
             alt="banner"
             src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/Wireless/Apple/iPhone11Pro/Pre-book/D12731792_IN_WLM_Apple_PC_LP_top_banner._CB452057853_.jpg"
-          />
+          /> */}
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/Wireless/Apple/iPhone11Pro/Pre-book/D12731792_IN_WLM_Apple_PC_LP_top_banner._CB452057853_.jpg" alt="First slide"/>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://img.global.news.samsung.com/in/wp-content/uploads/2017/02/v-banner1.jpg" alt="Second slide"/>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/Wireless/Apple/iPhone11Pro/Pre-book/D12731792_IN_WLM_Apple_PC_LP_top_banner._CB452057853_.jpg" alt="Third slide"/>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
         </div>
         <div>
           <h2 className="title">WHY USE OUR SITE?</h2>

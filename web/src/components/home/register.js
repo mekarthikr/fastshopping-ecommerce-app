@@ -51,7 +51,6 @@ export default function Register() {
     if (validate === true) {
       clearState()
       delete state.confirmpassword
-    //  console.log(state)
       dispatch(addUser(state));
       navigate("/");
     }
