@@ -15,13 +15,13 @@ export default function Viewproduct() {
   const { id } = useParams();
   console.log("id", id);
 
-  const [state, setState] = useState({
-    productname: "",
-    image: "",
-    color: "",
-    price: "",
-    description: ""
-  });
+  // const [state, setState] = useState({
+  //   productname: "",
+  //   image: "",
+  //   color: "",
+  //   price: "",
+  //   description: ""
+  // });
 
   const { product } = useSelector((state) => state.product);
 
@@ -29,23 +29,25 @@ export default function Viewproduct() {
 
   useEffect(() => {
     dispatch(getSingleProduct(id));
+    // if (product) {
+    //   setState({ ...product });
+    // }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  useEffect(() => {
-    if (product) {
-      setState({ ...product });
-    }
-  }, [product]);
+  // useEffect(() => {
+    
+  // }, [product]);
+  // console.log(state)
 
   const addToCart = (e) => {
     e.preventDefault();
     dispatch(addProductToCart(product));
   };
-  console.log(product);
-  // const descripton = product.description.split(",");
-  // console.log(descripton);
+  // console.log(product);
+  // console.log(product.description)
+  // const productdescription=product.description.split(",")
+  // console.log(productdescription)
   function goBack() {
-    // console.log("back");
     dispatch(clearProducts());
     navigate(-1);
   }
@@ -68,13 +70,11 @@ export default function Viewproduct() {
             <h1>{product.productname}</h1>
             <h2>{product.color}</h2>
             <p>{product.price}</p>
-            <p>{product.description}</p>
-              {/* {
-                product.descripton.map=(value)=>{<li>{value}</li>}
-              } */}
-              {product.descripton.map((products) => (
-          <li>{products}</li>
-        ))}
+            {/* <p>{product.description}</p> */}
+            {/* <ul>
+              {productdescription.map((desc)=>(<li>{desc}</li>))}
+            </ul> */}
+
             <button className="color-white bg-blue" onClick={addToCart}>
               ADD
             </button>

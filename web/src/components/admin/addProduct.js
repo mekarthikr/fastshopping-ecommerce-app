@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addProduct } from "../../action/productaction";
+import { addProduct ,loadProducts} from "../../action/productaction";
 import FileBase64 from "react-file-base64";
 
 import "../../assets/style/register.css";
@@ -34,6 +34,8 @@ export default function AddProduct() {
       console.log(name,imageurl,color,price,category,description)
     } else {
       dispatch(addProduct(state));
+      dispatch(loadProducts());
+      
       navigate("/adminpanel");
     }
   };

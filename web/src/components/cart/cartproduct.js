@@ -9,7 +9,8 @@ import { addProductToCart } from "../../action/useraction";
 
 export default function Cartproduct(props) {
   let dispatch = useDispatch();
-  const { user } = useSelector((state) => state.user);
+  const { user,cart } = useSelector((state) => state.user);
+  //const { cart } = useSelector((state) => state.product);
   
   //useEffect(()=>{dispatch(getSingleProduct(props.details.productid));},[])
   const [state, setState] = useState({
@@ -18,9 +19,14 @@ export default function Cartproduct(props) {
     color: "",
     imageurl: "",
   });
- 
-  const removeFromCart = (e) => {
 
+  useEffect(()=>{},[user])
+ 
+  const increaseCartQuantity = (e) => {
+    console.log("j")
+    //console.log(props.details.productid,user)
+
+    dispatch(addProductToCart(props.details.productid._id,user))
   };
 
   return (
@@ -31,13 +37,13 @@ export default function Cartproduct(props) {
         </div>
         <div className="col-md-8 cart-product-details">
           <h2 className="inline">{props.details.productid.name}</h2>
-          <img onClick={removeFromCart} src={close} className="" alt="img" />
+          <img src={close} className="" alt="img" />
           <p>{props.details.color}</p>
           <h6 className="float-right inline">{props.details.productid.price}</h6>
           <p>{props.details.quantity}</p>
         </div>
       </div>
-      <button onClick={removeFromCart}>+</button>
+      <button onClick={increaseCartQuantity}>+</button>
       <button>-</button>
       <hr />
     </div>

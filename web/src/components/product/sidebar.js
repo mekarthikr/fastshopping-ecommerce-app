@@ -43,7 +43,7 @@ function getSpecificProduct(category)
     <>
     {/* <div className="row"> */}
     
-   <div className="col-2">
+   <div className="col-2 sidebar">
     <div className="col">
       <button  onClick={()=>getSpecificProduct("all")} >ALL</button>
     </div>  

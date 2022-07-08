@@ -5,6 +5,7 @@ import {
   getSingleProduct,
   clearProducts,
   deleteProduct,
+  loadProducts
 } from "../../action/productaction";
 
 import "../../assets/style/register.css";
@@ -43,11 +44,13 @@ export default function Productview() {
   }
   const handleDelete = () => {
     dispatch(deleteProduct(id));
+    dispatch(loadProducts());
     navigate(`/adminpanel`);
   };
 
   function handleEdit() {
     console.log("id on edit", id);
+    dispatch(loadProducts());
     navigate(`/editproduct/${id}`);
   }
 

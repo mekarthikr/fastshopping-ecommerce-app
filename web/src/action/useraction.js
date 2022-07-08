@@ -87,7 +87,7 @@ export const loadUsers = () => {
     axios
       .get(API)
       .then((resp) => {
-        console.log("resp", resp);
+        //console.log("resp", resp);
         dispatch(getUsers(resp.data));
       })
       .catch((error) => console.log(error));
@@ -99,7 +99,7 @@ export const deleteUser = (id) => {
     axios
       .delete(`${process.env.REACT_APP_API}/${id}`)
       .then((resp) => {
-        console.log("resp", resp);
+       // console.log("resp", resp);
         dispatch(userDeleted());
         dispatch(loadUsers());
       })
@@ -108,12 +108,12 @@ export const deleteUser = (id) => {
 };
 
 export const addUser = (user) => {
-  console.log(user);
+//  console.log(user);
   return function (dispatch) {
     axios
       .post("http://localhost:5000/users/", user) 
       .then((resp) => {
-        console.log("resp", resp);
+        //console.log("resp", resp);
         dispatch(userAdded());
       })
       .catch((error) => console.log(error));
@@ -122,10 +122,10 @@ export const addUser = (user) => {
 
 export const getSingleUser = (id) => {
   return async function (dispatch) {
-    console.log("user id", id);
+  //  console.log("user id", id);
     axiosInstance({ url: `users/${id}`, method: "get", data: id })
       .then((resp) => {
-        console.log("resp", resp);
+       // console.log("resp", resp);
         dispatch(getUser(resp.data));
       })
       .catch((error) => console.log(error));
@@ -134,11 +134,11 @@ export const getSingleUser = (id) => {
 
 export const updateUser = (user, id) => {
   return function (dispatch) {
-    console.log("update", user, id);
+  //  console.log("update", user, id);
     axios
       .put(`http://localhost:5000/users/${id}`, user)
       .then((resp) => {
-        console.log("resp", resp);
+       // console.log("resp", resp);
       })
       .catch((error) => console.log(error));
   };
@@ -149,14 +149,15 @@ export const userLoggedIn = (credentials) => {
     axios
       .post("http://localhost:5000/users/login", credentials)
       .then((res) => {
-        console.log(res);
+     //   console.log(res);
         if (res) {
           window.localStorage.setItem("token", res.data.token);
           dispatch(addUserToken(res.data.token));
           dispatch(userLoggedInSuccess());
-        } else {
-          console.log("false");
-        }
+        } 
+        // else {
+        //  // console.log("false");
+        // }
       })
       .catch(async (error) => {
         console.log("Login Error", error.response.data.error);
@@ -170,14 +171,15 @@ export const adminLoggedIn = (credentials) => {
     await axios
       .post("http://localhost:5000/admin/login", credentials)
       .then((res) => {
-        console.log(res);
+       // console.log(res);
         if (res) {
           window.localStorage.setItem("token", res.data.token);
           dispatch(addAdminToken(res.data.token));
           dispatch(adminLoggedInSuccess());
-        } else {
-          console.log("false");
         }
+        //  else {
+        //   console.log("false");
+        // }
       })
       .catch(async (error) => {
         console.log("Login Error", error.response.data.error);
@@ -188,14 +190,17 @@ export const adminLoggedIn = (credentials) => {
 
 export const addProductToCart = (productid, user) => {
   return async function (dispatch) {
-    console.log("cart action", productid, user);
+   console.log("cart action", productid, user);
     if (user.cart.some((index) => index.productid === productid)) {
+      console.log("find")
       const index = user.cart.findIndex((i) => i.productid === productid);
+      console.log(index)
       user.cart[index].quantity = user.cart[index].quantity + 1;
       console.log(user.cart[index].quantity);
     } else {
       user.cart.push({ productid: productid, quantity: 1 });
       console.log("pushed");
+      console.log("new")
     }
     dispatch(updateUser(user, user._id));
   };

@@ -10,20 +10,14 @@ import AddProduct from "../components/admin/addProduct";
 import Viewproduct from "../components/product/viewproduct";
 import Cart from "../components/cart/cart";
 import UserProfile from "../components/user/userProfile";
-import  ValidateSession from "../validation/validateSession";
-import Footer from "../shared/footer";
+import Protected from "./protectedRoute";
+import Productview from "../components/admin/productview";
+// import Footer from "../shared/footer";
 import { Routes, Route } from "react-router-dom";
 import { Admin } from "../components/admin/admin";
-import Protected from "./protectedRoute";
-import { useSelector } from "react-redux";
-import Productview from "../components/admin/productview";
 import { Formvalidation } from "../validation/formvalidation";
 
 export function Router() {
- // ValidateSession()
-  const {isUserLogin}=useSelector((state) => state.user)
-  console.log(isUserLogin)
-
   return (
     <>
       <Header />
