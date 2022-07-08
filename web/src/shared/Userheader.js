@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserDetail, userLogout,userLoggedOut } from "../action/useraction";  //admin logout have to be added
 import { Tooltip } from "@mui/material";
-import jwtDecode from "jwt-decode";
 import "../assets/style/header.css";
 import userprof from "../assets/image/profile.svg";
 import logout from "../assets/image/logout.svg";
@@ -16,32 +15,9 @@ export default function UserHeader() {
   let dispatch = useDispatch();
   let navigate = useNavigate();
   
-  // const isAuthenticated = localStorage.getItem("token");
-  // let token
-  // if(isAuthenticated)
-  // {
-  //   token = jwtDecode(isAuthenticated)
-  //   console.log(token)
-    
-  // }
-  // useDispatch(setUserDetail(token.id))
-  // useEffect(() => {
-  //   //const token=jwtDecode(localStorage.getItem("token"))
-  //   // if(token)
-  //   // {
-  //   //   dispatch(setUserDetail(token.id)) 
-  //   // }
- 
-        
-  // }, [isLogin, value])
   useEffect(()=>{
     dispatch(setUserDetail(tokenId))
   },[tokenId])
-  
-
-  
-
-  // useEffect(() => {}, [isLogin, value]);
 
   function handlelogout(e) {
     console.log(isLogin + value + user);

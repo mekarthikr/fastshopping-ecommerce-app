@@ -13,12 +13,13 @@ export default function AddProduct() {
     color: "",
     price: "",
     category: "",
+    description:""
   });
 
   let dispatch = useDispatch();
   let navigate = useNavigate();
 
-  const { name, imageurl, color, price, category } = state;
+  const { name, imageurl, color, price, category,description } = state;
 
   const handleInputChange = (e) => {
     let { name, value } = e.target;
@@ -27,7 +28,10 @@ export default function AddProduct() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("submit")
     if (!name || !imageurl || !color || !price || !category) {
+      console.log("false")
+      console.log(name,imageurl,color,price,category,description)
     } else {
       dispatch(addProduct(state));
       navigate("/adminpanel");
@@ -83,20 +87,31 @@ export default function AddProduct() {
                 />
               </div>
               <div className="form-group row">
-                <label className="color-white">category</label>
+                <label className="color-white">CATEGORY</label>
                 <select
                   class="form-select"
                   onChange={handleInputChange}
                   name="category"
                   aria-label="Default select example"
                 >
-                  <option selected value="smartphone">
-                    smartphone
+                  <option selected value="">
+                    Select any category
                   </option>
+                  <option value="smartphone">smartphone</option>
                   <option value="laptops">laptops</option>
                   <option value="headphone">headphone</option>
                   <option value="accessories">accessories</option>
                 </select>
+              </div>
+              <div className="form-group row">
+                <label className="color-white">DESCRIPTION</label>
+                <textarea
+                
+                className="form-control form-input"
+                type={"text"}
+                name="description"
+                value={description || ""}
+                onChange={handleInputChange}></textarea>
               </div>
             </div>
             <div className="col edit-product-view">

@@ -53,7 +53,7 @@ export default function Register() {
       delete state.confirmpassword
       console.log(state)
       dispatch(addUser(state));
-      //navigate("/login");
+      navigate("/");
     }
     else {
       setError(validate)

@@ -24,15 +24,27 @@ const getProduct = (product) => ({
   payload: product,
 });
 
-export const loadProducts = () => {
+export const loadProducts = (category="all") => {
   return async function (dispatch) {
-    await axiosInstance({ url: "products/" })
+    if(category==="all")
+    {
+      await axiosInstance({ url: "products/" })
       .then((resp) => {
         console.log("resp", resp);
         dispatch(getProducts(resp.data.products));
       })
       .catch((error) => console.log("Error", error));
-  };
+  }
+  else{
+    await axiosInstance({ url: `products/?category=${category}` })
+    .then((resp) => {
+      console.log("resp", resp);
+      dispatch(getProducts(resp.data.products));
+    })
+    .catch((error) => console.log("Error", error));
+  }
+  }
+
 };
 
 export const deleteProduct = (id) => {

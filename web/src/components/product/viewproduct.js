@@ -1,11 +1,14 @@
-import React, {useState, useEffect } from "react";
-import { useDispatch,useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { addProductToCart, getSingleProduct,clearProducts } from "../../action/productaction";
+import {
+  addProductToCart,
+  getSingleProduct,
+  clearProducts,
+} from "../../action/productaction";
 import "../../assets/style/register.css";
 import "../../assets/style/viewproduct.css";
 import arrow from "../../assets/image/arrowleft.svg";
-
 
 export default function Viewproduct() {
   const navigate = useNavigate();
@@ -17,6 +20,7 @@ export default function Viewproduct() {
     image: "",
     color: "",
     price: "",
+    description: ""
   });
 
   const { product } = useSelector((state) => state.product);
@@ -37,13 +41,15 @@ export default function Viewproduct() {
     e.preventDefault();
     dispatch(addProductToCart(product));
   };
-console.log(product)
+  console.log(product);
+  // const descripton = product.description.split(",");
+  // console.log(descripton);
   function goBack() {
     // console.log("back");
     dispatch(clearProducts());
     navigate(-1);
   }
-  
+
   return (
     <>
       <div className="container main-view-product">
@@ -62,6 +68,13 @@ console.log(product)
             <h1>{product.productname}</h1>
             <h2>{product.color}</h2>
             <p>{product.price}</p>
+            <p>{product.description}</p>
+              {/* {
+                product.descripton.map=(value)=>{<li>{value}</li>}
+              } */}
+              {product.descripton.map((products) => (
+          <li>{products}</li>
+        ))}
             <button className="color-white bg-blue" onClick={addToCart}>
               ADD
             </button>

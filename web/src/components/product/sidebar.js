@@ -22,52 +22,55 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import Sidebar from "./sidebar";
-import ProductMain from "./productmain";
 
-export default function PersonList() {
+export default function Sidebar() {
   let dispatch = useDispatch();
-  const { products } = useSelector((state) => state.product);
+//   const { products } = useSelector((state) => state.product);
   useEffect(() => {
     dispatch(loadProducts("all"))
+    //document.body.style.overflow = "hidden";
     
   }, []);
+function getSpecificProduct(category)
+{
+  dispatch(loadProducts(category))
+}
+// const getSpecificProduct=()=>{
 
-  
+// } 
 
   return (
     <>
-    <div className="row">
+    {/* <div className="row"> */}
     
-   {/* <div className="col-2">
+   <div className="col-2">
     <div className="col">
-      <button onClick={getSpecificProduct("all")} >ALL</button>
+      <button  onClick={()=>getSpecificProduct("all")} >ALL</button>
+    </div>  
+    <div className="col">
+      <button onClick={()=>getSpecificProduct("laptops")} >LAPTOP</button>
     </div>
     <div className="col">
-      <button onClick={getSpecificProduct("laptops")}>LAPTOP</button>
+      <button onClick={()=>getSpecificProduct("smartphone")}>SMARTPHONE</button>
     </div>
     <div className="col">
-      <button onClick={getSpecificProduct("laptops")}>SMARTPHONE</button>
+      <button onClick={()=>getSpecificProduct("headphone")}>HEADPHONE</button>
     </div>
     <div className="col">
-      <button onClick={getSpecificProduct("laptops")}>HEADPHONE</button>
+      <button onClick={()=>getSpecificProduct("accessories")}>ACCESSORIES</button>
     </div>
-    <div className="col">
-      <button onClick={getSpecificProduct("laptops")}>ACCESSORIES</button>
-    </div>
-   </div> */}
-    <Sidebar/>  
-   <div className="col-10">
+   </div>
+   {/* <div className="col-10">
     
   
-  <ProductMain/>
-      {/* <div className="main-container row">
+  
+      <div className="main-container row">
         {products.map((products) => (
           <Productcard key={products.id} details={products} />
         ))}
-      </div> */}
       </div>
-    </div>
+      </div>
+    </div> */}
     
     </>
   );

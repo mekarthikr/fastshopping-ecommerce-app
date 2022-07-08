@@ -23,9 +23,8 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import Sidebar from "./sidebar";
-import ProductMain from "./productmain";
 
-export default function PersonList() {
+export default function ProductMain() {
   let dispatch = useDispatch();
   const { products } = useSelector((state) => state.product);
   useEffect(() => {
@@ -37,37 +36,16 @@ export default function PersonList() {
 
   return (
     <>
-    <div className="row">
-    
-   {/* <div className="col-2">
-    <div className="col">
-      <button onClick={getSpecificProduct("all")} >ALL</button>
-    </div>
-    <div className="col">
-      <button onClick={getSpecificProduct("laptops")}>LAPTOP</button>
-    </div>
-    <div className="col">
-      <button onClick={getSpecificProduct("laptops")}>SMARTPHONE</button>
-    </div>
-    <div className="col">
-      <button onClick={getSpecificProduct("laptops")}>HEADPHONE</button>
-    </div>
-    <div className="col">
-      <button onClick={getSpecificProduct("laptops")}>ACCESSORIES</button>
-    </div>
-   </div> */}
-    <Sidebar/>  
-   <div className="col-10">
+  
     
   
-  <ProductMain/>
-      {/* <div className="main-container row">
+  
+      <div className="main-container row">
         {products.map((products) => (
           <Productcard key={products.id} details={products} />
         ))}
-      </div> */}
       </div>
-    </div>
+
     
     </>
   );

@@ -2,10 +2,21 @@ import * as types from "./actionType";
 import axios from "axios";
 import { API } from "../api/api";
 import axiosInstance from "../api/middleware";
+import jwtdecode from 'jwt-decode'
 
 const getUsers = (users) => ({
   type: types.GET_USERS,
   payload: users,
+});
+
+
+
+const retainUser = () => ({
+  type: types.RETAIN_USER_DETAILS
+  // payload: token,
+  // user:user
+  // token:token,
+  // id:id
 });
 
 const userDeleted = () => ({
@@ -232,3 +243,29 @@ export const setUserDetail = (userid) => {
       .catch((error) => console.log(error));
   };
 };
+
+
+export const retainAnySession=()=>{
+  console.log("came here")
+  const token=localStorage.getItem("token")
+  const {id,role}=jwtdecode(token);
+  console.log("consoel is printed",id,role)
+  
+    return function (dispatch) {
+      console.log("inside dispatch")
+      if(role=="user")
+  {
+    // axios
+    //   .get(`http://localhost:5000/users/${id}`)
+    //   .then((resp) => {
+    //     //console.log("response data", resp.data);
+    //      dispatch(retainUser(resp.data,id))
+    //   })
+    //   .catch((error) => console.log(error));
+    dispatch(setUserDetail(id))
+    dispatch(retainUser())
+   }
+  }
+
+
+}

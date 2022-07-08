@@ -161,3 +161,7 @@ hr {
 .none {
   display: none;
 }
+
+.sidebar{
+  top: 10px !important;
+}

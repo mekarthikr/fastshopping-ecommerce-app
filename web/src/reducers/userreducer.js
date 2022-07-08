@@ -3,7 +3,7 @@ import jwtdecode from 'jwt-decode'
 const initialState = {
   users: [],
   user: {},
-  admin:{},
+  admin: {},
   cart: [],
   //   products: [],
   //   product: {},
@@ -22,8 +22,8 @@ const initialState = {
   userLoggedin: false,
   //userToken:localStorage.getItem("token")
   token: localStorage.getItem("token"),
-  tokenId:"",
-  adminLoggedIn:false
+  tokenId: "",
+  adminLoggedIn: false
 };
 
 
@@ -56,13 +56,13 @@ const usersReducers = (state = initialState, action) => {
         ...state,
         loading: false,
       };
-      case types.ADD_ADMIN_TOKEN:
-        const admin=jwtdecode(action.payload)
-        return{
-          ...state,
-          adminLoggedIn:true,
-          tokenId:admin.id
-        }
+    case types.ADD_ADMIN_TOKEN:
+      const admin = jwtdecode(action.payload)
+      return {
+        ...state,
+        adminLoggedIn: true,
+        tokenId: admin.id
+      }
     case types.INSERT_TO_CART:
       const val = [...state.userCart, action.payload]
       console.log("payload", action.payload)
@@ -70,13 +70,20 @@ const usersReducers = (state = initialState, action) => {
         ...state,
         userCart: val
       }
+    // case types.RETAIN_USER_DETAILS:
+    //   // console.log("user reducer",action.payload,action.token,action.payload)
+    //   console.log("user reducer")
+    //   return{
+    //     ...state,
+    //     // user:action.payload
+    //   }
     case types.ADD_USER_TOKEN:
       // const user = jwtdecode(action.token)
       const user = jwtdecode(action.payload)
       return {
         ...state,
         userLoggedin: true,
-        tokenId:user.id,
+        tokenId: user.id,
       }
     // :{
     //   return{
@@ -131,30 +138,38 @@ const usersReducers = (state = initialState, action) => {
         isLogin: action.payload,
         user: {}
       }
+    case types.RETAIN_USER_DETAILS:
+      console.log("user reducer",action.payload)
+      return{
+        ...state,
+        // tokenId:action.token,
+        loggedInSuccess:true,
+        userLoggedin:true        
+      }
     case types.SET_CART:
       return {
         ...state,
         cart: action.payload.cart
       }
-      case types.USER_IS_LOGGED_OUT:
-        localStorage.removeItem("token")
-        return{
-          ...state,
-          tokenid:"",
-          user:{},
-          loggedInSuccess:false,
-          userLoggedin:false
-        }
-        case types.ADMIN_IS_LOGGED_OUT:
-          localStorage.removeItem("token")
-          return{
-            ...state,
-            tokenid:"",
-            admin:{},
-            adminloggedInSuccess:false,
-            adminLoggedIn:false
-          }
-    default:
+    case types.USER_IS_LOGGED_OUT:
+      localStorage.removeItem("token")
+      return {
+        ...state,
+        tokenid: "",
+        user: {},
+        loggedInSuccess: false,
+        userLoggedin: false
+      }
+    case types.ADMIN_IS_LOGGED_OUT:
+      localStorage.removeItem("token")
+      return {
+        ...state,
+        tokenid: "",
+        admin: {},
+        adminloggedInSuccess: false,
+        adminLoggedIn: false
+      }
+    default: 
       return state;
   }
 };

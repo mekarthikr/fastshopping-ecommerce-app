@@ -22,9 +22,6 @@ export default function Edituser() {
   let dispatch = useDispatch();
   const { firstname, lastname, email, password ,phonenumber} = state;
 
-  // useEffect(() => {
-  //   dispatch(getSingleUser(location.state.id));
-  // }, []);
 
   useEffect(() => {
     if (user) {
@@ -43,8 +40,6 @@ export default function Edituser() {
       console.log("enter form");
     } else {
       dispatch(updateUser(state, user._id));
-      // dispatch(userLoggedOut())
-      // navigate("/login");
       dispatch(userLogout());
       navigate("/");
     }

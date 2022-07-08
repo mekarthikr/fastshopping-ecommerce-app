@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "../../assets/style/userProfile.css"
 
-export default function UserProfile() {
+export default function UserProfile() 
+{
     let navigate = useNavigate();
     const { user } = useSelector((state) => state.user)
 

@@ -8,10 +8,22 @@ require("dotenv").config();
 
 const getProducts = async (req, res) => {
   try {
-    //console.log("came")
-
+    console.log("came")
+    const query=req.query.category
+    if(query===undefined)
+    {
+      const products = await Product.find();
+      res.json({ products });
+    }
+    else
+    {
+      const products = await Product.find({ category: req.query.category });
+      //console.log(products);
+      res.json({ products });
+    }
+    // console.log(query)
     // const products = await Product.find();
-    // console.log(products);
+    // //console.log(products);
     // res.json({ products });
   } catch (err) {
     res.send("Error" + err);
@@ -22,7 +34,7 @@ const getCategoryProduct = async (req, res) => {
   try {
     //console.log("came")
     const products = await Product.find({ category: req.query.category });
-    console.log(products);
+    //console.log(products);
     res.json({ products });
   } catch (err) {
     res.send("Error" + err);
@@ -52,7 +64,9 @@ const addProduct = async (req, res) => {
       color: req.body.color,
       imageurl: req.body.imageurl,
       category: req.body.category,
+      description: req.body.description,
     });
+    console.log("rescame")
     const data = await product.save();
     res.json(data);
   } catch (err) {

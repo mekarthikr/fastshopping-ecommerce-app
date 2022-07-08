@@ -17,6 +17,7 @@ import { Admin } from "../components/admin/admin";
 import Protected from "./protectedRoute";
 import { useSelector } from "react-redux";
 import Productview from "../components/admin/productview";
+import { Formvalidation } from "../validation/formvalidation";
 
 export function Router() {
  // ValidateSession()
@@ -43,6 +44,7 @@ export function Router() {
         <Route path="/product/:id" element={<Viewproduct />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/profile" element={<UserProfile />} />
+        <Route path="/error" element={<Formvalidation />} />
       </Routes>
       {/* <Footer/> */}
   </>
