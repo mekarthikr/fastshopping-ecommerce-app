@@ -40,7 +40,7 @@ export default function Edituser() {
       console.log("enter form");
     } else {
       dispatch(updateUser(state, user._id));
-      dispatch(userLogout());
+     // dispatch(userLogout());
       navigate("/");
     }
   };

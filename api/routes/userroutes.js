@@ -8,18 +8,23 @@ const {
   loginUser,
   getCartDetails,
   // getCategoryProduct,
-  authenticateToken
+  // authenticateToken
 } = require("../controller/usercontroller");
+
+const {authenticateToken,authenticateUserToken}=require("../middleware/accessauth")
 
 const userRouter = express.Router();
 
 userRouter.get("/", getUsers);
-userRouter.get("/:id", getUser);
+userRouter.get("/:id",authenticateUserToken, getUser);
 userRouter.post("/", addUser);
-userRouter.put("/:id", editUser);
+userRouter.put("/:id",authenticateUserToken, editUser);
 userRouter.post("/login", loginUser);
 userRouter.delete("/", deleteUser);
-userRouter.get("/cart/:id", getCartDetails);
+userRouter.get("/cart/:id",authenticateUserToken, getCartDetails);
 // userRouter.get("/cart/:id", getCategoryProduct);
 
 module.exports = userRouter;
+
+
+// axiosInstance({ url: `users/${id}`, method: "get", data: id })

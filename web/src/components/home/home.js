@@ -9,7 +9,7 @@ export default function Home() {
 
   function navigateTo() {
     // isLogin ? navigate("product") :
-     navigate("/product")
+     navigate("/")
   }
   
   return (

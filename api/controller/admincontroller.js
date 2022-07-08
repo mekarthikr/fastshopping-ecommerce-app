@@ -13,7 +13,7 @@ const loginAdmin = async (req, res) => {
             throw "user not found"
         }
         if (req.body.password == admin.password) {
-            const result = jwt.sign({ id: admin.id }, process.env.ACCESS_TOKEN)
+            const result = jwt.sign({ id: admin.id,role:"admin" }, process.env.ACCESS_TOKEN)
             res.status(200).json({ success: "Admin logged in", token: result })
         }
         else {

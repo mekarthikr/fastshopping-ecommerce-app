@@ -8,7 +8,9 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (request) => {
+    console.log("interseptop req",request)
     const token = localStorage.getItem("token");
+    console.log("token token",token)
     request.headers["Authorization"] = token;
     console.log("request sent");
     return request;

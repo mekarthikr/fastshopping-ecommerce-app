@@ -125,7 +125,7 @@ export const getSingleUser = (id) => {
   //  console.log("user id", id);
     axiosInstance({ url: `users/${id}`, method: "get", data: id })
       .then((resp) => {
-       // console.log("resp", resp);
+       console.log("resp", resp);
         dispatch(getUser(resp.data));
       })
       .catch((error) => console.log(error));
@@ -133,14 +133,16 @@ export const getSingleUser = (id) => {
 };
 
 export const updateUser = (user, id) => {
-  return function (dispatch) {
+  return async function (dispatch) {
   //  console.log("update", user, id);
-    axios
-      .put(`http://localhost:5000/users/${id}`, user)
+    // axios
+    //   .put(`http://localhost:5000/users/${id}`, user)
+    await axiosInstance({url:`users/${id}`,method:"put",data:user})
       .then((resp) => {
        // console.log("resp", resp);
       })
       .catch((error) => console.log(error));
+    dispatch(userLogout());
   };
 };
 
@@ -226,8 +228,9 @@ export const userIsLoggedIn = () => ({
 export const getUserCart = (id) => {
   return async function (dispatch) {
     console.log("user id", id);
-    await axios
-      .get(`http://localhost:5000/users/cart/${id}`)
+    // await axios
+    //   .get(`http://localhost:5000/users/cart/${id}`)
+    await axiosInstance({url:`users/cart/${id}`})
       .then((resp) => {
         console.log("response data", resp.data);
         dispatch(setUser(resp.data));
@@ -239,8 +242,9 @@ export const getUserCart = (id) => {
 export const setUserDetail = (userid) => {
   return async function (dispatch) {
     console.log("userid", userid.length);
-    await axios
-      .get(`http://localhost:5000/users/${userid}`)
+    // await axios
+    //   .get(`http://localhost:5000/users/${userid}`)
+    axiosInstance({url:`users/${userid}`,method:"get",data:userid})
       .then((resp) => {
         console.log("response data", resp);
         dispatch(getUser(resp.data));

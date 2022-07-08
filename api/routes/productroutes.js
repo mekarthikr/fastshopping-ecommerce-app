@@ -7,12 +7,12 @@ const {
   deleteProduct,
   getCategoryProduct,
 } = require("../controller/productcontroller");
-const { authenticateToken } = require("../middleware/accessauth");
+const { authenticateToken ,authenticateAdminToken} = require("../middleware/accessauth");
 const productRouter = express.Router();
 
-productRouter.get("/", getProducts);
+productRouter.get("/",authenticateToken, getProducts);
 productRouter.get("/:id", getProduct);
-productRouter.post("/", addProduct);
+productRouter.post("/",authenticateAdminToken, addProduct);
 productRouter.put("/:id", editProduct);
 productRouter.delete("/:id", deleteProduct);
 productRouter.get("/", getCategoryProduct);

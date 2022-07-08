@@ -114,23 +114,6 @@ const loginUser = async (req, res) => {
     }
 }
 
-function authenticateToken(req, res, next) {
-    const authHeader = req.headers['authorization']
-    const token = authHeader && authHeader
-    console.log(token)
-    if (token == null) {
-        return res.send("no token")
-    }
-    jwt.verify(token, process.env.ACCESS_TOKEN, (err, id) => {
-        if (err) {
-            res.send("Token expired")
-        }
-        console.log(id)
-
-        next()
-    })
-}
-
 module.exports = {
-    getUser, getUsers, loginUser, deleteUser, editUser, addUser, authenticateToken, getCartDetails
+    getUser, getUsers, loginUser, deleteUser, editUser, addUser, getCartDetails
 }
