@@ -39,24 +39,10 @@ export default function PersonList() {
     <>
     <div className="row">
     
-   {/* <div className="col-2">
-    <div className="col">
-      <button onClick={getSpecificProduct("all")} >ALL</button>
-    </div>
-    <div className="col">
-      <button onClick={getSpecificProduct("laptops")}>LAPTOP</button>
-    </div>
-    <div className="col">
-      <button onClick={getSpecificProduct("laptops")}>SMARTPHONE</button>
-    </div>
-    <div className="col">
-      <button onClick={getSpecificProduct("laptops")}>HEADPHONE</button>
-    </div>
-    <div className="col">
-      <button onClick={getSpecificProduct("laptops")}>ACCESSORIES</button>
-    </div>
-   </div> */}
-    <Sidebar/>  
+<div className="col-2">
+<Sidebar/>  
+</div>
+    
    <div className="col-10">
     
   

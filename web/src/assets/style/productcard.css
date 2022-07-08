@@ -36,9 +36,12 @@
 }
 
 .card-img-main {
-    padding: 5% 10%;
+    margin: 2% 1%;
     background-color: rgb(255, 255, 255);
     border-radius: 10px 10px 0px 0px;
+    align-items: center;
+    width: 450px;
+    height: 450px;
 }
 
 .float-right {
