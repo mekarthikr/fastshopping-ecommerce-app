@@ -1,73 +1,46 @@
-
 import UserHeader from "./Userheader";
-import AdminHeader from "./Adminheader"
-import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { adminLoggedIn, setUserDetail, userLoggedOut } from "../action/useraction";
+import AdminHeader from "./Adminheader";
+import React from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import "../assets/style/header.css";
 import coll from "../assets/image/coll.svg";
 import remove from "../assets/image/bag.svg";
-import jwtDecode from "jwt-decode";
 
 export default function Header() {
-
-  const { isLogin, value,tokenId, user,userLoggedin, adminLoggedIn,isAdminLogin } = useSelector((state) => state.user)
-
-  let dispatch = useDispatch();
-  let navigate = useNavigate();
-
-  //useEffect(() => {dispatch(setUserDetail(jwtDecode(localStorage.getItem("token")).id)) }, [isLogin, value])
-  // const token = 
-  // console.log(token)
-
+  const { userLoggedin, adminLoggedIn } = useSelector((state) => state.user);
 
   function navbarView() {
-    // console.log("data:" + isLogin)
     if (userLoggedin) {
-      return <UserHeader />
+      return <UserHeader />;
+    } else if (adminLoggedIn) {
+      return <AdminHeader />;
     }
-    else if(adminLoggedIn)
-    {
-      return <AdminHeader/>
-    }
-    // // else if(isAdminLogin)
-    // // {
-    // //   
-    // // }
-    // return false
   }
-  // function handlelogout(e) {
-  //   dispatch(userLoggedOut())
-  //   navigate("/login")
-
-  // }
 
   return (
-      <nav className="navbar navbar-expand-lg navbar-light nav-bar">
-        <a className="navbar-brand" >
-          <img src={remove} width="40" height="40" className="" alt="img" />
-        </a>
-        <Link to="/">
-          <a className="a red" >
-            FAST SHOPPING
-          </a></Link>
-        <button
-          className="button navbar-toggler "
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="">
-            <img src={coll} className="icon" width={"60px"} alt="img" />
-          </span>
-        </button>
-        {navbarView()}
-      </nav>
+    <nav className="navbar navbar-expand-lg navbar-light nav-bar">
+      <a className="navbar-brand">
+        <img src={remove} width="40" height="40" className="" alt="img" />
+      </a>
+      <Link to="/home">
+        <a className="a red">FAST SHOPPING</a>
+      </Link>
+      <button
+        className="button navbar-toggler "
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="">
+          <img src={coll} className="icon" width={"60px"} alt="img" />
+        </span>
+      </button>
+      {navbarView()}
+    </nav>
   );
-
 }

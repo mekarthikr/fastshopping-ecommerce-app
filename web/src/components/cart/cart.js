@@ -2,31 +2,21 @@ import React, { useEffect } from "react";
 import Cartproduct from "./cartproduct";
 import Cartsummary from "./cartSummary";
 import { useDispatch, useSelector } from "react-redux";
+import { getUserCart } from "../../action/useraction";
 
 import "../../assets/style/cart.css";
-import { getUserCart, insertCart } from "../../action/useraction";
-import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
-  const { products } = useSelector((state) => state.product);
-  const { user, userCart, cart } = useSelector((state) => state.user);
+  const { user, cart } = useSelector((state) => state.user);
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  
-  // }, []);
+  useEffect(() => {
+    dispatch(getUserCart(user._id));
+  }, [user]);
 
-  useEffect(() => {  dispatch(getUserCart(user._id));}, [user]);
-
-  console.log("cart",cart)
-  const goback = () => {
-    navigate(-1);
-  };
-  
   return (
-<div className="cart-container">
+    <div className="cart-container">
       <h1>Your Cart</h1>
       <p>
         {cart.length

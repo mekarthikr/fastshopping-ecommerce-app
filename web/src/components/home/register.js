@@ -51,7 +51,7 @@ export default function Register() {
     if (validate === true) {
       clearState()
       delete state.confirmpassword
-      console.log(state)
+    //  console.log(state)
       dispatch(addUser(state));
       navigate("/");
     }
@@ -141,7 +141,7 @@ export default function Register() {
             value=""
           />
           <label className="form-check-label">
-            By checking here, you agree to our <strong>T&C</strong>.
+            By checking here, you agree to our <strong>T<span>&#38;</span>C</strong>.
           </label>
         </div>
         <button type="submit" className="login-button">CONTINUE</button>

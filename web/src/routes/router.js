@@ -12,7 +12,6 @@ import Cart from "../components/cart/cart";
 import UserProfile from "../components/user/userProfile";
 import Protected from "./protectedRoute";
 import Productview from "../components/admin/productview";
-// import Footer from "../shared/footer";
 import { Routes, Route } from "react-router-dom";
 import { Admin } from "../components/admin/admin";
 import { Formvalidation } from "../validation/formvalidation";
@@ -26,7 +25,10 @@ export function Router() {
         <Protected role={"user"}>
           <Productlist />
         </Protected>} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={
+          <Protected role={"user"}>
+          <Home />
+        </Protected>} />
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/edit" element={<Edituser />} />
@@ -38,7 +40,6 @@ export function Router() {
         <Route path="/product/:id" element={<Viewproduct />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/profile" element={<UserProfile />} />
-        <Route path="/error" element={<Formvalidation />} />
       </Routes>
       {/* <Footer/> */}
   </>

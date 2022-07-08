@@ -7,16 +7,8 @@ const getProducts = (products) => ({
   payload: products,
 });
 
-const productDeleted = () => ({
-  type: types.DELETE_PRODUCT,
-});
-
 const productAdded = () => ({
   type: types.ADD_PRODUCT,
-});
-
-const productUpdated = () => ({
-  type: types.UPDATE_PRODUCT,
 });
 
 const getProduct = (product) => ({
@@ -30,7 +22,6 @@ export const loadProducts = (category="all") => {
     {
       await axiosInstance({ url: "products/" })
       .then((resp) => {
-        console.log("resp", resp);
         dispatch(getProducts(resp.data.products));
       })
       .catch((error) => console.log("Error", error));
@@ -38,7 +29,6 @@ export const loadProducts = (category="all") => {
   else{
     await axiosInstance({ url: `products/?category=${category}` })
     .then((resp) => {
-      console.log("resp", resp);
       dispatch(getProducts(resp.data.products));
     })
     .catch((error) => console.log("Error", error));
@@ -49,12 +39,8 @@ export const loadProducts = (category="all") => {
 
 export const deleteProduct = (id) => {
   return async function (dispatch) {
-    console.log(id);
-    // axios
-    //   .delete(`http://localhost:5000/products/${id}`)
       await axiosInstance({url:`products/${id}`,method:"delete"})
-      .then((resp) => {
-        console.log("resp", resp);
+      .then(() => {
         dispatch(loadProducts());
       })
       .catch((error) => console.log(error));
@@ -63,12 +49,8 @@ export const deleteProduct = (id) => {
 
 export const addProduct = (product) => {
   return async function (dispatch) {
-    console.log("product post", product);
-    // axios
-    //   .post("http://localhost:5000/products/", product)
       await axiosInstance({url:`products`,method:"post",data:product})
-      .then((resp) => {
-        console.log("resp", resp);
+      .then(() => {
         dispatch(productAdded());
       })
       .catch((error) => console.log(error));
@@ -80,7 +62,6 @@ export const getSingleProduct = (id) => {
     axios
       .get(`http://localhost:5000/products/${id}`)
       .then((resp) => {
-        console.log("resp", resp.data);
         dispatch(getProduct(resp.data));
       })
       .catch((error) => console.log(error));
@@ -89,8 +70,6 @@ export const getSingleProduct = (id) => {
 
 export const updateProduct = (product, id) => {
   return async function (dispatch) {
-    // axios
-    //   .put(`http://localhost:5000/products/${id}`, product)
       await axiosInstance({url:`products/${id}`,method:"put",data:product})
       .then((resp) => {
       })

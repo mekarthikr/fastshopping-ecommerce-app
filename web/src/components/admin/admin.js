@@ -1,9 +1,7 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { API_ADMIN } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { adminLoggedIn, userLoggedIn } from "../../action/useraction";
+import { adminLoggedIn } from "../../action/useraction";
 
 import "../../assets/style/admin.css";
 
@@ -21,11 +19,8 @@ export function Admin() {
 
   useEffect(() => {
     if (adminloggedInFailed) {
-      console.log("alert");
       alert(adminloginError);
-      console.log(adminloginError);
     } else if (adminloggedInSuccess) {
-      console.log("Correct Credentials");
       navigate("/adminpanel");
     }
   }, [adminloginError, adminloggedInSuccess]);

@@ -1,45 +1,31 @@
-import axios from "axios";
-import React, { useEffect, useLayoutEffect, useState } from "react";
-import { API } from "../../api/api";
+import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "../../assets/style/login.css";
-import { userLoggedIn, } from "../../action/useraction";
-import ReactJsAlert from "reactjs-alert";
-// import { useAlert } from "react-alert";
-import { ReactNotifications, Store } from 'react-notifications-component'
+import { userLoggedIn } from "../../action/useraction";
 
 function Login() {
   let navigate = useNavigate();
   let dispatch = useDispatch();
-  // const alert = useAlert();
 
   const [state, setState] = useState({
     email: "",
     password: "",
   });
 
-  const [status, setStatus] = useState(false);
-  const [type, setType] = useState("success");
-  const [title, setTitle] = useState("This is a alert");
   const [error, setError] = useState("");
-  const { email, password } = state;
-  const [user, setUser] = useState("");
 
-  
-  const { loggedInSuccess, loggedInFailed,loginError } = useSelector((state) => state.user);
+  const { loggedInSuccess, loggedInFailed, loginError } = useSelector(
+    (state) => state.user
+  );
 
   useEffect(() => {
     if (loggedInFailed) {
-      alert(loginError)
-      console.log(loggedInFailed)
+      alert(loginError);
+    } else if (loggedInSuccess) {
+      navigate("/home");
     }
-    else if (loggedInSuccess) {
-      console.log("Correct Credentials")
-      navigate('/home')
-    }
-  }, [loginError,loggedInSuccess]); // eslint-disable-line react-hooks/exhaustive-deps
-
+  }, [loginError, loggedInSuccess]);
 
   const handleInputChange = (e) => {
     let { name, value } = e.target;
@@ -48,9 +34,8 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(userLoggedIn(state))
+    dispatch(userLoggedIn(state));
   };
- 
 
   return (
     <div className="login-block">

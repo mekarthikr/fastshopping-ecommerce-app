@@ -1,32 +1,20 @@
-import { getSingleProduct, removeProductFromCart } from "../../action/productaction";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { addProductToCart } from "../../action/useraction";
 
 import "../../assets/style/productcard.css";
 import "../../assets/style/cart.css";
 import close from "../../assets/image/close.png";
-import { useEffect, useState } from "react";
-import { addProductToCart } from "../../action/useraction";
+
 
 export default function Cartproduct(props) {
   let dispatch = useDispatch();
-  const { user,cart } = useSelector((state) => state.user);
-  //const { cart } = useSelector((state) => state.product);
-  
-  //useEffect(()=>{dispatch(getSingleProduct(props.details.productid));},[])
-  const [state, setState] = useState({
-    name: "",
-    price: "",
-    color: "",
-    imageurl: "",
-  });
+  const { user} = useSelector((state) => state.user);
 
-  useEffect(()=>{},[user])
- 
+  useEffect(() => {}, [user]);
+
   const increaseCartQuantity = (e) => {
-    console.log("j")
-    //console.log(props.details.productid,user)
-
-    dispatch(addProductToCart(props.details.productid._id,user))
+    dispatch(addProductToCart(props.details.productid._id, user));
   };
 
   return (
@@ -39,7 +27,9 @@ export default function Cartproduct(props) {
           <h2 className="inline">{props.details.productid.name}</h2>
           <img src={close} className="" alt="img" />
           <p>{props.details.color}</p>
-          <h6 className="float-right inline">{props.details.productid.price}</h6>
+          <h6 className="float-right inline">
+            {props.details.productid.price}
+          </h6>
           <p>{props.details.quantity}</p>
         </div>
       </div>

@@ -5,10 +5,7 @@ const initialState = {
   user: {},
   admin: {},
   cart: [],
-  //   products: [],
-  //   product: {},
   loading: true,
-  //   cart:[],
   value: [],
   isUserLogin: false,
   isAdminLogin: true,
@@ -20,7 +17,6 @@ const initialState = {
   adminloginError: "",
   userCart: [],
   userLoggedin: false,
-  //userToken:localStorage.getItem("token")
   token: localStorage.getItem("token"),
   tokenId: "",
   adminLoggedIn: false
@@ -42,14 +38,7 @@ const usersReducers = (state = initialState, action) => {
         isUserLogin: true,
         loading: false,
       }
-    // case types.GET_PRODUCTS:
-    // return {
-    //   ...state,
-    //   products: action.payload,
-    //   loading: false,
-    // };
     case types.DELETE_USER:
-    //   case types.DELETE_PRODUCT:
     case types.ADD_USER:
     case types.UPDATE_USER:
       return {
@@ -65,32 +54,17 @@ const usersReducers = (state = initialState, action) => {
       }
     case types.INSERT_TO_CART:
       const val = [...state.userCart, action.payload]
-      console.log("payload", action.payload)
       return {
         ...state,
         userCart: val
       }
-    // case types.RETAIN_USER_DETAILS:
-    //   // console.log("user reducer",action.payload,action.token,action.payload)
-    //   console.log("user reducer")
-    //   return{
-    //     ...state,
-    //     // user:action.payload
-    //   }
     case types.ADD_USER_TOKEN:
-      // const user = jwtdecode(action.token)
       const user = jwtdecode(action.payload)
       return {
         ...state,
         userLoggedin: true,
         tokenId: user.id,
       }
-    // :{
-    //   return{
-    //     ...state,
-
-    //   }
-    // }
     case types.GET_SINGLE_USER:
       return {
         ...state,
@@ -124,7 +98,6 @@ const usersReducers = (state = initialState, action) => {
         loginError: action.payload
       }
     case types.ADMIN_LOGGED_IN_FAILED:
-      console.log("error", action.payload)
       return {
         ...state,
         adminloggedInSuccess: false,
@@ -139,10 +112,8 @@ const usersReducers = (state = initialState, action) => {
         user: {}
       }
     case types.RETAIN_USER_DETAILS:
-      console.log("user reducer",action.payload)
       return{
         ...state,
-        // tokenId:action.token,
         loggedInSuccess:true,
         userLoggedin:true        
       }

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addProduct ,loadProducts} from "../../action/productaction";
-import FileBase64 from "react-file-base64";
 
 import "../../assets/style/register.css";
 
@@ -28,11 +27,11 @@ export default function AddProduct() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submit")
     if (!name || !imageurl || !color || !price || !category) {
-      console.log("false")
-      console.log(name,imageurl,color,price,category,description)
-    } else {
+
+    } 
+    else 
+    {
       dispatch(addProduct(state));
       dispatch(loadProducts());
       

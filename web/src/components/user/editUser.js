@@ -34,13 +34,12 @@ export default function Edituser() {
     setState({ ...state, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const  handleSubmit =  (e) => {
     e.preventDefault();
     if (!firstname || !lastname || !email || !password) {
-      console.log("enter form");
     } else {
-      dispatch(updateUser(state, user._id));
-     // dispatch(userLogout());
+      dispatch(updateUser(state, user._id,"logout"));
+    
       navigate("/");
     }
   };

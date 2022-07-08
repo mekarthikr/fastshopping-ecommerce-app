@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { addProductToCart } from "../../action/useraction";
 import "../../assets/style/productcard.css";
 
@@ -9,8 +9,9 @@ export default function Productcard(props) {
 
   let dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
-  console.log(props.details._id)
+
   const addToCart = (e) => {
+    console.log("add to cart called")
     e.preventDefault();
     dispatch(addProductToCart(props.details._id,user))
   };

@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import {
-  getSingleProduct,
-  clearProducts,
-  deleteProduct,
-  loadProducts
-} from "../../action/productaction";
+import { getSingleProduct, clearProducts, deleteProduct, loadProducts} from "../../action/productaction";
 
 import "../../assets/style/register.css";
 import "../../assets/style/viewproduct.css";
@@ -15,7 +10,6 @@ import arrow from "../../assets/image/arrowleft.svg";
 export default function Productview() {
   const navigate = useNavigate();
   const { id } = useParams();
-  console.log("id", id);
 
   const [state, setState] = useState({
     productname: "",
@@ -37,7 +31,6 @@ export default function Productview() {
       setState({ ...product });
     }
   }, [product]);
-  console.log(product);
   function goBack() {
     dispatch(clearProducts());
     navigate(-1);
@@ -49,7 +42,6 @@ export default function Productview() {
   };
 
   function handleEdit() {
-    console.log("id on edit", id);
     dispatch(loadProducts());
     navigate(`/editproduct/${id}`);
   }

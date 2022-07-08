@@ -16,19 +16,6 @@ export default function Adminpanel() {
     dispatch(loadProducts());
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const handleDelete = (id) => {
-    dispatch(deleteProduct(id));
-  };
-
-  function handleEdit(id) {
-    navigate(`/editproduct/${id}`);
-  }
-
-  function addProduct() {
-    navigate("/addProduct");
-  }
-  console.log(products);
-
   return (
     <>
       <div className="product card">
