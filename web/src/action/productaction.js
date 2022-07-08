@@ -48,10 +48,11 @@ export const loadProducts = (category="all") => {
 };
 
 export const deleteProduct = (id) => {
-  return function (dispatch) {
+  return async function (dispatch) {
     console.log(id);
-    axios
-      .delete(`http://localhost:5000/products/${id}`)
+    // axios
+    //   .delete(`http://localhost:5000/products/${id}`)
+      await axiosInstance({url:`products/${id}`,method:"delete"})
       .then((resp) => {
         console.log("resp", resp);
         dispatch(loadProducts());
@@ -61,10 +62,11 @@ export const deleteProduct = (id) => {
 };
 
 export const addProduct = (product) => {
-  return function (dispatch) {
+  return async function (dispatch) {
     console.log("product post", product);
-    axios
-      .post("http://localhost:5000/products/", product)
+    // axios
+    //   .post("http://localhost:5000/products/", product)
+      await axiosInstance({url:`products`,method:"post",data:product})
       .then((resp) => {
         console.log("resp", resp);
         dispatch(productAdded());
@@ -86,9 +88,10 @@ export const getSingleProduct = (id) => {
 };
 
 export const updateProduct = (product, id) => {
-  return function (dispatch) {
-    axios
-      .put(`http://localhost:5000/products/${id}`, product)
+  return async function (dispatch) {
+    // axios
+    //   .put(`http://localhost:5000/products/${id}`, product)
+      await axiosInstance({url:`products/${id}`,method:"put",data:product})
       .then((resp) => {
       })
       .catch((error) => console.log(error));

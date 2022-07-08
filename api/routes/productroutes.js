@@ -13,8 +13,8 @@ const productRouter = express.Router();
 productRouter.get("/",authenticateToken, getProducts);
 productRouter.get("/:id", getProduct);
 productRouter.post("/",authenticateAdminToken, addProduct);
-productRouter.put("/:id", editProduct);
-productRouter.delete("/:id", deleteProduct);
-productRouter.get("/", getCategoryProduct);
+productRouter.put("/:id",authenticateAdminToken, editProduct);
+productRouter.delete("/:id",authenticateAdminToken, deleteProduct);
+productRouter.get("/",getCategoryProduct);
 
 module.exports = productRouter;
