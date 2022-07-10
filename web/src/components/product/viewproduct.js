@@ -41,14 +41,19 @@ export default function Viewproduct() {
               src={product.imageurl}
             />
           </div>
-          <div className="col main-detail-product">
-            <h1>{product.productname}</h1>
-            <h2>{product.color}</h2>
-            <p>{product.price}</p>
-            <button className="color-white bg-blue" onClick={addToCart}>
+          <div  style={{margin:"0 0 5% 0",borderRadius:"50px 0px 0px 50px"}}  className="col bg-blue">
+          <div style={{margin:"10% 2%"}} className=" main-detail-product">
+            <h1 className="color-red">{product.name}</h1>
+            <h2 className="color-white">Color : {product.color}</h2>
+            <p className="color-white">Price : {product.price}</p>
+            <p className="color-white">Description</p>
+            <p className="color-white">{product.description}</p>
+            <button className="color-blue bg-white" onClick={addToCart}>
               ADD
             </button>
+          </div>       
           </div>
+
         </div>
       </div>
     </>

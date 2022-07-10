@@ -1,21 +1,45 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { addProductToCart } from "../../action/useraction";
-
+import { useEffect, useState } from "react";
+import { addProductToCart,getUserCart,removeProductFromCart } from "../../action/useraction";
 import "../../assets/style/productcard.css";
 import "../../assets/style/cart.css";
 import close from "../../assets/image/close.png";
-
+import add from "../../assets/image/plus-square.svg"
+import minus from "../../assets/image/dash-square.svg"
+import { Navigate, useNavigate } from "react-router-dom";
+import ReactJsAlert from "reactjs-alert";
+import AddRoundedIcon from '@mui/icons-material/AddRounded';
 
 export default function Cartproduct(props) {
   let dispatch = useDispatch();
-  const { user} = useSelector((state) => state.user);
+  let navigate=useNavigate();
+  const { user,cart} = useSelector((state) => state.user);
 
-  useEffect(() => {}, [user]);
+  const [status, setStatus] = useState(false);
+  const [type, setType] = useState("success");
+  const [title, setTitle] = useState();
+
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+   // dispatch(getUserCart(user._id));
+  }, [cart,status,user]);
 
   const increaseCartQuantity = (e) => {
+    e.preventDefault()
     dispatch(addProductToCart(props.details.productid._id, user));
+    setStatus(true);
+    setType("success");
+    setTitle(`${props.details.productid.name} is added to from cart`);
   };
+
+  const decreaseCartQuantity = (e) => {
+    e.preventDefault()
+    dispatch(removeProductFromCart(props.details.productid._id, user));
+    setStatus(true);
+    setType("success");
+    setTitle(`${props.details.productid.name} is removed from cart`);
+  };  
 
   return (
     <div className="cart-card">
@@ -25,17 +49,27 @@ export default function Cartproduct(props) {
         </div>
         <div className="col-md-8 cart-product-details">
           <h2 className="inline">{props.details.productid.name}</h2>
-          <img src={close} className="" alt="img" />
+          <img src={close} className="" alt="img"/>
           <p>{props.details.color}</p>
           <h6 className="float-right inline">
             {props.details.productid.price}
           </h6>
-          <p>{props.details.quantity}</p>
+          <div style={{display:"block"}}>
+          <img  style={{display:"inline",float:"none",width:"25px"}} src={add} alt="product" onClick={increaseCartQuantity} />
+          <p  style={{display:"inline",margin:"0px 10px",fontSize:"21px"}}>{props.details.quantity}</p>
+          <img   style={{display:"inline",float:"none",width:"25px"}}src={minus} alt="product" onClick={decreaseCartQuantity}/>
+          </div>
         </div>
-      </div>
-      <button onClick={increaseCartQuantity}>+</button>
-      <button>-</button>
+      </div>      
       <hr />
+      <ReactJsAlert
+          status={status}
+          type={type}
+          title={title}
+          Close={() => {setStatus(false)
+          }}
+        />
+        
     </div>
   );
 }
