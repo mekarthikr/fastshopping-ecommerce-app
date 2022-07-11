@@ -37,6 +37,25 @@ const userLoggedInSuccess = () => ({
 	type: types.USER_LOGGED_IN_SUCCESS,
 });
 
+
+
+
+
+
+const userRegisteredSuccess = () =>({
+	type: types.USER_ADDED_SUCCESS,
+})
+
+const userRegisteredFailed = (error) =>({
+	type: types.USER_ADDED_FAILED,
+	payload: error
+})
+
+
+
+
+
+
 const adminLoggedInSuccess = () => ({
 	type: types.ADMIN_LOGGED_IN_SUCCESS,
 });
@@ -104,8 +123,11 @@ export const addUser = (user) => {
 			.post("http://localhost:5000/users/", user)
 			.then((resp) => {
 				dispatch(userAdded());
+				dispatch(userRegisteredSuccess())
 			})
-			.catch((error) => console.log(error));
+			.catch( async (error) => {
+				await dispatch(userRegisteredFailed(error.response.data.error))
+			});
 	};
 };
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ValidateRegister } from "../../validation/register";
@@ -34,6 +34,15 @@ export default function Register() {
     setError
   ] = useState(defaultError);
 
+  // useEffect(()=>{
+  //   if(registerIsFailed)
+  //   {
+  //     alert(registerError);
+  //   }else if(registerIsSuccess)
+  //   {
+  //     alert("register success")
+  //   }
+  // })
 
   const { firstname, lastname, email,phonenumber, password } = state;
 
@@ -47,12 +56,14 @@ export default function Register() {
     function clearState() {
       setError(defaultError)
     }
+
     const validate = ValidateRegister(state)
+    
     if (validate === true) {
       clearState()
       delete state.confirmpassword
       dispatch(addUser(state));
-      navigate("/");
+     // navigate("/");
     }
     else {
       setError(validate)
