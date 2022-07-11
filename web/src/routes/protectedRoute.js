@@ -14,6 +14,7 @@ const Protected = ({ role, children }) => {
                 return <Navigate to="/admin" replace />;
             }
             else {
+                console.log("back to home")
                 return <Navigate to="/" replace />;
             }
         }
@@ -23,6 +24,7 @@ const Protected = ({ role, children }) => {
         return <Navigate to="/admin" replace />;
     }
     else {
+        console.log("back to home")
         return <Navigate to="/" replace />;
     }
 };

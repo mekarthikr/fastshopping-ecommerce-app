@@ -174,14 +174,16 @@ hr {
   margin:0 10%
    */
    margin-top: 50%;
+   width: 100%;
+   border-radius: 0 10% 10% 0;
+   padding-left: 40px;
 }
 .sidebar button{
   border: 0px;
-  background-color: rgb(255, 255, 255);
-  /* width: 10%; */
-  /* height: 30%; */
+  background-color: #001233;
+  color: antiquewhite;
   font-size: 30px;
   margin: 10px 0 10px 0;
-  width:100px;
+  /* text-align: center; */
   margin-top: 1%;
 }

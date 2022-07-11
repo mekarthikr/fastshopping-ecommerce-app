@@ -17,7 +17,7 @@ function getSpecificProduct(category)
 
   return (
     <>  
-   <div className="col-2 sidebar">
+   <div className="col-2 sidebar bg-blue">
     <div className="col">
       <button  onClick={()=>getSpecificProduct("all")} >ALL</button>
     </div>  

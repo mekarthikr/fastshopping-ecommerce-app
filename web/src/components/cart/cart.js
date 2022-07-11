@@ -28,9 +28,9 @@ export default function Cart() {
           <div className="col-md-7">
             <hr />
             <>
-              {cart.map((value) => (
+              {cart.length != 0 ?cart.map((value) => (
                 <Cartproduct key={value.id} details={value} />
-              ))}
+              )):<h1>No Item To show</h1>}
             </>
           </div>
           <div className="col-md-5 summary-section">

@@ -22,7 +22,7 @@ export default function Cartproduct(props) {
   const [error, setError] = useState("");
 
   useEffect(() => {
-   // dispatch(getUserCart(user._id));
+    dispatch(getUserCart(user._id));
   }, [cart,status,user]);
 
   const increaseCartQuantity = (e) => {

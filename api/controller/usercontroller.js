@@ -58,7 +58,9 @@ const editUser = async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id, req.body);
     const data = await user.save();
-    res.send("modified");
+    const message="User Modified Successfully : Login to continue"
+    //res.send("User Modified Successfully : Login to continue");
+    res.status(202).json({message :message})
   } catch (err) {
     res.send("Error" + err);
   }
@@ -95,6 +97,15 @@ const loginUser = async (req, res) => {
   }
 };
 
+const increaseQuantity = async (req, res) => {
+  // const userid = req.query.user;
+  // const productid = req.query.product;
+  // let user = await User.findById(userid)  
+  // console.log(user.cart[0])
+  // res.status(200)
+
+};
+
 module.exports = {
   getUser,
   getUsers,
@@ -103,4 +114,5 @@ module.exports = {
   editUser,
   addUser,
   getCartDetails,
+  increaseQuantity
 };
