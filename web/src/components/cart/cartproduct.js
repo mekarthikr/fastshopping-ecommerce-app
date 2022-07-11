@@ -23,7 +23,7 @@ export default function Cartproduct(props) {
 
   useEffect(() => {
     dispatch(getUserCart(user._id));
-  }, [cart,status,user]);
+  }, [cart,user]);
 
   const increaseCartQuantity = (e) => {
     e.preventDefault()
