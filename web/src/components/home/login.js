@@ -42,7 +42,7 @@ function Login() {
     } else if (loggedInSuccess) {
       setStatus(true);
       setType("success");
-      setTitle("This is a success alert");
+      setTitle(loginMessage);
       // navigate("/home");
 
     }
@@ -114,6 +114,7 @@ function Login() {
           setStatus(false)
           navigate("/home");
         }
+        setStatus(false)
       }} />
     </div>
   );

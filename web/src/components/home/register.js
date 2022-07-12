@@ -147,7 +147,7 @@ export default function Register() {
         <div style={{margin:"0 33% 0 33%"}} className="form-check">
           <input required className="form-check-input check" type="checkbox" value="" />
           <label className="form-check-label">
-            By checking here, you agree to our <strong>T<span>&#38;</span>C</strong>.
+            By checking here, you agree to our  <a href="https://mekarthikr.github.io/dummytext/" target="_blank" style={{textDecoration:"none",color:"black"}} > <strong>T<span>&#38;</span>C</strong></a>.
           </label>
         </div>
         <button type="submit" className="login-button">CONTINUE</button>

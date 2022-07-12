@@ -36,11 +36,11 @@ const addUser = async (req, res) => {
   try {
     let user = await User.findOne({ email: req.body.email });
     if (user) {
-      throw "email already exisiting";
+      throw "Email already exisiting";
     }
     user = new User({
       firstname: req.body.firstname,
-      lastname: req.body.lastname,
+      lastname: req.body.lastname,        
       email: req.body.email,
       password: req.body.password,
       phonenumber: req.body.phonenumber,

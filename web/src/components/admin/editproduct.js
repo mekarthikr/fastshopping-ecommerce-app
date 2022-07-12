@@ -18,11 +18,12 @@ export default function Editproduct() {
     imageurl: "",
     color: "",
     price: "",
+    description: ""
   });
 
   const { product } = useSelector((state) => state.product);
 
-  const { name, imageurl, color, price } = state;
+  const { name, imageurl, color, price, description } = state;
   useEffect(() => {
     dispatch(getSingleProduct(id));
   }, []);
@@ -94,7 +95,39 @@ export default function Editproduct() {
                 onChange={handleInputChange}
               />
             </div>
+            <div className="form-group row">
+                <label className="color-white">CATEGORY</label>
+                <select
+                  class="form-select form-control"
+                  onChange={handleInputChange}
+                  name="category"
+                >
+                  <option  selected value="">
+                    Select any category
+                  </option>
+                  <option value="smartphone">smartphone</option>
+                  <option value="laptops">laptops</option>
+                  <option value="headphone">headphone</option>
+                  <option value="accessories">accessories</option>
+                </select>
+              </div>
+            <div className="form-group row">
+                <label className="color-white">DESCRIPTION</label>
+                <textarea style={{resize:"none"}}
+                rows={5}
+                className="form-control form-input"
+                type={"text"}
+                name="description"
+                value={description || ""}
+                onChange={handleInputChange}></textarea>
+              </div>
           </div>
+
+
+
+
+
+
           <div className="col edit-product-view">
             <div className="bg-blue edit-product-card">
               <img src={imageurl} alt="image_product" />

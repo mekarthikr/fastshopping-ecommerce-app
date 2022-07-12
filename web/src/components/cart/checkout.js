@@ -73,7 +73,7 @@ export default function Checkout() {
                         <input required className="form-check-input check" type="checkbox" value="" />
                         <label className="form-check-label">Click the Check box to confirm the above mentioned address is correct</label>
                     </div>
-                    <button type="submit" className="login-button">CHECK OUT</button>
+                    <button type="submit" className="login-button">PROCEED TO BUY</button>
                 </form>
             </div>
             <div className="col-md-6">

@@ -81,7 +81,7 @@ const usersReducers = (state = initialState, action) => {
         ...state,
         loggedInSuccess: true,
         loggedInFailed: false,
-        loginMessage: ""
+        loginMessage: action.payload
       }
     case types.ADMIN_LOGGED_IN_SUCCESS:
       return {

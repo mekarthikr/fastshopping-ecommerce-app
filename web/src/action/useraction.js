@@ -33,8 +33,9 @@ const userAdded = () => ({
 	type: types.ADD_USER,
 });
 
-const userLoggedInSuccess = () => ({
+const userLoggedInSuccess = (success) => ({
 	type: types.USER_LOGGED_IN_SUCCESS,
+	payload: success
 });
 
 
@@ -169,7 +170,7 @@ export const userLoggedIn = (credentials) => {
 					window.localStorage.setItem("token", res.data.token);
 					dispatch(addUserToken(res.data.token));
 					console.log("res mess",res.data.success)
-					dispatch(userLoggedInSuccess());
+					dispatch(userLoggedInSuccess(res.data.success));
 				}
 			})
 			.catch(async (error) => {

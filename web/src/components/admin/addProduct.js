@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addProduct ,loadProducts} from "../../action/productaction";
 
-import "../../assets/style/register.css";
+// import "../../assets/style/register.css";
 
 export default function AddProduct() {
   const [state, setState] = useState({
@@ -90,12 +90,11 @@ export default function AddProduct() {
               <div className="form-group row">
                 <label className="color-white">CATEGORY</label>
                 <select
-                  class="form-select"
+                  class="form-select form-control"
                   onChange={handleInputChange}
                   name="category"
-                  aria-label="Default select example"
                 >
-                  <option selected value="">
+                  <option  selected value="">
                     Select any category
                   </option>
                   <option value="smartphone">smartphone</option>
@@ -106,8 +105,8 @@ export default function AddProduct() {
               </div>
               <div className="form-group row">
                 <label className="color-white">DESCRIPTION</label>
-                <textarea
-                
+                <textarea style={{resize:"none"}}
+                rows={5}
                 className="form-control form-input"
                 type={"text"}
                 name="description"
