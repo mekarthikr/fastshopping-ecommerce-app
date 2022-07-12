@@ -11,7 +11,7 @@ export default function Cartsummary() {
   useEffect(()=>{
    // TotalPrice = cart.reduce((previousValue, currentValue) => previousValue + parseInt(currentValue.productid.price),0 );
 
-  },[cart])
+  },[userCart])
   let TotalPrice = cart.reduce((previousValue, currentValue) => previousValue + parseInt(currentValue.productid.price)*currentValue.quantity,0 );
   //console.log(TotalPrice)
   return (
@@ -23,6 +23,7 @@ export default function Cartsummary() {
     <hr />
     <h3>Total Price: {TotalPrice}</h3>
   </div>
+  <button className="checkout-button" >CHECK OUT</button>
 </div>
       </div>
   );

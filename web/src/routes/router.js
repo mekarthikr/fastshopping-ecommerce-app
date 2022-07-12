@@ -15,6 +15,7 @@ import Productview from "../components/admin/productview";
 import { Routes, Route } from "react-router-dom";
 import { Admin } from "../components/admin/admin";
 import { Formvalidation } from "../validation/formvalidation";
+import Checkout from "../components/cart/checkout";
 
 export function Router() {
   return (
@@ -34,6 +35,7 @@ export function Router() {
         <Route path="/product/:id" element={<Viewproduct />} />
         <Route path="/cart" element={<Protected role={"user"}><Cart /></Protected>} />
         <Route path="/profile" element={<UserProfile />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
       {/* <Footer/> */}
   </>

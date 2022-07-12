@@ -168,6 +168,7 @@ export const userLoggedIn = (credentials) => {
 				if (res) {
 					window.localStorage.setItem("token", res.data.token);
 					dispatch(addUserToken(res.data.token));
+					console.log("res mess",res.data.success)
 					dispatch(userLoggedInSuccess());
 				}
 			})
@@ -269,3 +270,5 @@ export const setUserDetail = (userid) => {
 			.catch((error) => console.log(error));
 	};
 };
+
+

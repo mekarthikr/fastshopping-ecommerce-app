@@ -26,13 +26,13 @@ export default function Productcard(props) {
           />
         </div>
         <div className="card-body ">
-          <h5 className="card-title color-white">{props.details.name}</h5>
-          <p className="card-text color-white">Rs {props.details.price}/- </p>
+          <h5 className="card-title color-blue">{props.details.name}</h5>
+          <p className="card-text color-blue">Rs {props.details.price}/- </p>
           <div className="bottom-btn">
             <Link to={`/product/${props.details._id}`}>
-              <a className="btn bg-white">VIEW</a>
+              <a className="btn bg-blue">VIEW</a>
             </Link>
-            <a className="btn bg-white float-right" onClick={addToCart}>
+            <a className="btn bg-blue float-right" onClick={addToCart}>
               ADD
             </a>
           </div>

@@ -13,7 +13,7 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded';
 export default function Cartproduct(props) {
   let dispatch = useDispatch();
   let navigate=useNavigate();
-  const { user,cart} = useSelector((state) => state.user);
+  const { user,cart,userCart} = useSelector((state) => state.user);
 
   const [status, setStatus] = useState(false);
   const [type, setType] = useState("success");
@@ -23,7 +23,7 @@ export default function Cartproduct(props) {
 
   useEffect(() => {
     dispatch(getUserCart(user._id));
-  }, [cart,user]);
+  }, [user,dispatch,userCart]);
 
   const increaseCartQuantity = (e) => {
     e.preventDefault()

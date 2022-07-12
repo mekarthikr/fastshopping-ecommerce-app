@@ -7,13 +7,13 @@ import { getUserCart } from "../../action/useraction";
 import "../../assets/style/cart.css";
 
 export default function Cart() {
-  const { user, cart } = useSelector((state) => state.user);
+  const { user, cart,userCart } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUserCart(user._id));
-  }, [user]);
+  }, [user,userCart]);
 
   return (
     <div className="cart-container">

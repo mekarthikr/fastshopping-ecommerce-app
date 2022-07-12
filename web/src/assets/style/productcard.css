@@ -55,7 +55,8 @@
 }
 
 .card-body {
-    background-color: #001233;
+    /* background-color: #001233; */
+    background-color: rgb(255, 255, 255);
     border-radius: 10px 10px 10px 10px;
     position: relative;
 }
@@ -72,11 +73,11 @@
 }
 
 .card-body a {
-    color: #001233;
+    color:rgb(255, 255, 255);
 }
 
 .btn {
-    border-radius: 5px;
+    /* border-radius: 5px; */
 }
 
 .bottom-btn {}

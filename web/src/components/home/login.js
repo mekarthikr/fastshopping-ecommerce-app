@@ -29,20 +29,24 @@ function Login() {
   const [title, setTitle] = useState("This is a alert");
   // const [error, setError] = useState("");
 
-  const { loggedInSuccess, loggedInFailed, loginError } = useSelector(
+  const { loggedInSuccess, loggedInFailed, loginMessage } = useSelector(
     (state) => state.user
   );
 
   useEffect(() => {
     if (loggedInFailed) {
-      alert(loginError);
+      // alert();
+      setStatus(true);
+      setType("failed");
+      setTitle(loginMessage);
     } else if (loggedInSuccess) {
       setStatus(true);
       setType("success");
       setTitle("This is a success alert");
+      // navigate("/home");
 
     }
-  }, [loginError, loggedInSuccess]);
+  }, [loginMessage, loggedInSuccess]);
 
   const handleInputChange = (e) => {
     let { name, value } = e.target;
@@ -59,7 +63,7 @@ function Login() {
     if (validate === true) {
       clearState()
       dispatch(userLoggedIn(state));
-     // navigate("/");
+
     }
     else {
       setError(validate)
@@ -104,8 +108,12 @@ function Login() {
         <button className="login-button">SIGN UP</button>
       </Link>
       <ReactJsAlert status={status} type={type} title={title} quotes={true} quote="Logged in Successfully" Close={() => {
-        setStatus(false)
-        navigate("/home");
+        
+        if(loggedInSuccess)
+        {
+          setStatus(false)
+          navigate("/home");
+        }
       }} />
     </div>
   );

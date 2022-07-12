@@ -13,7 +13,7 @@ const initialState = {
   loggedInFailed: false,
   adminloggedInSuccess: false,
   adminloggedInFailed: false,
-  loginError: "",
+  loginMessage: "",
   adminloginError: "",
   userCart: [],
   userLoggedin: false,
@@ -81,7 +81,7 @@ const usersReducers = (state = initialState, action) => {
         ...state,
         loggedInSuccess: true,
         loggedInFailed: false,
-        loginError: ""
+        loginMessage: ""
       }
     case types.ADMIN_LOGGED_IN_SUCCESS:
       return {
@@ -95,7 +95,7 @@ const usersReducers = (state = initialState, action) => {
         ...state,
         loggedInSuccess: false,
         loggedInFailed: true,
-        loginError: action.payload
+        loginMessage: action.payload
       }
     case types.ADMIN_LOGGED_IN_FAILED:
       return {
