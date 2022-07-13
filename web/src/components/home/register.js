@@ -76,7 +76,7 @@ export default function Register() {
     
     if (validate === true) {
       clearState()
-      delete state.confirmpassword
+      //delete state.confirmpassword
       dispatch(addUser(state));
      // navigate("/");
     }

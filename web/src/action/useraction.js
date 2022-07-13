@@ -155,7 +155,9 @@ export const updateUser = (user, id, action = "none") => {
 				method: "put",
 				data: user
 			})
-			.then((resp) => {})
+			.then((resp) => {
+				console.log(resp.data)
+			})
 			.catch((error) => console.log(error));
 		if (action === "logout") {
 			dispatch(userLogout());

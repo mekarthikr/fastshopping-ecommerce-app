@@ -187,7 +187,9 @@ export default function Edituser() {
     firstname: "",
     lastname: "",
     email: "",
+    phonenumber:"",
     password: "",
+    confirmpassword: "",
   });
 
   const { user } = useSelector((state) => state.user);
@@ -208,12 +210,28 @@ export default function Edituser() {
 
   const  handleSubmit =  (e) => {
     e.preventDefault();
-    if (!firstname || !lastname || !email || !password) {
-    } else {
-      dispatch(updateUser(state, user._id,"logout"));
+    function clearState() {
+      setError(defaultError)
+    }
+
+    const validate = ValidateRegister(state)
     
+    if (validate === true) {
+      clearState()
+      //delete state.confirmpassword
+      //dispatch(addUser(state));
      // navigate("/");
     }
+    else {
+      setError(validate)
+    }
+    // e.preventDefault();
+    // if (!firstname || !lastname || !email || !password) {
+    // } else {
+    //   //dispatch(updateUser(state, user._id,"logout"));
+    
+    //  // navigate("/");
+    // }
   };
 
   return (
@@ -254,6 +272,7 @@ export default function Edituser() {
               className="form-control form-input"
               type={"text"}
               name="email"
+              value={email|| ""}
               onChange={handleInputChange}
             />
             <p className="register-error color-red" >{emailError}</p>
@@ -293,12 +312,12 @@ export default function Edituser() {
             <p className="register-error color-red" >{passwordConfirmError}</p>
           </div>
         </div>
-        <div style={{margin:"0 33% 0 33%"}} className="form-check">
+        {/* <div style={{margin:"0 33% 0 33%"}} className="form-check">
           <input required className="form-check-input check" type="checkbox" value="" />
           <label className="form-check-label">
             By checking here, you agree to our  <a href="https://mekarthikr.github.io/dummytext/" target="_blank" style={{textDecoration:"none",color:"black"}} > <strong>T<span>&#38;</span>C</strong></a>.
           </label>
-        </div>
+        </div> */}
         <button type="submit" className="login-button">UPDATE</button>
       </form>
       </div>

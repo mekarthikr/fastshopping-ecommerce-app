@@ -44,19 +44,27 @@ export function ValidateRegister(state) {
   } else if (!passwordRegex.test(state.password)) {
     error.passwordError = "Please provide a valid Password";
   }
+  console.log("true")
 
-  if (state.password !== "" && state.confirmpassword === state.password) {
-    error.passwordConfirmError = "Plesae enter correct Password";
-  } else if (state.confirmpassword === "") {
-    error.passwordConfirmError = "Confirm Password field is required";
-  }
-
+  // if (state.password !="" )
+  // {
+  //   console.log("true")
+  //   if (state.confirmpassword != state.password) {
+  //   error.passwordConfirmError = "Plesae enter correct Password";
+  // } else if (state.confirmpassword === "") {
+  //   error.passwordConfirmError = "Confirm Password field is required";
+  // }}
+  // else
+  // {
+  //   console.log("false")
+  // }
+  console.log("error", error);
   if (
     error.firstnameError ||
     error.lastnameError ||
     error.emailError ||
     error.passwordError ||
-    error.confirmPassword ||
+    error.passwordConfirmError ||
     error.phonenumberError
   ) {
     console.log("error", error);
