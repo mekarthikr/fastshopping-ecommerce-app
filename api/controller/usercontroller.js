@@ -48,8 +48,8 @@ const addUser = async (req, res) => {
     const data = await user.save();
     const message = "Succesfully signed up";
     res.status(201).json({ success: message });
-  } catch (err) {
-    res.status(400).json({ error: err });
+  } catch (error) {
+    res.status(400).json({ error: error });
   }
 };
 

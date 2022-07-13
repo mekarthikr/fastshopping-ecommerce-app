@@ -11,6 +11,9 @@ const initialState = {
   isAdminLogin: true,
   loggedInSuccess: false,
   loggedInFailed: false,
+  registerIsFailed:false,
+  registerIsSuccess:false,
+  registerMessage:"",
   adminloggedInSuccess: false,
   adminloggedInFailed: false,
   loginMessage: "",
@@ -71,6 +74,29 @@ const usersReducers = (state = initialState, action) => {
         user: action.payload,
         loading: false,
       };
+    case types.USER_ADDED_SUCCESS:
+      return {
+        ...state,
+        registerIsSuccess: true,
+        registerIsFailed: false,
+        registerMessage:action.payload
+
+      }
+      case types.USER_ADDED_FAILED:
+        return {
+          ...state,
+          registerIsSuccess: false,
+          registerIsFailed: true,
+          registerMessage:action.payload
+  
+        }
+      case types.RESET_REGISTER:
+        return{
+          ...state,
+          registerIsFailed: false,
+          registerIsSuccess: false,
+          registerMessage:""
+        }
     case types.USER_LOGGED_IN:
       return {
         ...state,

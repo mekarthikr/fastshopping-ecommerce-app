@@ -1,15 +1,24 @@
+import ReactJsAlert from "reactjs-alert";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ValidateRegister } from "../../validation/register";
 import { Tooltip } from "@mui/material";
-import { addUser } from "../../action/useraction";
+import { addUser, resetRegister } from "../../action/useraction";
 import "../../assets/style/register.css";
 import tool from "../../assets/image/questioncircle.svg"
 
 export default function Register() {
   let dispatch = useDispatch();
   let navigate = useNavigate();
+
+  const [status, setStatus] = useState(false);
+  const [type, setType] = useState("success");
+  const [title, setTitle] = useState("This is a alert");
+
+  const { registerIsFailed, registerIsSuccess, registerMessage } = useSelector(
+    (state) => state.user
+  );
 
   const [state, setState] = useState({
     firstname: "",
@@ -34,15 +43,21 @@ export default function Register() {
     setError
   ] = useState(defaultError);
 
-  // useEffect(()=>{
-  //   if(registerIsFailed)
-  //   {
-  //     alert(registerError);
-  //   }else if(registerIsSuccess)
-  //   {
-  //     alert("register success")
-  //   }
-  // })
+  useEffect(()=>{
+    if(registerIsFailed)
+    {
+      // alert(registerMessage);
+      setStatus(true);
+      setType("failed");
+      setTitle(registerMessage);
+    }else if(registerIsSuccess)
+    {
+      setStatus(true);
+      setType("success");
+      setTitle(registerMessage);
+      // alert("register success")
+    }
+  },[registerIsFailed,registerMessage])
 
   const { firstname, lastname, email,phonenumber, password } = state;
 
@@ -152,6 +167,16 @@ export default function Register() {
         </div>
         <button type="submit" className="login-button">CONTINUE</button>
       </form>
+      <ReactJsAlert status={status} type={type} title={title} Close={ async () => {
+        
+        if(registerIsSuccess)
+        {
+          setStatus(false)
+          navigate("/");
+          dispatch(resetRegister())
+        }
+        setStatus(false)
+      }} />
     </div>
   );
 }

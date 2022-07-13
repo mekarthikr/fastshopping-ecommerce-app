@@ -37,6 +37,8 @@ export function Router() {
         <Route path="/cart" element={<Protected role={"user"}><Cart /></Protected>} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/checkout" element={<Checkout />} />
+
+        
         <Route path="/footer" element={<Footer />} />
 
       </Routes>

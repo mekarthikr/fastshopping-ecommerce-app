@@ -43,8 +43,9 @@ const userLoggedInSuccess = (success) => ({
 
 
 
-const userRegisteredSuccess = () =>({
+const userRegisteredSuccess = (message) =>({
 	type: types.USER_ADDED_SUCCESS,
+	payload: message
 })
 
 const userRegisteredFailed = (error) =>({
@@ -124,7 +125,8 @@ export const addUser = (user) => {
 			.post("http://localhost:5000/users/", user)
 			.then((resp) => {
 				dispatch(userAdded());
-				dispatch(userRegisteredSuccess())
+				//console.log()
+				dispatch(userRegisteredSuccess(resp.data.success))
 			})
 			.catch( async (error) => {
 				await dispatch(userRegisteredFailed(error.response.data.error))
@@ -241,6 +243,10 @@ export const userLoggedOut = () => ({
 	type: types.USER_LOGGED_OUT,
 	payload: false,
 });
+
+export const resetRegister = () => ({
+	type:types.RESET_REGISTER
+})
 
 export const userIsLoggedIn = () => ({
 	type: types.USER_IS_LOGGED_IN,

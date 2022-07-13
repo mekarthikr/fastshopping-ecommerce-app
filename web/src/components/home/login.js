@@ -46,7 +46,7 @@ function Login() {
       // navigate("/home");
 
     }
-  }, [loginMessage, loggedInSuccess]);
+  }, [loginMessage, loggedInFailed,loggedInSuccess]);
 
   const handleInputChange = (e) => {
     let { name, value } = e.target;
@@ -107,12 +107,13 @@ function Login() {
       <Link to={"/register"}>
         <button className="login-button">SIGN UP</button>
       </Link>
-      <ReactJsAlert status={status} type={type} title={title} quotes={true} quote="Logged in Successfully" Close={() => {
+      <ReactJsAlert status={status} type={type} title={title} Close={() => {
         
         if(loggedInSuccess)
         {
           setStatus(false)
           navigate("/home");
+         // dispatch(resetLogin)
         }
         setStatus(false)
       }} />
