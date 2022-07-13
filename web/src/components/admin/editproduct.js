@@ -44,7 +44,7 @@ export default function Editproduct() {
     if (!name || !imageurl || !color || !price) {
     } else {
       dispatch(updateProduct(state, id));
-      navigate(`/admin/viewproduct/${id}`);
+      navigate(`/adminpanel`);
     }
   };
 

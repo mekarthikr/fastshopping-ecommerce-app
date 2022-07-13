@@ -26,11 +26,11 @@ export default function Productview() {
     dispatch(getSingleProduct(id));
   }, []);
 
-  useEffect(() => {
-    if (product) {
-      setState({ ...product });
-    }
-  }, [product]);
+  // useEffect(() => {
+  //   if (product) {
+  //     setState({ ...product });
+  //   }
+  // }, [product]);
   function goBack() {
     dispatch(clearProducts());
     navigate('/adminpanel');

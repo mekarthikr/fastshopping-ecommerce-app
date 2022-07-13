@@ -46,10 +46,10 @@ export default function Register() {
   useEffect(()=>{
     if(registerIsFailed)
     {
-      // alert(registerMessage);
-      setStatus(true);
-      setType("failed");
-      setTitle(registerMessage);
+      alert(registerMessage);
+      // setStatus(true);
+      // setType("failed");
+      // setTitle(registerMessage);
     }else if(registerIsSuccess)
     {
       setStatus(true);
@@ -102,7 +102,7 @@ export default function Register() {
               onChange={handleInputChange}
               onBlur={ValidateRegister}
             />
-            <p className="register-error color-red" >{firstnameError}</p>
+            <p className="register-error " >{firstnameError}</p>
           </div>
           <div className="form-group col-md-6">
             <label>LAST NAME</label>
@@ -112,7 +112,7 @@ export default function Register() {
               name="lastname"
               onChange={handleInputChange}
             />
-            <p className="register-error color-red" >{lastnameError}</p>
+            <p className="register-error" >{lastnameError}</p>
           </div>
         </div>
         <div className="row">
@@ -124,7 +124,7 @@ export default function Register() {
               name="email"
               onChange={handleInputChange}
             />
-            <p className="register-error color-red" >{emailError}</p>
+            <p className="register-error " >{emailError}</p>
           </div>
           <div className="form-group col-md-6">
             <label>PHONE NUMBER</label>
@@ -134,7 +134,7 @@ export default function Register() {
               name="phonenumber"
               onChange={handleInputChange}
             />
-            <p className="register-error color-red" >{phonenumberError}</p>
+            <p className="register-error" >{phonenumberError}</p>
           </div>
         </div>
         <div className="row">
@@ -142,11 +142,11 @@ export default function Register() {
             <label>PASSWORD <Tooltip title={"Password should be \nlength greater than 8\nShould contain atleast one\nalphabets upper and lower case \nnumber \nspecial characters[@,#,$,%,&,!]"} placement="right"><img src={tool} /></Tooltip></label>
             <input
               className="form-control form-input"
-              type={"text"}
+              type={"password"}
               name="password"
               onChange={handleInputChange}
             />
-            <p className="register-error color-red" >{passwordError}</p>
+            <p className="register-error" >{passwordError}</p>
           </div>
           <div className="form-group col-md-6">
             <label>CONFIRM PASSWORD</label>
@@ -156,7 +156,7 @@ export default function Register() {
               name="confirmpassword"
               onChange={handleInputChange}
             />
-            <p className="register-error color-red" >{passwordConfirmError}</p>
+            <p className="register-error " >{passwordConfirmError}</p>
           </div>
         </div>
         <div style={{margin:"0 33% 0 33%"}} className="form-check">
