@@ -1,5 +1,5 @@
 .profile-user {
-    margin: 5% 5%;
+    margin: 1% 4%;
     padding: 5% 5%
 }
 
@@ -40,7 +40,12 @@
 .user-details {}
 
 .user-details h2 {
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 400;
     /* font-style: italic; */
+}
+
+.profile-user button {
+    border: 0px;
+    height: 40px;
 }

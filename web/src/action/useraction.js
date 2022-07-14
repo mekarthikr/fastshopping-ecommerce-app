@@ -280,4 +280,16 @@ export const setUserDetail = (userid) => {
 	};
 };
 
+export const proceedToBuy = (id)=>{
+	return async function (dispatch){
+		axiosInstance({
+			url:`users/cart/${id}`,
+			method:"put"
+		})
+		.then((resp)=>{
+			console.log(resp)
+		})
+	}
+}
+
 

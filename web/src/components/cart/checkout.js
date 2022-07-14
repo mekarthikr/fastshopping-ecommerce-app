@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import Cartproduct from "./cartproduct";
 import Cartsummary from "./cartSummary";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserCart } from "../../action/useraction";
+import { getUserCart, proceedToBuy } from "../../action/useraction";
 
+import arrow from "../../assets/image/arrowleft.svg";
 import "../../assets/style/cart.css";
 
 export default function Checkout() {
@@ -15,8 +16,14 @@ export default function Checkout() {
     dispatch(getUserCart(user._id));
   }, [user,userCart]);
 
+  const proceedToCheckOut=(event)=>{
+    event.preventDefault();
+    dispatch(proceedToBuy(user._id))
+  }
+
   return (
     <div className="cart-container">
+        <img src={arrow} width={"30px"} style={{margin:"0 0 10px 0"}} />
         <h1>Check Out</h1>
         <hr/>
         <h3>Enter the shipping address</h3>
@@ -73,16 +80,17 @@ export default function Checkout() {
                         <input required className="form-check-input check" type="checkbox" value="" />
                         <label className="form-check-label">Click the Check box to confirm the above mentioned address is correct</label>
                     </div>
-                    <button type="submit" className="login-button">PROCEED TO BUY</button>
+                    <button type="submit" className="login-button" onClick={proceedToCheckOut}>PROCEED TO BUY</button>
                 </form>
             </div>
             <div className="col-md-6">
                 {console.log(cart)}
                 {
-                    cart.map((product)=>(<div style={{margin:"0 10% 0 10%"}} >
+                    cart.map((product)=>(
+                    <div style={{margin:"0 10% 0 10%"}} >
                         <img style={{width:"130px",display:"inline"}} src={product.productid.imageurl} />
-                    <h5 style={{display:"inline"}} >{product.productid.name}</h5>
-                    <h5 style={{display:"inline",float:"right",margin:"8% 0 8% 0"}} >{product.productid.price}{" "}{" "}x{" "}{product.quantity}</h5>
+                        <h5 style={{display:"inline"}} >{product.productid.name}</h5>
+                        <h5 style={{display:"inline",float:"right",margin:"8% 0 8% 0"}} >{product.productid.price}{" "}{" "}x{" "}{product.quantity}</h5>
                     </div>))
                 }
             </div>

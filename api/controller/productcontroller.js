@@ -36,6 +36,7 @@ const getProduct = async (req, res) => {
 };
 
 const addProduct = async (req, res) => {
+ // console.log(req)
   try {
     let product = new Product({
       name: req.body.name,

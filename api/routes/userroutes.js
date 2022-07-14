@@ -11,7 +11,8 @@ userRouter.put("/:id", authenticateUserToken, editUser);
 userRouter.post("/login", loginUser);
 userRouter.delete("/", deleteUser);
 userRouter.get("/cart/:id",  getCartDetails);
-userRouter.put("/cart/add/",increaseQuantity)
+// userRouter.put("/cart/add/",increaseQuantity)
+userRouter.put("/cart/:id",  getCartDetails);
 
 
 module.exports = userRouter;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { updateProduct, getSingleProduct } from "../../action/productaction";
+import FileBase from "react-file-base64";
 
 import "../../assets/style/editproduct.css";
 import "../../assets/style/register.css";
@@ -67,13 +68,15 @@ export default function Editproduct() {
             </div>
             <div className="form-group row">
               <label className="color-white">IMAGE URL</label>
-              <input
+              {/* <input
                 className="form-control form-input"
                 type={"text"}
                 name="imageurl"
                 value={imageurl || ""}
                 onChange={handleInputChange}
-              />
+              /> */}
+                              <FileBase type="file" multiple={false} onDone={({ base64 }) =>   setState({ ...state, imageurl: base64 })} />
+
             </div>
             <div className="form-group row">
               <label className="color-white">PRODUCT COLOR</label>

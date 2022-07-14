@@ -17,6 +17,9 @@ import { Admin } from "../components/admin/admin";
 import { Formvalidation } from "../validation/formvalidation";
 import Checkout from "../components/cart/checkout";
 import Footer from "../shared/footer";
+import React, { Suspense } from "react";
+
+
 
 export function Router() {
   return (

@@ -1,11 +1,12 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { loadProducts, deleteProduct } from "../../action/productaction";
 
 import "../../assets/style/adminPanel.css";
 import "../../assets/style/home.css";
 import Productcard from "./productCard";
+
 
 export default function Adminpanel() {
   let dispatch = useDispatch();
@@ -14,8 +15,7 @@ export default function Adminpanel() {
   const { products } = useSelector((state) => state.product);
   useEffect(() => {
     dispatch(loadProducts());
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
+  }, []);
   return (
     <>
       <div className="product card">
@@ -27,3 +27,43 @@ export default function Adminpanel() {
     </>
   );
 }
+
+
+
+
+
+// class Adminpanel extends React.Component {
+  
+//   componentWillMount()
+//   {
+//     console.log("componen")
+//     this.props.load()
+//   }
+
+
+//   render() {
+//     // console.log("array",this.props.products.products)
+//     // return {
+//       return(            
+//       <div className="product card">
+//       {this.props.products.products &&
+//         this.props.products.products.map((product) => {
+//           return <Productcard props={product} />;
+//         })}
+//     </div>
+//     )
+
+//   // }
+
+
+// }
+// }
+
+// const mapStateToProps = state => ({ products : state.product })
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     load : () => dispatch(loadProducts())
+//   }
+// }
+
+// export default connect(mapStateToProps,mapDispatchToProps)(Adminpanel)

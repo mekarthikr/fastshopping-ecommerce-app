@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addProduct ,loadProducts} from "../../action/productaction";
+import FileBase from "react-file-base64";
 
 // import "../../assets/style/register.css";
 
@@ -32,21 +33,22 @@ export default function AddProduct() {
     } 
     else 
     {
-      //dispatch(addProduct(state));
-      //dispatch(loadProducts());
+      console.log(state)
+      dispatch(addProduct(state));
+ 
       
-     // navigate("/adminpanel");
+     navigate("/adminpanel");
     }
   };
-  const encodeImageFileAsURL=(element)=> {
-    let file = element.files[0];
-    let reader = new FileReader();
-    reader.onloadend = ()=> {
-      console.log('RESULT', reader.result)
-    }
-    reader.readAsDataURL(file);
-    console.log(file)
-  };
+  // const encodeImageFileAsURL=(element)=> {
+  //   let file = element.files[0];
+  //   let reader = new FileReader();
+  //   reader.onloadend = ()=> {
+  //     console.log('RESULT', reader.result)
+  //   }
+  //   reader.readAsDataURL(file);
+  //   console.log(file)
+  // };
   return (
     <>
       <div className="edit-product-block bg-blue">
@@ -67,13 +69,14 @@ export default function AddProduct() {
               </div>
               <div className="form-group row">
                 <label className="color-white">IMAGE URL</label>
-                <input
+                {/* <input
                   className="form-control form-input"
                   type={"text"}
                   name="imageurl"
                   value={imageurl || ""}
                   onChange={handleInputChange}
-                />
+                /> */}
+                <FileBase type="file" multiple={false} onDone={({ base64 }) =>   setState({ ...state, imageurl: base64 })} />
               </div>
               <div className="form-group row">
                 <label className="color-white">PRODUCT COLOR</label>
@@ -131,7 +134,8 @@ export default function AddProduct() {
               </div>
             </div>
             <div></div>
-            <input type="file" name="image" onchange={encodeImageFileAsURL}/>
+            {/* <input type="file" name="image" onchange={encodeImageFileAsURL}/> */}
+            
           </div>
           <button type="submit" className="login-button">
             {" "}

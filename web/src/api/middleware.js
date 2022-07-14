@@ -8,8 +8,11 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (request) => {
+    console.log(request.data)
     const token = localStorage.getItem("token");
     request.headers["Authorization"] = token;
+  //  request.headers["Access-Control-Allow-Origin"]="*"
+  //  request.headers["Content-Type"]="undefined"
     return request;
   },
   (error) => {

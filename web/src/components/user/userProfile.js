@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "../../assets/style/userProfile.css";
 
+import arrow from "../../assets/image/arrowleft.svg";
+
 export default function UserProfile() {
   let navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
@@ -13,7 +15,9 @@ export default function UserProfile() {
   };
 
   return (
-    <div className="profile-user bg-white">
+    <div className="cart-container">
+          <img src={arrow} width={"30px"} style={{margin:"0 0 10px 0"}} />
+    <div className="profile-user">
       <h1 className="color-blue">ACCOUNT PROFILE</h1>
       <hr />
       <div className="row ">
@@ -46,5 +50,6 @@ export default function UserProfile() {
         Edit Profile
       </button>
     </div>
+  </div>
   );
 }

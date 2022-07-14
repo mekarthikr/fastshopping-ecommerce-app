@@ -37,7 +37,7 @@ export default function Productview() {
   }
   const handleDelete = () => {
     dispatch(deleteProduct(id));
-    dispatch(loadProducts());
+   
     navigate(`/adminpanel`);
   };
 

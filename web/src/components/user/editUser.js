@@ -142,6 +142,7 @@ import { addUser, resetRegister } from "../../action/useraction";
 import "../../assets/style/register.css";
 import tool from "../../assets/image/questioncircle.svg"
 import "../../assets/style/register.css";
+import arrow from "../../assets/image/arrowleft.svg";
 
 import {updateUser, getSingleUser, userLoggedOut, userLogout} from "../../action/useraction";
 
@@ -235,8 +236,10 @@ export default function Edituser() {
   };
 
   return (
-    <>
+    <div className="cart-container">
+          <img src={arrow} width={"30px"} style={{margin:"0 0 10px 0"}} />
       <div className="register-block">
+
         <h1>Edit Profile</h1>
         <p>Enter the details that you like to edit</p>
         <form onSubmit={handleSubmit} autoComplete="off">
@@ -321,6 +324,6 @@ export default function Edituser() {
         <button type="submit" className="login-button">UPDATE</button>
       </form>
       </div>
-    </>
+    </div>
   );
 }

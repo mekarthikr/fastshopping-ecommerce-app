@@ -13,8 +13,7 @@ const getUsers = async (req, res) => {
 
 const getCartDetails = async (req, res) => {
   try {
-    const users = await User.findById(req.params.id)
-      .populate("cart.productid")
+    const users = await User.findById(req.params.id).populate("cart.productid")
       .select("cart");
     res.json(users);
   } catch (err) {
@@ -105,6 +104,12 @@ const increaseQuantity = async (req, res) => {
   // res.status(200)
 
 };
+
+const clearCart = async (req, res)=> {
+  const id = req.params.id;
+  const user = await User.findById(id);
+
+}
 
 module.exports = {
   getUser,

@@ -7,6 +7,7 @@ import { Tooltip } from "@mui/material";
 import { addUser, resetRegister } from "../../action/useraction";
 import "../../assets/style/register.css";
 import tool from "../../assets/image/questioncircle.svg"
+import arrow from "../../assets/image/arrowleft.svg";
 
 export default function Register() {
   let dispatch = useDispatch();
@@ -86,6 +87,8 @@ export default function Register() {
   };
 
   return (
+    <div className="cart-container">
+                <img src={arrow} width={"30px"} style={{margin:"0 0 10px 0"}} />
     <div className="register-block">
       <h1>
         Hi Fellow Stranger
@@ -177,6 +180,7 @@ export default function Register() {
         }
         setStatus(false)
       }} />
+    </div>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import Cartsummary from "./cartSummary";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserCart } from "../../action/useraction";
 
+import arrow from "../../assets/image/arrowleft.svg";
 import "../../assets/style/cart.css";
 
 export default function Cart() {
@@ -17,6 +18,7 @@ export default function Cart() {
 
   return (
     <div className="cart-container">
+      <img src={arrow} width={"30px"} style={{margin:"0 0 10px 0"}} />
       <h1>Your Cart</h1>
       <p>
         {cart.length
