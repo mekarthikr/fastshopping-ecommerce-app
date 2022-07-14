@@ -96,19 +96,11 @@ const loginUser = async (req, res) => {
   }
 };
 
-const increaseQuantity = async (req, res) => {
-  // const userid = req.query.user;
-  // const productid = req.query.product;
-  // let user = await User.findById(userid)  
-  // console.log(user.cart[0])
-  // res.status(200)
-
-};
 
 const clearCart = async (req, res)=> {
   const id = req.params.id;
-  const user = await User.findById(id);
-
+  const user = await User.findByIdAndUpdate(id,{$set:{cart:[]}});
+  console.log(user)
 }
 
 module.exports = {
@@ -119,5 +111,5 @@ module.exports = {
   editUser,
   addUser,
   getCartDetails,
-  increaseQuantity
+  clearCart
 };

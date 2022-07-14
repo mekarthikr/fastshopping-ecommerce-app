@@ -219,9 +219,9 @@ export default function Edituser() {
     
     if (validate === true) {
       clearState()
-      //delete state.confirmpassword
-      //dispatch(addUser(state));
-     // navigate("/");
+      delete state.confirmpassword
+      dispatch(updateUser(state, user._id,"logout"));
+     navigate("/");
     }
     else {
       setError(validate)

@@ -31,8 +31,8 @@ export default function Viewproduct() {
 
   return (
     <>
-      <div className="container main-view-product">
-        <img src={arrow} width={"40px"} onClick={goBack} />
+      <div className="main-view-product">
+        <img src={arrow}  width={"30px"} style={{margin:"0 0 10px 0"}} onClick={goBack} />
         <div className="row">
           <div className="col">
             <img
@@ -43,14 +43,14 @@ export default function Viewproduct() {
               src={product.imageurl}
             />
           </div>
-          <div  style={{margin:"0 0 5% 0",borderRadius:"30px 0px 0px 30px"}}  className="col bg-blue">
-          <div style={{margin:"10% 2%"}} className=" main-detail-product">
-            <h1 className="color-red">{product.name}</h1>
-            <h2 className="color-white">Color : {product.color}</h2>
-            <p className="color-white">Price : {product.price}</p>
-            <p className="color-white">Description</p>
-            <p className="color-white">{product.description}</p>
-            <button className="color-blue bg-white" onClick={addToCart}>
+          <div  style={{borderRadius:"30px 0px 0px 30px"}}  className="col ">
+          <div style={{margin:"5% 2%"}} className=" main-detail-product">
+            <h1 className="color-blue">{product.name}</h1>
+            <h2 className="color-blue">Color : {product.color}</h2>
+            <p className="color-blue">Price : {product.price}</p>
+            <p className="color-blue">Description</p>
+            <p className="color-blue">{product.description}</p>
+            <button className="color-white bg-blue" onClick={addToCart}>
               ADD
             </button>
           </div>       

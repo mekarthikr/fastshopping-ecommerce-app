@@ -6,7 +6,10 @@ const initialState = {
   cart:[],
   value:[],
   isLogin:false,
-  isAdminLogin:true
+  isAdminLogin:true,
+  responsemessage:"",
+  page:1,
+  pageCount:0
 };
 
 
@@ -16,6 +19,7 @@ const productReducer = (state = initialState, action) => {
         return {
           ...state,
           products: action.payload,
+          pageCount:action.pagecount,
           loading: false,
         };
       case types.DELETE_PRODUCT:
@@ -54,7 +58,22 @@ const productReducer = (state = initialState, action) => {
                   ...state,
                   product:[]
                 }
-                
+                case types.ACTION_RESPONSE_MESSAGE:
+                  return{
+                    ...state,
+                    responsemessage:action.payload
+                  }
+                  case types.INCREASE_PAGE_COUNT:
+                    return{
+                      ...state,
+                      page:state.page+1
+                    }
+                    case types.DECREMENT_PAGE_COUNT:
+                      return{
+                        ...state,
+                        page:state.page-1
+                      }
+                    
       default:
         return state;
     }

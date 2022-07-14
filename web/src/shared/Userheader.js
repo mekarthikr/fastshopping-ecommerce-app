@@ -7,8 +7,8 @@ import { Tooltip } from "@mui/material";
 import "../assets/style/header.css";
 import userprof from "../assets/image/profile.svg";
 import logout from "../assets/image/logout.svg";
-import cart from "../assets/image/cart.svg";
-import cartempty from "../assets/image/cartempty.svg";
+// import cart from "../assets/image/cart.svg";
+import cart from "../assets/image/cartempty.svg";
 
 export default function UserHeader() {
   const { tokenId, user } = useSelector((state) => state.user);
@@ -58,7 +58,7 @@ export default function UserHeader() {
           <Tooltip title={"Cart"} placement="top-start">
             <Link className="a" to="/cart">
               <img
-                src={value.length === 0 ? cartempty : cart}
+                src={cart}
                 className="icon"
                 width={"35px"}
                 alt="img"

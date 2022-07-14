@@ -1,13 +1,13 @@
 import React,{ useEffect }  from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loadProducts } from "../../action/productaction";
+import { loadProducts,loadAdminProducts } from "../../action/productaction";
 import "../../assets/style/productcard.css";
 
 export default function Productcard(props) 
 {
   useEffect(() => {
-    dispatch(loadProducts());
+    dispatch(loadAdminProducts());
   }, []);
 
 

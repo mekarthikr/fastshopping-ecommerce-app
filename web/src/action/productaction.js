@@ -2,10 +2,19 @@ import * as types from "./actionType";
 import axios from "axios";
 import axiosInstance from "../api/middleware";
 
-const getProducts = (products) => ({
+const getProducts = (products,pageCount) => ({
 	type: types.GET_PRODUCTS,
 	payload: products,
+	pagecount: pageCount
 });
+
+
+const getAdminProducts = (products) => ({
+	type: types.GET_PRODUCTS,
+	payload: products
+	// pagecount: pageCount
+});
+
 
 const productAdded = () => ({
 	type: types.ADD_PRODUCT,
@@ -16,27 +25,68 @@ const getProduct = (product) => ({
 	payload: product,
 });
 
-export const loadProducts = (category = "all") => {
+const setResponseMessage = (responsemessage) => ({
+	type: types.ACTION_RESPONSE_MESSAGE,
+	payload: responsemessage,
+});
+
+export const loadAdminProducts=()=>{
+	return async function (dispatch) {
+		// if (category === "all") {
+			await axiosInstance({
+					url: "products/admin/"
+				})
+				.then((resp) => {
+					console.log(resp)
+					dispatch(getAdminProducts(resp.data.products));
+				})
+				.catch((error) => console.log("Error", error));
+		// } else {
+		// 	await axiosInstance({
+		// 			url: `products/?category=${category}`
+		// 		})
+		// 		.then((resp) => {
+		// 			dispatch(getProducts(resp.data.products));
+		// 		})
+		// 		.catch((error) => console.log("Error", error));
+		}
+	};
+	
+
+export const loadProducts = (category = "all",pages) => {
 	return async function (dispatch) {
 		if (category === "all") {
 			await axiosInstance({
-					url: "products/"
+					url: `products/?pages=${pages}`
 				})
 				.then((resp) => {
-					dispatch(getProducts(resp.data.products));
+					console.log(resp)
+					dispatch(getProducts(resp.data.products,resp.data.Pagination.pageCount));
 				})
 				.catch((error) => console.log("Error", error));
 		} else {
 			await axiosInstance({
-					url: `products/?category=${category}`
+					url: `products/?category=${category}&pages=${pages}`
 				})
-				.then((resp) => {
-					dispatch(getProducts(resp.data.products));
+				.then(async (resp) => {
+					await dispatch(getProducts(resp.data.products,resp.data.Pagination.pageCount));
 				})
 				.catch((error) => console.log("Error", error));
 		}
 	};
 };
+
+// export const loadProductByCategory =(category,pages)=>{
+// 	return async function (dispatch) {
+// 		await axiosInstance({
+// 			url: `products/category/?category=${category}&pages=${pages}`
+// 		})
+// 		.then((resp) => {
+// 			dispatch(getProducts(resp.data.products,resp.data.Pagination.pageCount));
+// 		})
+// 		.catch((error) => console.log("Error", error));
+// 	}
+// }
 
 export const deleteProduct = (id) => {
 	return async function (dispatch) {
@@ -44,7 +94,9 @@ export const deleteProduct = (id) => {
 				url: `products/${id}`,
 				method: "delete"
 			})
-			.then(async () => {
+			.then(async (res) => {
+				console.log(res.data)
+				await dispatch(setResponseMessage(res.data))
 				await dispatch(loadProducts());
 			})
 			.catch((error) => console.log(error));
@@ -105,3 +157,15 @@ export const removeProductFromCart = (id) => ({
 export const clearProducts = () => ({
 	type: types.CLEAR_PRODUCT,
 });
+
+export const increasePage = () =>({
+	type: types.INCREASE_PAGE_COUNT,
+})
+
+export const decrementPage = () =>({
+	type: types.DECREMENT_PAGE_COUNT,
+})
+
+
+
+

@@ -17,23 +17,7 @@ function getSpecificProduct(category)
 
   return (
     <>  
-   <div className="col-2 sidebar bg-blue">
-    <div className="col">
-      <button  onClick={()=>getSpecificProduct("all")} >ALL</button>
-    </div>  
-    <div className="col">
-      <button onClick={()=>getSpecificProduct("laptops")} >LAPTOP</button>
-    </div>
-    <div className="col">
-      <button onClick={()=>getSpecificProduct("smartphone")}>SMARTPHONE</button>
-    </div>
-    <div className="col">
-      <button onClick={()=>getSpecificProduct("headphone")}>HEADPHONE</button>
-    </div>
-    <div className="col">
-      <button onClick={()=>getSpecificProduct("accessories")}>ACCESSORIES</button>
-    </div>
-   </div>   
+ 
     </>
   );
 }

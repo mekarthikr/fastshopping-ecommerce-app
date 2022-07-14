@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { loadProducts, deleteProduct } from "../../action/productaction";
+import { loadProducts,loadAdminProducts, deleteProduct } from "../../action/productaction";
 
 import "../../assets/style/adminPanel.css";
 import "../../assets/style/home.css";
@@ -14,7 +14,7 @@ export default function Adminpanel() {
 
   const { products } = useSelector((state) => state.product);
   useEffect(() => {
-    dispatch(loadProducts());
+    dispatch(loadAdminProducts());
   }, []);
   return (
     <>

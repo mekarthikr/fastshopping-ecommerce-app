@@ -1,5 +1,5 @@
 const express = require("express");
-const {  getUsers,  getUser,  addUser,  editUser,  deleteUser,  loginUser,  getCartDetails,increaseQuantity} = require("../controller/usercontroller");
+const {  getUsers,  getUser,  addUser,  editUser,  deleteUser,  loginUser,  getCartDetails,clearCart} = require("../controller/usercontroller");
 const {  authenticateUserToken } = require("../middleware/accessauth");
 
 const userRouter = express.Router();
@@ -10,9 +10,10 @@ userRouter.post("/", addUser);
 userRouter.put("/:id", authenticateUserToken, editUser);
 userRouter.post("/login", loginUser);
 userRouter.delete("/", deleteUser);
-userRouter.get("/cart/:id",  getCartDetails);
-// userRouter.put("/cart/add/",increaseQuantity)
-userRouter.put("/cart/:id",  getCartDetails);
+userRouter.get("/cart/:id",authenticateUserToken, getCartDetails);
+userRouter.put("/cart/:id",authenticateUserToken, clearCart);
+
+
 
 
 module.exports = userRouter;

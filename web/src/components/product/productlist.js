@@ -10,15 +10,13 @@ export default function PersonList() {
   let dispatch = useDispatch();
    const { products } = useSelector((state) => state.product);
   useEffect(() => {
-    dispatch(loadProducts("all"))
+    //dispatch(loadProducts("all"))
   }, []);
 
   return (
     <>
     <div className="row">
-        <div className="col-2">
-        	<Sidebar/>  
-        </div>
+
         <div className="col-10">
           	<ProductMain/>
         </div>

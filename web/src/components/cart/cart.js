@@ -6,19 +6,25 @@ import { getUserCart } from "../../action/useraction";
 
 import arrow from "../../assets/image/arrowleft.svg";
 import "../../assets/style/cart.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
   const { user, cart,userCart } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getUserCart(user._id));
   }, [user,userCart]);
 
+  const goBack=()=>{
+    navigate(-1)
+  }
+
   return (
     <div className="cart-container">
-      <img src={arrow} width={"30px"} style={{margin:"0 0 10px 0"}} />
+      <img src={arrow} width={"30px"} style={{margin:"0 0 10px 0"}} onClick={goBack}/>
       <h1>Your Cart</h1>
       <p>
         {cart.length

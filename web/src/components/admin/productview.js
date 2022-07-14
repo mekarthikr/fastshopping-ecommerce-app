@@ -18,13 +18,17 @@ export default function Productview() {
     price: "",
   });
 
-  const { product } = useSelector((state) => state.product);
+  const { product,responsemessage } = useSelector((state) => state.product);
 
   let dispatch = useDispatch();
+
+  useEffect(()=>{},[responsemessage])
 
   useEffect(() => {
     dispatch(getSingleProduct(id));
   }, []);
+
+
 
   // useEffect(() => {
   //   if (product) {
@@ -37,8 +41,13 @@ export default function Productview() {
   }
   const handleDelete = () => {
     dispatch(deleteProduct(id));
+    if(responsemessage !== "")
+    {
+     alert(responsemessage)
+     navigate('/adminpanel')
+ 
+    }
    
-    navigate(`/adminpanel`);
   };
 
   function handleEdit() {
