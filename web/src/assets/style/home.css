@@ -185,15 +185,24 @@ hr {
    */
    margin-top: 50%;
    width: 100%;
-   border-radius: 0 10% 10% 0;
-   padding-left: 40px;
+   border-radius: 10% 10% 10% 10%;
+   padding-left: 1px 1px 1px 1px;
+   text-align: center;
 }
 .sidebar button{
   border: 0px;
-  background-color: #001233;
+  /* background-color: #001233;
+  border-radius: 60%; */
   color: antiquewhite;
   font-size: 30px;
   margin: 10px 0 10px 0;
   /* text-align: center; */
   margin-top: 1%;
+}
+
+
+.body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }

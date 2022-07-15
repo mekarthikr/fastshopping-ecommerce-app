@@ -44,10 +44,9 @@ export default function Productview() {
     if(responsemessage !== "")
     {
      alert(responsemessage)
-     navigate('/adminpanel')
+    //  navigate('/adminpanel')
  
     }
-   
   };
 
   function handleEdit() {

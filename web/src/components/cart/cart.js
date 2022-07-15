@@ -9,22 +9,27 @@ import "../../assets/style/cart.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
-  const { user, cart,userCart } = useSelector((state) => state.user);
+  const { user, cart, userCart } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getUserCart(user._id));
-  }, [user,userCart]);
+  }, [user, userCart]);
 
-  const goBack=()=>{
-    navigate(-1)
-  }
+  const goBack = () => {
+    navigate(-1);
+  };
 
   return (
     <div className="cart-container">
-      <img src={arrow} width={"30px"} style={{margin:"0 0 10px 0"}} onClick={goBack}/>
+      <img
+        src={arrow}
+        width={"30px"}
+        style={{ margin: "0 0 10px 0" }}
+        onClick={goBack}
+      />
       <h1>Your Cart</h1>
       <p>
         {cart.length
@@ -36,9 +41,13 @@ export default function Cart() {
           <div className="col-md-7">
             <hr />
             <>
-              {cart.length != 0 ?cart.map((value) => (
-                <Cartproduct key={value.id} details={value} />
-              )):<h1>No Item To show</h1>}
+              {cart.length != 0 ? (
+                cart.map((value) => (
+                  <Cartproduct key={value.id} details={value} />
+                ))
+              ) : (
+                <h1>No Item To show</h1>
+              )}
             </>
           </div>
           <div className="col-md-5 summary-section">

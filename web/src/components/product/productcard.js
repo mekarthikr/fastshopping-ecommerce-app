@@ -17,7 +17,7 @@ export default function Productcard(props) {
   };
 
   return (
-      <div className="card col-2 cardwidth">
+      <div className="card col-md-4 cardwidth">
         <div className="card-image card-img-main">
           <img
             src={props.details.imageurl}

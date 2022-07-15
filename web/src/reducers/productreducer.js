@@ -21,6 +21,7 @@ const productReducer = (state = initialState, action) => {
           products: action.payload,
           pageCount:action.pagecount,
           loading: false,
+          responsemessage: ""
         };
       case types.DELETE_PRODUCT:
       case types.ADD_PRODUCT:

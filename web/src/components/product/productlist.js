@@ -15,9 +15,9 @@ export default function PersonList() {
 
   return (
     <>
-    <div className="row">
+    <div className="">
 
-        <div className="col-10">
+        <div className="">
           	<ProductMain/>
         </div>
       </div>

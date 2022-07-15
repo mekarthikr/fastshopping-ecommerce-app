@@ -1,11 +1,11 @@
 .cardwidth {
-    width: 33.33%;
+    width: 33%;
     /* background-color: rgb(225, 225, 225); */
     border: 0px;
 }
 
 .card {
-    padding: 12px;
+    padding: 0px !important;
 }
 
 .product-card h3 {
@@ -30,7 +30,7 @@
 }
 
 .card-image {
-    width: 100%;
+    width: 103.5%;
     height: 100%;
     /* margin: 5% 10%; */
 }

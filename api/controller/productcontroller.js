@@ -17,7 +17,7 @@ const getAdminProducts = async(req,res)=>
 }
 
 const getProducts = async (req, res) => {
-  const productPerPage=2
+  const productPerPage=6 
   try {
     const query = req.query.category;
     console.log(query)
@@ -28,7 +28,7 @@ const getProducts = async (req, res) => {
       const count=await Product.estimatedDocumentCount()
       console.log(pages)
       const products = await Product.find().limit(productPerPage).skip(skip);
-      const pageCount=count/productPerPage
+      const pageCount=Math.ceil(count/productPerPage)
       // res.json({ products });
       res.send( {
         Pagination:{
@@ -44,7 +44,7 @@ const getProducts = async (req, res) => {
       const count=await Product.count({ category: query })
       const products = await Product.find({ category: query}).limit(productPerPage).skip(skip);
       console.log("count",count)
-      const pageCount=count/productPerPage
+      const pageCount=Math.ceil(count/productPerPage)
       // res.json({ products });
       res.send( {
         Pagination:{
