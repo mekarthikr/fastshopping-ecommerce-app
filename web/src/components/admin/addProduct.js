@@ -40,15 +40,7 @@ export default function AddProduct() {
      navigate("/adminpanel");
     }
   };
-  // const encodeImageFileAsURL=(element)=> {
-  //   let file = element.files[0];
-  //   let reader = new FileReader();
-  //   reader.onloadend = ()=> {
-  //     console.log('RESULT', reader.result)
-  //   }
-  //   reader.readAsDataURL(file);
-  //   console.log(file)
-  // };
+
   return (
     <>
       <div className="edit-product-block bg-blue">
@@ -133,9 +125,9 @@ export default function AddProduct() {
                 <p className="color-white">{price}</p>
               </div>
             </div>
-            <div></div>
-            {/* <input type="file" name="image" onchange={encodeImageFileAsURL}/> */}
-            
+            {/* <div>
+
+            </div> */}
           </div>
           <button type="submit" className="login-button">
             {" "}

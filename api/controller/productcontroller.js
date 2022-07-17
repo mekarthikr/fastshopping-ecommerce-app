@@ -2,19 +2,19 @@ const Product = require("../model/productmodel");
 const User = require("../model/usermodel");
 require("dotenv").config();
 
+/* GET PRODUCTS FOR ADMIN PANEL */
+
 const getAdminProducts = async(req,res)=>
 {
-  console.log("came")
-  // const productPerPage=1
   try {
       const products = await Product.find();
-//console.log({products})
       res.json({ products });
-    // }
   } catch (err) {
     res.send("Error:" + err);
   }
 }
+
+/* GET PRODUCTS FOR USER (INCLUDES PAGINATION AND PRODUCTS SPLIT IN CATEGORY) */
 
 const getProducts = async (req, res) => {
   const productPerPage=6 
@@ -29,7 +29,6 @@ const getProducts = async (req, res) => {
       console.log(pages)
       const products = await Product.find().limit(productPerPage).skip(skip);
       const pageCount=Math.ceil(count/productPerPage)
-      // res.json({ products });
       res.send( {
         Pagination:{
           count,
@@ -45,7 +44,6 @@ const getProducts = async (req, res) => {
       const products = await Product.find({ category: query}).limit(productPerPage).skip(skip);
       console.log("count",count)
       const pageCount=Math.ceil(count/productPerPage)
-      // res.json({ products });
       res.send( {
         Pagination:{
           count,
@@ -58,6 +56,8 @@ const getProducts = async (req, res) => {
     res.send("Error" + err);
   }
 };
+
+/* GET PRODUCTS ACCORDING TO THE CATEGORY */
 
 const getCategoryProduct = async (req, res) => {
   try {
@@ -78,6 +78,8 @@ const getProduct = async (req, res) => {
   }
 };
 
+/* ADD A NEW PRODUCT */
+
 const addProduct = async (req, res) => {
  // console.log(req)
   try {
@@ -96,6 +98,8 @@ const addProduct = async (req, res) => {
   }
 };
 
+/* EDIT THE PRODUCT DETAILS */
+
 const editProduct = async (req, res) => {
   const id = req.params.id;
   try {
@@ -106,6 +110,8 @@ const editProduct = async (req, res) => {
     res.send("Error" + err);
   }
 };
+
+/* DELETE THE PRODUCT */
 
 const deleteProduct = async (req, res) => {
   const id = req.params.id;
@@ -124,6 +130,8 @@ const deleteProduct = async (req, res) => {
     res.send("Error" + err);
   }
 };
+
+/* EXPORTS */
 
 module.exports = {
   getProduct,

@@ -2,6 +2,8 @@ const User = require("../model/usermodel");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
+/* GET ALL USER DETAILS */
+
 const getUsers = async (req, res) => {
   try {
     const users = await User.find();
@@ -10,6 +12,8 @@ const getUsers = async (req, res) => {
     res.send("Error" + err);
   }
 };
+
+/* GET THE CART DETAILS OF A USER */
 
 const getCartDetails = async (req, res) => {
   try {
@@ -21,6 +25,8 @@ const getCartDetails = async (req, res) => {
   }
 };
 
+/* GET THE DETAILS OF A PERTICULAR USER */
+
 const getUser = async (req, res) => {
   const id = req.params.id;
   try {
@@ -30,6 +36,8 @@ const getUser = async (req, res) => {
     res.send("Error" + err);
   }
 };
+
+/* REGISTER A NEW USER */
 
 const addUser = async (req, res) => {
   try {
@@ -52,6 +60,8 @@ const addUser = async (req, res) => {
   }
 };
 
+/* EDIT THE USER DETAILS */
+
 const editUser = async (req, res) => {
   const id = req.params.id;
   try {
@@ -65,6 +75,8 @@ const editUser = async (req, res) => {
   }
 };
 
+/* DELETE THE USER DETAILS */
+
 const deleteUser = async (req, res) => {
   const id = req.params.id;
   try {
@@ -73,6 +85,8 @@ const deleteUser = async (req, res) => {
     res.send("Error" + err);
   }
 };
+
+/* USER LOGIN */
 
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
@@ -96,12 +110,21 @@ const loginUser = async (req, res) => {
   }
 };
 
+/* CLEAR THE USERS CART */
 
 const clearCart = async (req, res)=> {
   const id = req.params.id;
-  const user = await User.findByIdAndUpdate(id,{$set:{cart:[]}});
-  console.log(user)
+  try{
+    const user = await User.findByIdAndUpdate(id,{$set:{cart:[]}});
+    res.status(200).json({ success: "cart cleared successsfully" });
+  }
+  catch(error){
+    res.status(404).json({ error: error });
+
+  }
 }
+
+/* EXPORTS */
 
 module.exports = {
   getUser,

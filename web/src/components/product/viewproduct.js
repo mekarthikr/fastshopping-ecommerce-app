@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { addProductToCart, getSingleProduct, clearProducts} from "../../action/productaction";
@@ -15,7 +15,7 @@ export default function Viewproduct() {
 
   useEffect(() => {
     dispatch(getSingleProduct(id));
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [dispatch,id]); //changes in dependency array
 
   const addToCart = (e) => {
     e.preventDefault();
@@ -26,8 +26,6 @@ export default function Viewproduct() {
     dispatch(clearProducts());
     navigate(-1);
   }
-
-  // console.log(myArray)
 
   return (
     <>
@@ -61,3 +59,4 @@ export default function Viewproduct() {
     </>
   );
 }
+

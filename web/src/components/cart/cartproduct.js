@@ -6,20 +6,15 @@ import "../../assets/style/cart.css";
 import close from "../../assets/image/close.png";
 import add from "../../assets/image/plus-square.svg"
 import minus from "../../assets/image/dash-square.svg"
-import { Navigate, useNavigate } from "react-router-dom";
 import ReactJsAlert from "reactjs-alert";
-import AddRoundedIcon from '@mui/icons-material/AddRounded';
 
 export default function Cartproduct(props) {
   let dispatch = useDispatch();
-  let navigate=useNavigate();
-  const { user,cart,userCart} = useSelector((state) => state.user);
 
+  const { user,userCart} = useSelector((state) => state.user);
   const [status, setStatus] = useState(false);
   const [type, setType] = useState("success");
   const [title, setTitle] = useState();
-
-  const [error, setError] = useState("");
 
   useEffect(() => {
     dispatch(getUserCart(user._id));
@@ -30,7 +25,7 @@ export default function Cartproduct(props) {
     dispatch(addProductToCart(props.details.productid._id, user));
     setStatus(true);
     setType("success");
-    setTitle(`${props.details.productid.name} is added to from cart`);
+    setTitle(`${props.details.productid.name} is added to cart`);
   };
 
   const decreaseCartQuantity = (e) => {

@@ -14,10 +14,9 @@ import Protected from "./protectedRoute";
 import Productview from "../components/admin/productview";
 import { Routes, Route } from "react-router-dom";
 import { Admin } from "../components/admin/admin";
-import { Formvalidation } from "../validation/formvalidation";
 import Checkout from "../components/cart/checkout";
 import Footer from "../shared/footer";
-import React, { Suspense } from "react";
+import React from "react";
 
 
 

@@ -25,6 +25,7 @@ const initialState = {
   adminLoggedIn: false
 };
 
+// CLEAR_CART
 
 const usersReducers = (state = initialState, action) => {
   switch (action.type) {
@@ -148,6 +149,11 @@ const usersReducers = (state = initialState, action) => {
         ...state,
         cart: action.payload.cart
       }
+      case types.CLEAR_CART:
+        return{
+          ...state,
+          cart:[]
+        }
     case types.USER_IS_LOGGED_OUT:
       localStorage.removeItem("token")
       return {
@@ -172,3 +178,4 @@ const usersReducers = (state = initialState, action) => {
 };
 
 export default usersReducers;
+

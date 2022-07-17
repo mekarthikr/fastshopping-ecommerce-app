@@ -132,13 +132,13 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch ,useSelector} from "react-redux";
 import { useLocation ,useNavigate} from "react-router-dom"
-import ReactJsAlert from "reactjs-alert";
+// import ReactJsAlert from "reactjs-alert";
 // import { useEffect, useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 // import { useNavigate } from "react-router-dom";
 import { ValidateRegister } from "../../validation/register";
 import { Tooltip } from "@mui/material";
-import { addUser, resetRegister } from "../../action/useraction";
+// import { addUser, resetRegister } from "../../action/useraction";
 import "../../assets/style/register.css";
 import tool from "../../assets/image/questioncircle.svg"
 import "../../assets/style/register.css";

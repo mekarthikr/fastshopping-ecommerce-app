@@ -1,6 +1,8 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+/* AUTHENTICATE TOKEN */
+
 const authenticateToken = async (req, res, next) => {
   const authHeader = req.header("Authorization");
   if (authHeader == null) {
@@ -17,6 +19,8 @@ const authenticateToken = async (req, res, next) => {
   });
 };
 
+/* AUTHENTICATE ADMIN TOKEN */
+
 const authenticateAdminToken = async (req, res, next) => {
   const authHeader = req.header("Authorization");
   if (authHeader == null) {
@@ -31,6 +35,8 @@ const authenticateAdminToken = async (req, res, next) => {
     }
   });
 };
+
+/* AUTHENTICATE USER TOKEN */
 
 const authenticateUserToken = async (req, res, next) => {
   const authHeader = req.header("Authorization");

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../assets/style/footer.css";
 
 export default function Footer() {
@@ -6,7 +6,6 @@ export default function Footer() {
 
   return (
     <>
-    {/* <h1>footer</h1> */}
     <div className="bg-blue" >
 		<div className="footer-container">
 			<div className="row">
@@ -17,16 +16,16 @@ export default function Footer() {
 					<div className="row">
 						<h5 className="color-red" style={{textAlign:"center"}}>Brands that we cover</h5>
 						<div className="col-md-3">
-							<img style={{width:"50%",margin:"0 25% 0 25%"}} src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"/>
+							<img alt="apple_logo" style={{width:"50%",margin:"0 25% 0 25%"}} src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"/>
 						</div>
 						<div className="col-md-3">
-						<img style={{width:"80%",margin:"20% 25% 0 25%"}} src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg"/>
+						<img alt="samsung_logo" style={{width:"80%",margin:"20% 25% 0 25%"}} src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg"/>
 						</div>
 						<div className="col-md-3">
-						<img style={{width:"80%",margin:"20% 25% 0 25%"}} src="https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg"/>
+						<img alt="asus_logo" style={{width:"80%",margin:"20% 25% 0 25%"}} src="https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg"/>
 						</div>
 						<div className="col-md-3">
-						<img style={{width:"80%",margin:"20% 25% 0 25%"}} src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Acer_Logo.svg"/>
+						<img alt="acer_logo" style={{width:"80%",margin:"20% 25% 0 25%"}} src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Acer_Logo.svg"/>
 						</div>
 					</div>
 				</div>

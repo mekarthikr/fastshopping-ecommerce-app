@@ -4,15 +4,10 @@ import {
 	API
 } from "../api/api";
 import axiosInstance from "../api/middleware";
-import jwtdecode from "jwt-decode";
 
 const getUsers = (users) => ({
 	type: types.GET_USERS,
 	payload: users,
-});
-
-const retainUser = () => ({
-	type: types.RETAIN_USER_DETAILS,
 });
 
 const userDeleted = () => ({
@@ -39,6 +34,10 @@ const userLoggedInSuccess = (success) => ({
 });
 
 
+
+const clearCart = () => ({
+	type: types.CLEAR_CART
+});
 
 
 
@@ -286,10 +285,11 @@ export const proceedToBuy = (id)=>{
 			url:`users/cart/${id}`,
 			method:"put"
 		})
-		.then((resp)=>{
+		.then(async(resp)=>{
 			console.log(resp)
+			await dispatch(clearCart())
+			await dispatch(setUserDetail(id))
+			
 		})
 	}
 }
-
-

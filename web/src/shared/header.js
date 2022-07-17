@@ -21,11 +21,9 @@ export default function Header() {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light nav-bar">
-      <a className="navbar-brand">
         <img src={remove} width="40" height="40" className="" alt="img" />
-      </a>
       <Link to="/home">
-        <a className="a red">FAST SHOPPING</a>
+        <a href="home" className="a red">FAST SHOPPING</a>
       </Link>
       <button
         className="button navbar-toggler "
@@ -44,3 +42,4 @@ export default function Header() {
     </nav>
   );
 }
+

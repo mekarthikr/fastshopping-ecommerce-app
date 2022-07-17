@@ -13,7 +13,6 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import HeadsetMicRoundedIcon from '@mui/icons-material/HeadsetMicRounded';
 import SmartphoneRoundedIcon from '@mui/icons-material/SmartphoneRounded';
 import LaptopMacRoundedIcon from '@mui/icons-material/LaptopMacRounded';
-import AllInclusiveRoundedIcon from '@mui/icons-material/AllInclusiveRounded';
 import EarbudsBatteryRoundedIcon from '@mui/icons-material/EarbudsBatteryRounded';
 import DevicesOtherRoundedIcon from '@mui/icons-material/DevicesOtherRounded';
 
@@ -22,7 +21,6 @@ import "../../assets/style/productlist.css";
 export default function ProductMain() {
   let dispatch = useDispatch();
   const [category, setPage] = useState("all");
-  // const [pageCount,setPageCount]=useState(0)
   const { products, page, pageCount } = useSelector((state) => state.product);
   useEffect(() => {
     dispatch(loadProducts(category, page));
@@ -55,15 +53,9 @@ export default function ProductMain() {
             style={{ display: "inline" }}
             className="col-md-2 force-padding-0"
           >
-            {/* <h1 className="force-padding-0" >all</h1> */}
-            {/* <Button  disabled={page===pageCount} style={{color:"black",border:"0px"}} onClick={handleNext}  variant="outlined" endIcon={<ArrowForwardIcon />}>
-  Next
-</Button> */}
             <div className="sidebar">
               <div>
-                {/* <button onClick={() => setPage("all")}>ALL</button> */}
                 <Button
-            // disabled={page === pageCount}
             style={{ color: "black", border: "0px",fontSize:"25px",display:"inline" }}
             onClick={() => setPage("all")}
             variant="outlined"
@@ -76,9 +68,7 @@ export default function ProductMain() {
           </Button>
               </div>
               <div>
-                {/* <button onClick={() => setPage("laptops")}>LAPTOP</button> */}
                 <Button
-            // disabled={page === pageCount}
             style={{ color: "black", border: "0px",fontSize:"25px",display:"inline" }}
             onClick={() => setPage("laptops")}
             variant="outlined"
@@ -91,11 +81,7 @@ export default function ProductMain() {
           </Button>
               </div>
               <div>
-                {/* <button onClick={() => setPage("smartphone")}>
-                  SMARTPHONE
-                </button> */}
                 <Button
-            // disabled={page === pageCount}
             style={{ color: "black", border: "0px",fontSize:"25px",display:"inline" }}
             onClick={() => setPage("smartphone")}
             variant="outlined"
@@ -107,12 +93,8 @@ export default function ProductMain() {
             SMARTPHONE
           </Button>
               </div>
-              {/* <div>
-                <button onClick={() => setPage("headphone")}>HEADPHONE</button>
-              </div> */}
               <div>
               <Button
-            // disabled={page === pageCount}
             style={{ color: "black", border: "0px",fontSize:"25px",display:"inline" }}
             onClick={() => setPage("headphone")}
             variant="outlined"
@@ -123,11 +105,7 @@ export default function ProductMain() {
           >
             HEADPHONE
           </Button>
-                {/* <button onClick={() => setPage("accessories")}>
-                  ACCESSORIES
-                </button> */}
                 <Button
-            // disabled={page === pageCount}
             style={{ color: "black", border: "0px",fontSize:"25px",display:"inline" }}
             onClick={() => setPage("accessories")}
             variant="outlined"
@@ -154,9 +132,7 @@ export default function ProductMain() {
             </div>
           </div>
         </div>
-        <div className="mx-auto mt-5 mb-4" 
-        // style={{marginTop:"100px"}} 
-        >
+        <div className="mx-auto mt-5 mb-4" >
           <Button
             disabled={page === 1}
             style={{ color: "black", border: "0px",fontSize:"25px",display:"inline"  }}
@@ -169,7 +145,7 @@ export default function ProductMain() {
           >
             Prev
           </Button>
-<p style={{display:"inline",fontSize:"35px"}} >{page}</p>
+          <p style={{display:"inline",fontSize:"35px"}} >{page}</p>
           <Button
             disabled={page === pageCount}
             style={{ color: "black", border: "0px",fontSize:"25px",display:"inline" }}
@@ -187,43 +163,3 @@ export default function ProductMain() {
     </>
   );
 }
-
-//  <div className="main-container body">
-//     <div style={{flex:"1"}} className="row">
-//       <div className="col-md-2">
-//       <div className="sidebar bg-blue">
-//     <div>
-//       <button  onClick={()=>setPage("all")} >ALL</button>
-//     </div>
-//     <div>
-//       <button onClick={()=>setPage("laptops")} >LAPTOP</button>
-//     </div>
-//     <div>
-//       <button onClick={()=>setPage("smartphone")}>SMARTPHONE</button>
-//     </div>
-//     <div>
-//       <button onClick={()=>setPage("headphone")}>HEADPHONE</button>
-//     </div>
-//     <div>
-//       <button onClick={()=>setPage("accessories")}>ACCESSORIES</button>
-//     </div>
-//    </div>
-//       </div>
-//       <div className="col">
-//         <div className="row">
-//         {products.map((products,index) => (
-//           <Productcard key={index} details={products} />
-//         ))}
-//         </div>
-
-//       </div>
-//     </div>
-//             <div>
-//           <Button disabled={page===1} style={{color:"black",border:"0px"}} onClick={handlePrevious} variant="outlined" startIcon={<ArrowBackIcon />}>
-//   Prev
-// </Button>
-// <Button disabled={page===pageCount} style={{color:"black",border:"0px"}} onClick={handleNext}  variant="outlined" endIcon={<ArrowForwardIcon />}>
-//   Next
-// </Button>
-//       </div>
-//     </div>

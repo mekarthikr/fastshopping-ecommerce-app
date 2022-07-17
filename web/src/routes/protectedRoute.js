@@ -1,6 +1,5 @@
 import { Navigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
-import { useDispatch } from "react-redux";
 
 const Protected = ({ role, children }) => {
     const isAuthenticated = localStorage.getItem("token");

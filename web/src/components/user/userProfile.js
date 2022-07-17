@@ -15,13 +15,12 @@ export default function UserProfile() {
   };
 
   const goBack = (e) =>{
-    // e.preventDefault();
     navigate(-1);
   }
 
   return (
     <div className="cart-container">
-          <img src={arrow} width={"30px"} style={{margin:"0 0 10px 0"}} onClick={goBack} />
+          <img alt="go back button" src={arrow} width={"30px"} style={{margin:"0 0 10px 0"}} onClick={goBack} />
     <div className="profile-user">
       <h1 className="color-blue">ACCOUNT PROFILE</h1>
       <hr />
@@ -58,3 +57,4 @@ export default function UserProfile() {
   </div>
   );
 }
+

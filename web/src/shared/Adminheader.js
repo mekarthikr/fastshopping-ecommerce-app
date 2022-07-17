@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { adminLogout, userLogout } from "../action/useraction";
+import { adminLogout } from "../action/useraction";
 import { Tooltip } from "@mui/material";
 import "../assets/style/header.css";
 import logout from "../assets/image/logout.svg";
@@ -9,7 +9,7 @@ import add from "../assets/image/add.svg";
 
 export default function AdminHeader() {
 
-  const { isLogin, value, user } = useSelector((state) => state.user);
+  const { isLogin, value } = useSelector((state) => state.user);
 
   let dispatch = useDispatch();
   let navigate = useNavigate();
@@ -46,7 +46,7 @@ export default function AdminHeader() {
         </div>
         <ul style={{ marginLeft: "auto" }} className="navbar-nav ">
           <li className="nav-item">
-            <a className="a" onClick={() => addProduct()}>
+            <a href="add_product" className="a" onClick={() => addProduct()}>
               <Tooltip title={"Add Product"} placement="top-start">
                 <Link className="a" to="addProduct">
                   <img src={add} className="icon" width={"35px"} alt="img" />
@@ -55,7 +55,7 @@ export default function AdminHeader() {
             </a>
           </li>
           <li className="nav-item">
-            <a className="a" onClick={() => handlelogout()}>
+            <a href="admin_logout" className="a" onClick={() => handlelogout()}>
               <Tooltip title={"Logout"} placement="top-start">
                 <img src={logout} className="icon" width={"35px"} alt="img" />
               </Tooltip>
@@ -65,3 +65,4 @@ export default function AdminHeader() {
       </div>
   );
 }
+
