@@ -65,7 +65,7 @@ export default function UserHeader() {
           </Tooltip>
         </li>
         <li className="nav-item">
-          <a className="a" href="logout" onClick={() => handlelogout()}>
+          <a className="a" href="/" onClick={() => handlelogout()}>
             <Tooltip title={"Logout"} placement="top-start">
               <img src={logout} className="icon" width={"35px"} alt="img" />
             </Tooltip>

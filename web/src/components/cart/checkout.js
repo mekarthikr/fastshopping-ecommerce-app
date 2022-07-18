@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect ,useState} from "react";
 import Cartproduct from "./cartproduct";
 import Cartsummary from "./cartSummary";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserCart, proceedToBuy } from "../../action/useraction";
+import ReactJsAlert from "reactjs-alert";
 
 import arrow from "../../assets/image/arrowleft.svg";
 import "../../assets/style/cart.css";
@@ -14,13 +15,21 @@ export default function Checkout() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [status, setStatus] = useState(false);
+  const [type, setType] = useState("success");
+  const [title, setTitle] = useState("This is a alert");
+
   useEffect(() => {
     dispatch(getUserCart(user._id));
   }, [user,userCart]);
 
   const proceedToCheckOut=(event)=>{
     event.preventDefault();
+    setStatus(true);
+    setType("info");
+    setTitle("Thank you for Shopping \n Your Order has been placed and will be dispatched to your address within 3-5 business days");
     dispatch(proceedToBuy(user._id))
+   // navigate('/product',{replace:"true"})
   }
 
   const goBack=()=>{
@@ -96,11 +105,21 @@ export default function Checkout() {
                     <div style={{margin:"0 10% 0 10%"}} >
                         <img style={{width:"130px",display:"inline"}} src={product.productid.imageurl} />
                         <h5 style={{display:"inline"}} >{product.productid.name}</h5>
-                        <h5 style={{display:"inline",float:"right",margin:"8% 0 8% 0"}} >{product.productid.price}{" "}{" "}x{" "}{product.quantity}</h5>
+                        <h5 style={{display:"inline",float:"right",margin:"8% 0 8% 0"}} >{product.productid.price} x {product.quantity}</h5>
                     </div>))
                 }
             </div>
         </div>
+        <ReactJsAlert status={status} type={type} title={title} Close={() => {
+        
+        // if(loggedInSuccess)
+        // {
+        //   setStatus(false)
+        //   navigate("/home");
+        // }
+        setStatus(false)
+        navigate('/product',{replace:"true"})
+      }} />
     </div>
   );
 }

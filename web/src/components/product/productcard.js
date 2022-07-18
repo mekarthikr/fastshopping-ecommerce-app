@@ -1,7 +1,8 @@
-import React from "react";
+import React,{ useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addProductToCart } from "../../action/useraction";
+import ReactJsAlert from "reactjs-alert";
 import "../../assets/style/productcard.css";
 
 
@@ -9,10 +10,15 @@ export default function Productcard(props) {
 
   let dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
+  const [status, setStatus] = useState(false);
+  const [type, setType] = useState("success");
+  const [title, setTitle] = useState("This is a alert");
 
   const addToCart = (e) => {
-    console.log("add to cart called")
     e.preventDefault();
+    setStatus(true);
+    setType("info");
+    setTitle(`${props.details.name} has been added to cart`);
     dispatch(addProductToCart(props.details._id,user))
   };
 
@@ -37,6 +43,10 @@ export default function Productcard(props) {
             </a>
           </div>
         </div>
+        <ReactJsAlert status={status} type={type} title={title} Close={() => {
+
+        setStatus(false)
+      }} />
       </div>
   );
 }

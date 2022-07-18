@@ -1,17 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect , useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { addProductToCart, getSingleProduct, clearProducts} from "../../action/productaction";
+import { getSingleProduct, clearProducts} from "../../action/productaction";
+import { addProductToCart } from "../../action/useraction";
+import ReactJsAlert from "reactjs-alert";
 import "../../assets/style/register.css";
 import "../../assets/style/viewproduct.css";
 import arrow from "../../assets/image/arrowleft.svg";
+
 
 export default function Viewproduct() {
   const navigate = useNavigate();
   const { id } = useParams();
   const { product } = useSelector((state) => state.product);
+  const { user } = useSelector((state) => state.user);
 
   let dispatch = useDispatch();
+  const [status, setStatus] = useState(false);
+  const [type, setType] = useState("success");
+  const [title, setTitle] = useState("This is a alert");
 
   useEffect(() => {
     dispatch(getSingleProduct(id));
@@ -19,7 +26,11 @@ export default function Viewproduct() {
 
   const addToCart = (e) => {
     e.preventDefault();
-    dispatch(addProductToCart(product));
+    setStatus(true);
+    setType("info");
+    setTitle(`${product.name} has been added to cart`);
+    dispatch(addProductToCart(id,user))
+    // dispatch(addProductToCart(product));
   };
 
   const goBack=()=> {
@@ -56,6 +67,10 @@ export default function Viewproduct() {
 
         </div>
       </div>
+      <ReactJsAlert status={status} type={type} title={title} Close={() => {
+
+setStatus(false)
+}} />
     </>
   );
 }

@@ -124,15 +124,13 @@ export default function ProductMain() {
             className="col-md-9 force-padding-0"
           >
             <div className="row">
-              {/* <h2>hello</h2> */}
-
               {products.map((products, index) => (
                 <Productcard key={index} details={products} />
               ))}
             </div>
           </div>
         </div>
-        <div className="mx-auto mt-5 mb-4" >
+        <div className="mx-auto mt-5" >
           <Button
             disabled={page === 1}
             style={{ color: "black", border: "0px",fontSize:"25px",display:"inline"  }}
