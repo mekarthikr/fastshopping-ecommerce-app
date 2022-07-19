@@ -18,7 +18,7 @@ export default function Cartproduct(props) {
 
   useEffect(() => {
     dispatch(getUserCart(user._id));
-  }, [user,dispatch,userCart]);
+  }, [userCart]);
 
   const increaseCartQuantity = (e) => {
     e.preventDefault()
@@ -44,7 +44,7 @@ export default function Cartproduct(props) {
         </div>
         <div className="col-md-8 cart-product-details">
           <h2 className="inline">{props.details.productid.name}</h2>
-          <img src={close} className="" alt="img"/>
+          {/* <img src={close} className="" alt="img"/> */}
           <p>{props.details.color}</p>
           <h6 className="float-right inline">
             {props.details.productid.price}

@@ -23,7 +23,8 @@ import React from "react";
 export function Router() {
   return (
     <>
-      <Header />
+      <Header /> {/* change to app.js */}
+
       <Routes>
         <Route path="/product" element={<Protected role={"user"}> <Productlist /> </Protected>} />
         <Route path="/home" element={<Home />} />
@@ -41,6 +42,7 @@ export function Router() {
         <Route path="/checkout" element={<Checkout />} />        
         <Route path="/footer" element={<Footer />} />
       </Routes>
+
       {/* <Footer/> */}
   </>
   );

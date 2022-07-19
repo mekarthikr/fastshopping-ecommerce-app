@@ -136,7 +136,8 @@ const usersReducers = (state = initialState, action) => {
       return {
         ...state,
         isLogin: action.payload,
-        user: {}
+        user: {},
+        loginMessage:"User logged out successfully"
       }
     case types.RETAIN_USER_DETAILS:
       return{
@@ -172,10 +173,15 @@ const usersReducers = (state = initialState, action) => {
         adminloggedInSuccess: false,
         adminLoggedIn: false
       }
+    case types.SET_USER_SESSION:
+      const userdetails = jwtdecode(action.payload)
+      return{
+        tokenId: userdetails.id,
+        userLoggedin:true
+      }
     default: 
       return state;
   }
 };
 
 export default usersReducers;
-

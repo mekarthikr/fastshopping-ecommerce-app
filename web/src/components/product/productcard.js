@@ -6,8 +6,8 @@ import ReactJsAlert from "reactjs-alert";
 import "../../assets/style/productcard.css";
 
 
-export default function Productcard(props) {
-
+export default function Productcard(props) 
+{
   let dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
   const [status, setStatus] = useState(false);

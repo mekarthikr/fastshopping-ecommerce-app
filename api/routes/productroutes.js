@@ -14,7 +14,3 @@ productRouter.get("/", getCategoryProduct);
 
 
 module.exports = productRouter;
-
-
-
-

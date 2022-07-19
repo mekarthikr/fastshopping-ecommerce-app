@@ -4,11 +4,18 @@ import {
 	API
 } from "../api/api";
 import axiosInstance from "../api/middleware";
+import jwtdecode from 'jwt-decode'
 
 const getUsers = (users) => ({
 	type: types.GET_USERS,
 	payload: users,
 });
+
+const setUserSession = (token) => ({
+	type: types.SET_USER_SESSION,
+	payload: token,
+});
+
 
 const userDeleted = () => ({
 	type: types.DELETE_USER,
@@ -200,36 +207,65 @@ export const adminLoggedIn = (credentials) => {
 };
 /*  */
 export const addProductToCart = (productid, user) => {
-	return async function (dispatch) {
-		if (user.cart.some((index) => index.productid === productid)) {
-			const index = user.cart.findIndex((i) => i.productid === productid);
-			user.cart[index].quantity = user.cart[index].quantity + 1;
-		} else {
-			user.cart.push({
-				productid: productid,
-				quantity: 1
-			});
-		}
-		dispatch(updateUser(user, user._id));
-		dispatch(getUserCart(user._id));
+	return async function (dispatch) 
+	{
+		// if (user.cart.some((index) => index.productid === productid)) {
+		// 	const index = user.cart.findIndex((i) => i.productid === productid);
+		// 	user.cart[index].quantity = user.cart[index].quantity + 1;
+		// } else {
+		// 	user.cart.push({
+		// 		productid: productid,
+		// 		quantity: 1
+		// 	});
+		// }
+		// dispatch(updateUser(user, user._id));
+		// dispatch(getUserCart(user._id));
+		console.log("called")
+
+		axiosInstance({
+			url: `cart/addtocart`,
+			method: "post",
+			data: {
+				productid:productid,
+				userid:user._id
+			}
+		})
+		.then(async(resp) => {
+			//await dispatch(getUser(resp.data));
+			await dispatch(getUserCart(user._id))
+		})
+		.catch((error) => console.log(error));
 	};
 };
 
 export const removeProductFromCart = (productid, user) => {
 	return async function (dispatch) {
-		if (user.cart.some((index) => index.productid === productid)) {
-			console.log("action");
-			const index = user.cart.findIndex((i) => i.productid === productid);
-			console.log(index);
-			if (user.cart[index].quantity !== 1) {
-				user.cart[index].quantity = user.cart[index].quantity - 1;
-				console.log("action", index, user.cart[index].quantity);
-			} else {
-				user.cart = user.cart.filter((value) => value.productid !== productid);
+		// if (user.cart.some((index) => index.productid === productid)) {
+		// 	console.log("action");
+		// 	const index = user.cart.findIndex((i) => i.productid === productid);
+		// 	console.log(index);
+		// 	if (user.cart[index].quantity !== 1) {
+		// 		user.cart[index].quantity = user.cart[index].quantity - 1;
+		// 		console.log("action", index, user.cart[index].quantity);
+		// 	} else {
+		// 		user.cart = user.cart.filter((value) => value.productid !== productid);
+		// 	}
+		// }
+		// await dispatch(updateUser(user, user._id));
+		// await dispatch(getUserCart(user._id));
+		axiosInstance({
+			url: `cart/removefromcart`,
+			method: "post",
+			data: {
+				productid:productid,
+				userid:user._id
 			}
-		}
-		await dispatch(updateUser(user, user._id));
-		await dispatch(getUserCart(user._id));
+		})
+		.then(async(resp) => {
+			//await dispatch(getUser(resp.data));
+			await dispatch(getUserCart(user._id))
+		})
+		.catch((error) => console.log(error));
 	};
 };
 
@@ -256,9 +292,10 @@ export const userIsLoggedIn = () => ({
 export const getUserCart = (id) => {
 	return async function (dispatch) {
 		await axiosInstance({
-				url: `users/cart/${id}`
+				url: `cart/${id}`   //change to seperate route
 			})
 			.then((resp) => {
+				//console.log(resp.data)
 				dispatch(setUser(resp.data));
 			})
 			.catch((error) => console.log(error));
@@ -291,5 +328,18 @@ export const proceedToBuy = (id)=>{
 			await dispatch(setUserDetail(id))
 			
 		})
+	}
+}
+
+export const retainAnySession = ()=>{
+	console.log("called")
+	return async function (dispatch , getState){
+		const token=getState().user.token
+		console.log(token)
+		const userdetails = jwtdecode(token)
+		if(token){
+			await dispatch(setUserSession(token))
+			//await dispatch(getSingleUser(userdetails.id))
+		}
 	}
 }

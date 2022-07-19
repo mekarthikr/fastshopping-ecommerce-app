@@ -28,6 +28,7 @@ export default function Register() {
     phonenumber:"",
     password: "",
     confirmpassword: "",
+	role: ""
   });
 
   const defaultError = {
@@ -77,7 +78,8 @@ export default function Register() {
     
     if (validate === true) {
       clearState()
-      //delete state.confirmpassword
+      delete state.confirmpassword
+	  console.log("register details",state)
       dispatch(addUser(state));
      // navigate("/");
     }
@@ -161,6 +163,24 @@ export default function Register() {
             />
             <p className="register-error " >{passwordConfirmError}</p>
           </div>
+        </div>
+		<div  className="form-group col-md-12">
+		<label className="color-white">CATEGORY</label>
+                <select
+                  class="form-select form-control"
+                  onChange={handleInputChange}
+                  name="role"
+                >
+                  <option  selected value="">
+                    Select any Role
+                  </option>
+                  <option value="admin">ADMIN</option>
+                  <option value="user">USER</option>
+                </select>
+          {/* <input required className="form-check-input check" type="checkbox" value="" /> */}
+          {/* <label className="form-check-label">
+            By checking here, you agree to our  <a href="https://mekarthikr.github.io/dummytext/" target="_blank" style={{textDecoration:"none",color:"black"}} > <strong>T<span>&#38;</span>C</strong></a>.
+          </label> */}
         </div>
         <div style={{margin:"0 33% 0 33%"}} className="form-check">
           <input required className="form-check-input check" type="checkbox" value="" />

@@ -6,61 +6,45 @@ require("dotenv").config();
 
 const getAdminProducts = async(req,res)=>
 {
-  try {
-      const products = await Product.find();
-      res.json({ products });
-  } catch (err) {
-    res.send("Error:" + err);
-  }
+	try {
+		const products = await Product.find();
+		res.json({ products });
+	} 
+	catch (err) {
+		res.send("Error:" + err);
+	}
 }
 
 /* GET PRODUCTS FOR USER (INCLUDES PAGINATION AND PRODUCTS SPLIT IN CATEGORY) */
 
 const getProducts = async (req, res) => {
   const productPerPage=6 
-  try {
-    const query = req.query.category;
-    console.log(query)
-
-    if (query === undefined) {
-      let pages = req.query.pages || 1;
-      const skip=(pages-1)*productPerPage;
-      const count=await Product.estimatedDocumentCount()
-      console.log(pages)
-      const products = await Product.find().limit(productPerPage).skip(skip);
-      const pageCount=Math.ceil(count/productPerPage)
-      res.send( {
-        Pagination:{
-          count,
-          pageCount
-        },
-        products
-      })
-    } 
-    else {
-      let pages = req.query.pages || 1;
-      const skip=(pages-1)*productPerPage;
-      const count=await Product.count({ category: query })
-      const products = await Product.find({ category: query}).limit(productPerPage).skip(skip);
-      console.log("count",count)
-      const pageCount=Math.ceil(count/productPerPage)
-      res.send( {
-        Pagination:{
-          count,
-          pageCount
-        },
-        products
-      })
-    }
-  } catch (err) {
-    res.send("Error" + err);
-  }
+  	try {
+    	const query = req.query.category;
+    	let pages = req.query.pages || 1;
+    	const skip=(pages-1)*productPerPage;
+		if (query === undefined) {
+			const count=await Product.estimatedDocumentCount()
+			const products = await Product.find().limit(productPerPage).skip(skip);
+			const pageCount=Math.ceil(count/productPerPage)
+			res.send( { Pagination:{ count, pageCount }, products })
+		} 
+		else {
+			const count=await Product.count({ category: query })
+			const products = await Product.find({ category: query}).limit(productPerPage).skip(skip);
+			const pageCount=Math.ceil(count/productPerPage)
+			res.send( { Pagination:{ count, pageCount}, products})
+		}
+  	} 
+  catch (err) {
+    	res.send("Error" + err);
+  	}
 };
 
 /* GET PRODUCTS ACCORDING TO THE CATEGORY */
 
 const getCategoryProduct = async (req, res) => {
-  try {
+  	try {
     const products = await Product.find({ category: req.query.category });
     res.json({ products });
   } catch (err) {

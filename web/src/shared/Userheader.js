@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserDetail, userLogout } from "../action/useraction";
+import { getSingleUser, setUserDetail, userLogout } from "../action/useraction";
 import { Tooltip } from "@mui/material";
 
 import "../assets/style/header.css";
@@ -15,8 +15,11 @@ export default function UserHeader() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(setUserDetail(tokenId));
-  }, [tokenId,dispatch]);
+    if(tokenId)
+    {
+      dispatch(getSingleUser(tokenId));
+    }
+  }, [tokenId]);
 
   function handlelogout(e) {
     dispatch(userLogout());
