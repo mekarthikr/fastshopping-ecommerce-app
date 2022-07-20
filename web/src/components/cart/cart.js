@@ -46,7 +46,7 @@ export default function Cart() {
                   <Cartproduct key={value.id} details={value} />
                 ))
               ) : (
-                <h1>No Item To show</h1>
+                <img src="https://www.valeorx.com/static/media/empty-cart.60e68bfd.png" style={{width:"300",height:"500"}}/>
               )}
             </>
           </div>

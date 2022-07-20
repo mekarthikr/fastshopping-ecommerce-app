@@ -81,8 +81,10 @@ export function ValidateRegister(state) {
 		error.passwordConfirmError ||
 		error.phonenumberError
 	) {
+		console.log("ERROR",error)
 		// console.log("error", error);
 		return error;
 	}
+	console.log("TRUE")
 	return true;
 }

@@ -94,10 +94,10 @@ export const deleteProduct = (id) => {
 				url: `products/${id}`,
 				method: "delete"
 			})
-			.then(async (res) => {
+			.then((res) => {
 				console.log(res.data)
-				await dispatch(setResponseMessage(res.data))
-				await dispatch(loadProducts());
+				// await dispatch(setResponseMessage(res.data))
+				dispatch(loadProducts());
 			})
 			.catch((error) => console.log(error));
 	};

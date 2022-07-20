@@ -26,20 +26,19 @@ export default function Productview() {
 
   useEffect(() => {
     dispatch(getSingleProduct(id));
-  }, []);
+  }, [responsemessage]);
 
   function goBack() {
     dispatch(clearProducts());
     navigate('/adminpanel');
   }
-  const handleDelete = () => {
+  const handleDelete = async() => {
     dispatch(deleteProduct(id));
-    if(responsemessage !== "")
-    {
-     alert(responsemessage)
-    //  navigate('/adminpanel')
- 
-    }
+    // if(responsemessage !== "")
+    // {
+     //alert(responsemessage)
+     navigate('/adminpanel')
+    // }
   };
 
   function handleEdit() {
@@ -49,8 +48,8 @@ export default function Productview() {
 
   return (
     <>
-      <div className="container main-view-product">
-        <img src={arrow} width={"40px"} onClick={() => goBack()} />
+      <div className="main-view-product">
+        <img src={arrow} width={"30px"} style={{margin:"0 0 10px 0"}} onClick={() => goBack()} />
         <div className="row">
           <div className="col">
             <img
@@ -65,11 +64,12 @@ export default function Productview() {
             <h1>{product.productname}</h1>
             <h2>{product.color}</h2>
             <p>{product.price}</p>
-            <button className="color-white bg-blue" onClick={handleDelete}>
+            <p>{product.description}</p>
+            <button className="color-white bg-blue mx-auto" onClick={handleDelete}>
               DELETE
             </button>
             <button
-              className="color-white bg-blue"
+              className="color-white bg-blue mx-auto"
               style={{ margin: "10px" }}
               onClick={handleEdit}
             >

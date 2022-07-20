@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { adminLoggedIn } from "../../action/useraction";
+import { ValidateLogin } from "../../validation/loginvalidation";
 
 import "../../assets/style/admin.css";
 
@@ -12,7 +13,19 @@ export function Admin() {
   const [state, setState] = useState({
     email: "",
     password: "",
+    role:"admin"
   });
+
+  const defaultError = {
+    emailError: "",
+    passwordError: ""
+  }
+
+
+  const [
+    { emailError, passwordError},
+    setError
+  ] = useState(defaultError);
 
   const { adminloggedInSuccess, adminloggedInFailed, adminloginError } =
     useSelector((state) => state.user);
@@ -32,7 +45,18 @@ export function Admin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    function clearState() {
+      setError(defaultError)
+    }
+    const validate = ValidateLogin(state)
+    if (validate === true) {
+      clearState()
     dispatch(adminLoggedIn(state));
+  }
+  else {
+    console.log(validate)
+    setError(validate)
+  }
   };
 
   return (
@@ -48,6 +72,7 @@ export function Admin() {
             name="email"
             onChange={handleInputChange}
           />
+                    <p className="register-error color-red" >{emailError}</p>
         </div>
         <div className="form-group">
           <label className="admin-label">PASSWORD</label>
@@ -58,6 +83,7 @@ export function Admin() {
             onChange={handleInputChange}
           />
         </div>
+        <p className="register-error color-red" >{passwordError}</p>
         <button type="submit" className="admin-login-button">
           {" "}
           LOGIN{" "}

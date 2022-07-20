@@ -137,7 +137,9 @@ const usersReducers = (state = initialState, action) => {
         ...state,
         isLogin: action.payload,
         user: {},
-        loginMessage:"User logged out successfully"
+        loggedInSuccess: false,
+        loggedInFailed: false,
+        // loginMessage:"User logged out successfully"
       }
     case types.RETAIN_USER_DETAILS:
       return{
@@ -162,7 +164,9 @@ const usersReducers = (state = initialState, action) => {
         tokenid: "",
         user: {},
         loggedInSuccess: false,
-        userLoggedin: false
+        userLoggedin: false,
+        registerMessage:action.payload
+       // loginMessage:"User Modified"
       }
     case types.ADMIN_IS_LOGGED_OUT:
       localStorage.removeItem("token")

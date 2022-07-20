@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addProduct ,loadProducts} from "../../action/productaction";
 import FileBase from "react-file-base64";
+import arrow from "../../assets/image/arrowleft.svg";
 
 // import "../../assets/style/register.css";
 
@@ -26,23 +27,26 @@ export default function AddProduct() {
     setState({ ...state, [name]: value });
   };
 
+  const goBack = () => {
+    navigate(-1);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name || !imageurl || !color || !price || !category) {
-
+      alert("please enter all the details for the product")
     } 
     else 
     {
       console.log(state)
       dispatch(addProduct(state));
- 
-      
      navigate("/adminpanel");
     }
   };
 
   return (
-    <>
+    <div className="cart-container">
+    <img src={arrow} width={"30px"} style={{margin:"0 0 10px 0"}} onClick={goBack}/>
       <div className="edit-product-block bg-blue">
         <h1 className="color-white">Add Product</h1>
         <p className="color-white">Enter the details of the product</p>
@@ -136,6 +140,6 @@ export default function AddProduct() {
 
         </form>
       </div>
-    </>
+    </div>
   );
 }

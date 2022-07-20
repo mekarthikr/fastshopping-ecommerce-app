@@ -145,6 +145,7 @@ import "../../assets/style/register.css";
 import arrow from "../../assets/image/arrowleft.svg";
 
 import {updateUser, getSingleUser, userLoggedOut, userLogout} from "../../action/useraction";
+import ReactJsAlert from "reactjs-alert";
 
 export default function Edituser() {
   
@@ -197,6 +198,9 @@ export default function Edituser() {
   let dispatch = useDispatch();
   const { firstname, lastname, email, password ,phonenumber} = state;
 
+  const [status, setStatus] = useState(false);
+  const [type, setType] = useState("success");
+  const [title, setTitle] = useState("This is a alert");
 
   useEffect(() => {
     if (user) {
@@ -218,10 +222,14 @@ export default function Edituser() {
     const validate = ValidateRegister(state)
     
     if (validate === true) {
+      console.log("came")
       clearState()
-      delete state.confirmpassword
+     // delete state.confirmpassword
       dispatch(updateUser(state, user._id,"logout"));
-     navigate("/");
+      setStatus(true);
+      setType("success");
+      setTitle(registerMessage);
+     // navigate("/");
     }
     else {
       setError(validate)
@@ -324,6 +332,16 @@ export default function Edituser() {
         <button type="submit" className="login-button">UPDATE</button>
       </form>
       </div>
+      <ReactJsAlert status={status} type={type} title={title} Close={() => {
+        
+        // if(loggedInSuccess)
+        // {
+          setStatus(false)
+          navigate("/");
+         // dispatch(resetLogin)
+        // }
+        // setStatus(false)
+      }} />
     </div>
   );
 }

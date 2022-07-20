@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 
 const userRouter = require("./routes/userroutes");
 const productRouter = require("./routes/productroutes");
-const adminRouter = require("./routes/adminroutes");
+// const adminRouter = require("./routes/adminroutes");
 const cartRoute = require("./routes/cartroutes");
 
 const app = express();
@@ -26,7 +26,7 @@ app.use(function (req, res, next) {
 
 app.use("/users", userRouter);
 app.use("/products", productRouter);
-app.use("/admin", adminRouter);
+// app.use("/admin", adminRouter);
 app.use("/cart", cartRoute);
 
 const connect_string =

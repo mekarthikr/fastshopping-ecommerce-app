@@ -15,6 +15,7 @@ import SmartphoneRoundedIcon from '@mui/icons-material/SmartphoneRounded';
 import LaptopMacRoundedIcon from '@mui/icons-material/LaptopMacRounded';
 import EarbudsBatteryRoundedIcon from '@mui/icons-material/EarbudsBatteryRounded';
 import DevicesOtherRoundedIcon from '@mui/icons-material/DevicesOtherRounded';
+import productnotfound from '../../assets/image/productnotfound.jpg'
 
 import "../../assets/style/productlist.css";
 
@@ -124,9 +125,9 @@ export default function ProductMain() {
             className="col-md-9 force-padding-0"
           >
             <div className="row">
-              {products.map((products, index) => (
+              {products.length!==0?products.map((products, index) => (
                 <Productcard key={index} details={products} />
-              ))}
+              )):<><img src={productnotfound} style={{width:"300",height:"300",padding:"0 400px 0 400px"}}/></>}
             </div>
           </div>
         </div>
@@ -161,3 +162,37 @@ export default function ProductMain() {
     </>
   );
 }
+
+
+
+
+
+
+
+
+
+
+{/* <Tooltip title={"Cart"} placement="top-start">
+<Badge color="secondary" badgeContent={cart.length?cart.length : 0}>
+<a className="a" href="/" onClick={() => handlelogout()}>
+  <Tooltip title={"Logout"} placement="top-start">
+  <ShoppingCartIcon style={{width:"35px",height:"35px"}}  />
+  </Tooltip>
+</a>
+
+</Badge>
+</Tooltip>
+
+
+
+
+<Link className="a" to="/cart">
+<Badge color="secondary" badgeContent={cart.length?cart.length : 0}>
+<a className="a" href="/" onClick={() => handlelogout()}>
+  <Tooltip title={"Logout"} placement="top-start">
+  <ShoppingCartIcon style={{width:"35px",height:"35px"}}  />
+  </Tooltip>
+</a>
+
+</Badge>
+</Link> */}

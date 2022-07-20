@@ -93,8 +93,9 @@ const getUser = (user) => ({
 	payload: user,
 });
 
-export const userLogout = () => ({
+export const userLogout = (message) => ({
 	type: types.USER_IS_LOGGED_OUT,
+	payload: message
 });
 
 export const adminLogout = () => ({
@@ -161,12 +162,13 @@ export const updateUser = (user, id, action = "none") => {
 				method: "put",
 				data: user
 			})
-			.then((resp) => {
+			.then(async (resp) => {
 				console.log(resp.data)
+				await dispatch(userLogout(resp.data.message));
 			})
 			.catch((error) => console.log(error));
 		if (action === "logout") {
-			dispatch(userLogout());
+			
 		}
 	};
 };
@@ -192,7 +194,7 @@ export const userLoggedIn = (credentials) => {
 export const adminLoggedIn = (credentials) => {
 	return async function (dispatch) {
 		await axios
-			.post("http://localhost:5000/admin/login", credentials)
+			.post("http://localhost:5000/users/login", credentials)
 			.then((res) => {
 				if (res) {
 					window.localStorage.setItem("token", res.data.token);

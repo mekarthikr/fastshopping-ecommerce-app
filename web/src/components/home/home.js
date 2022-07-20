@@ -42,6 +42,9 @@ export default function Home() {
         </div>
         <div></div>
       </div>
+      <div>
+          <h2 className="title">PRODUCTS WE HAVE</h2>
+        </div>
       <div className="p">
         <div className="row mar product-home">
           <div className="col-md home-product-card">
@@ -113,12 +116,12 @@ export default function Home() {
           <h2 className="title">JOIN OUR CLUB OF ONE MILLION CUSTOMER</h2>
         </div>
         <div>
-          {/* <img
+          <img
             className="banner"
             alt="banner"
             src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/Wireless/Apple/iPhone11Pro/Pre-book/D12731792_IN_WLM_Apple_PC_LP_top_banner._CB452057853_.jpg"
-          /> */}
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          />
+          {/* <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -143,7 +146,7 @@ export default function Home() {
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
+</div> */}
         </div>
         <div>
           <h2 className="title">WHY USE OUR SITE?</h2>

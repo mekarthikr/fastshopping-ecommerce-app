@@ -11,7 +11,7 @@ function Login() {
   let navigate = useNavigate();
   let dispatch = useDispatch();
 
-  const [state, setState] = useState({ email: "",password: ""});
+  const [state, setState] = useState({ email: "",password: "",role: "user"});
   const defaultError = {
     emailError: "",
     passwordError: ""

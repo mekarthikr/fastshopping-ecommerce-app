@@ -91,14 +91,15 @@ const deleteUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
 	const { email, password } = req.body;
+	console.log(req.body)
 	try {
 		const user = await User.findOne({ email: req.body.email });
 		if (user == null) {
 			throw "user not found";
 		}
 
-		if (user.role !== 'user') {
-			throw "you are not allowed to access this site"
+		if (user.role !== req.body.role) {
+			throw "This user has no permission to access this part"
 		}
 
 		if (req.body.password == user.password) {

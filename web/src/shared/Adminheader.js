@@ -46,16 +46,16 @@ export default function AdminHeader() {
         </div>
         <ul style={{ marginLeft: "auto" }} className="navbar-nav ">
           <li className="nav-item">
-            <a href="add_product" className="a" onClick={() => addProduct()}>
+            {/* <a href="add_product" className="a" onClick={() => addProduct()}> */}
               <Tooltip title={"Add Product"} placement="top-start">
                 <Link className="a" to="addProduct">
                   <img src={add} className="icon" width={"35px"} alt="img" />
                 </Link>
               </Tooltip>
-            </a>
+            {/* </a> */}
           </li>
           <li className="nav-item">
-            <a href="admin_logout" className="a" onClick={() => handlelogout()}>
+            <a href="/admin" className="a" onClick={() => handlelogout()}>
               <Tooltip title={"Logout"} placement="top-start">
                 <img src={logout} className="icon" width={"35px"} alt="img" />
               </Tooltip>

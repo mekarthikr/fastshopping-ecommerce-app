@@ -1,6 +1,8 @@
 const Product = require("../model/productmodel");
 const User = require("../model/usermodel");
+const Cart = require("../model/cartmodel");
 require("dotenv").config();
+
 
 /* GET PRODUCTS FOR ADMIN PANEL */
 
@@ -100,7 +102,7 @@ const editProduct = async (req, res) => {
 const deleteProduct = async (req, res) => {
   const id = req.params.id;
   try {
-    const find = await User.find({"cart.productid":id}).count()
+    const find = await Cart.find({"productid":id}).count()
     if(find===0)
     {
       const product = await Product.findByIdAndDelete(req.params.id);    
