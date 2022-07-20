@@ -19,7 +19,7 @@ export default function Productcard(props)
   }
 
   return (
-    <div className="single-product card">
+    <div className="single-product mx-5">
       <img src={props.props.imageurl} alt="product" />
       <div className="inline">
         <h5 className="inline">{props.props.name}</h5>
