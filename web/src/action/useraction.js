@@ -4,28 +4,14 @@ import axios from "axios";
 import axiosInstance from "../api/api";
 import jwtdecode from "jwt-decode";
 
-const getUsers = (users) => ({
-  type: types.GET_USERS,
-  payload: users,
-});
-
 const setUserSession = (token) => ({
   type: types.SET_USER_SESSION,
   payload: token,
 });
 
-const userDeleted = () => ({
-  type: types.DELETE_USER,
-});
-
 const setUser = (data) => ({
   type: types.SET_CART,
   payload: data,
-});
-
-const insertToCart = (product) => ({
-  type: types.INSERT_TO_CART,
-  payload: product,
 });
 
 const userAdded = () => ({
@@ -88,6 +74,7 @@ export const userLogout = (message) => ({
 export const adminLogout = () => ({
   type: types.ADMIN_IS_LOGGED_OUT,
 });
+
 
 export const addUser = (user) => {
   console.log(user)
@@ -201,13 +188,6 @@ export const removeProductFromCart = (productid, user) => {
         await dispatch(getUserCart(user._id));
       })
       .catch((error) => console.log(error));
-  };
-};
-
-export const insertCart = (product, cartproduct) => {
-  return async function (dispatch) {
-    product["quantity"] = cartproduct.quantity;
-    await dispatch(insertToCart(product));
   };
 };
 
