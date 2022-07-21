@@ -1,5 +1,4 @@
 .profile-user {
-    /* margin: 1% 4%; */
     padding: 5% 5%
 }
 
@@ -8,19 +7,15 @@
 }
 
 .profile-img {
-    /* background-color: black;
-    color: white; */
     text-align: center;
     width: 8em;
     margin: auto;
     height: 8em;
     border-radius: 50%;
     overflow: hidden;
-    /* max-width: ; */
 }
 
 .profile-img h2 {
-    /* color: red; */
     padding: 10%;
     font-size: 5em;
 }
@@ -42,7 +37,6 @@
 .user-details h2 {
     font-size: 30px;
     font-weight: 400;
-    /* font-style: italic; */
 }
 
 .profile-user button {

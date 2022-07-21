@@ -1,6 +1,5 @@
 .cardwidth {
     width: 33%;
-    /* background-color: rgb(225, 225, 225); */
     border: 0px;
 }
 
@@ -32,7 +31,6 @@
 .card-image {
     width: 103.5%;
     height: 100%;
-    /* margin: 5% 10%; */
 }
 
 .card-img-main {
@@ -55,7 +53,6 @@
 }
 
 .card-body {
-    /* background-color: #001233; */
     background-color: rgb(255, 255, 255);
     border-radius: 10px 10px 10px 10px;
     position: relative;
@@ -73,11 +70,13 @@
 }
 
 .card-body a {
-    color:rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
 }
 
 .btn {
-    /* border-radius: 5px; */
+   
 }
 
-.bottom-btn {}
+.bottom-btn {
+
+}

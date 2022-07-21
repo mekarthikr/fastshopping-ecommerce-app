@@ -24,17 +24,10 @@ export default function Cart() {
 
   return (
     <div className="cart-container">
-      <img
-        src={arrow}
-        width={"30px"}
-        style={{ margin: "0 0 10px 0" }}
-        onClick={goBack}
-      />
+      <img src={arrow} width={"30px"} style={{ margin: "0 0 10px 0" }} onClick={goBack} />
       <h1>Your Cart</h1>
       <p>
-        {cart.length
-          ? `${cart.length} item ships at checkout`
-          : "Cart is Empty"}
+        {cart.length ? `${cart.length} item ships at checkout` : "Cart is Empty"}
       </p>
       <div className="cart-main">
         <div className="row">
@@ -46,7 +39,7 @@ export default function Cart() {
                   <Cartproduct key={value.id} details={value} />
                 ))
               ) : (
-                <img src="https://www.valeorx.com/static/media/empty-cart.60e68bfd.png" style={{width:"300",height:"500"}}/>
+                <img src="https://www.valeorx.com/static/media/empty-cart.60e68bfd.png" style={{ width: "300", height: "500" }} />
               )}
             </>
           </div>

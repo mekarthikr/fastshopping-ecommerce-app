@@ -14,28 +14,14 @@ export default function Home() {
       <div>
         <div className="row mar blue">
           <div className="col-md pad red head p-l-50">
-            <h1 className="font-70">
-              Find it.Love it.
-              <br />
-              Buy it.
-            </h1>
-            <p className="font-p">
-              Life is hard enough already. Let us make it a little easier.
-            </p>
-            <button className="home-button" onClick={() => navigateTo()}>
-              Get Started
-            </button>
+            <h1 className="font-70"> Find it.Love it. <br /> Buy it. </h1>
+            <p className="font-p"> Life is hard enough already. Let us make it a little easier. </p>
+            <button className="home-button" onClick={() => navigateTo()}> Get Started </button>
           </div>
           <div className="col-md m-l padding-0">
             <span className="">
               <div className="">
-                <img
-                  className="image"
-                  width={480}
-                  height={520}
-                  src={image_1}
-                  alt="hello"
-                />
+                <img className="image" width={480} height={520} src={image_1} alt="hello" />
               </div>
             </span>
           </div>
@@ -43,18 +29,14 @@ export default function Home() {
         <div></div>
       </div>
       <div>
-          <h2 className="title">PRODUCTS WE HAVE</h2>
-        </div>
+        <h2 className="title">PRODUCTS WE HAVE</h2>
+      </div>
       <div className="p">
         <div className="row mar product-home">
           <div className="col-md home-product-card">
             <span>
               <a>
-                <img
-                  className="product-img"
-                  alt="icon"
-                  src="https://m.media-amazon.com/images/I/718ETwvLVOL._SY450_.jpg"
-                />
+                <img className="product-img" alt="icon" src="https://m.media-amazon.com/images/I/718ETwvLVOL._SY450_.jpg" />
               </a>
             </span>
             <span>
@@ -66,11 +48,7 @@ export default function Home() {
           <div className="col-md home-product-card">
             <span>
               <a>
-                <img
-                  className="product-img"
-                  alt="icon"
-                  src="https://m.media-amazon.com/images/I/61rDecG7fdL._AC_SS450_.jpg"
-                />
+                <img className="product-img" alt="icon" src="https://m.media-amazon.com/images/I/61rDecG7fdL._AC_SS450_.jpg" />
               </a>
             </span>
             <span>
@@ -82,11 +60,7 @@ export default function Home() {
           <div className="col-md home-product-card">
             <span>
               <a>
-                <img
-                  className="product-img"
-                  alt="icon"
-                  src="https://m.media-amazon.com/images/I/61WFNqf8hVL._SX522_.jpg"
-                />
+                <img className="product-img" alt="icon" src="https://m.media-amazon.com/images/I/61WFNqf8hVL._SX522_.jpg" />
               </a>
             </span>
             <span>
@@ -98,11 +72,7 @@ export default function Home() {
           <div className="col-md home-product-card">
             <span>
               <a>
-                <img
-                  className="product-img"
-                  alt="icon"
-                  src="https://m.media-amazon.com/images/I/81dkcPFfZ1L._SX679_.jpg"
-                />
+                <img className="product-img" alt="icon" src="https://m.media-amazon.com/images/I/81dkcPFfZ1L._SX679_.jpg" />
               </a>
             </span>
             <span>
@@ -116,37 +86,7 @@ export default function Home() {
           <h2 className="title">JOIN OUR CLUB OF ONE MILLION CUSTOMER</h2>
         </div>
         <div>
-          <img
-            className="banner"
-            alt="banner"
-            src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/Wireless/Apple/iPhone11Pro/Pre-book/D12731792_IN_WLM_Apple_PC_LP_top_banner._CB452057853_.jpg"
-          />
-          {/* <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/Wireless/Apple/iPhone11Pro/Pre-book/D12731792_IN_WLM_Apple_PC_LP_top_banner._CB452057853_.jpg" alt="First slide"/>
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="https://img.global.news.samsung.com/in/wp-content/uploads/2017/02/v-banner1.jpg" alt="Second slide"/>
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/Wireless/Apple/iPhone11Pro/Pre-book/D12731792_IN_WLM_Apple_PC_LP_top_banner._CB452057853_.jpg" alt="Third slide"/>
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div> */}
+          <img className="banner" alt="banner" src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/Wireless/Apple/iPhone11Pro/Pre-book/D12731792_IN_WLM_Apple_PC_LP_top_banner._CB452057853_.jpg" />
         </div>
         <div>
           <h2 className="title">WHY USE OUR SITE?</h2>
@@ -171,20 +111,12 @@ export default function Home() {
             </div>
           </div>
           <div className="col-md">
-            <img
-              className="detail-img"
-              alt="image_home"
-              src="https://www.philipkingsley.co.uk/media/LandingPages/Homepage/Free_Delivery.jpg"
-            />
+            <img className="detail-img" alt="image_home" src="https://www.philipkingsley.co.uk/media/LandingPages/Homepage/Free_Delivery.jpg" />
           </div>
         </div>
         <div className="row mar">
           <div className="col-md">
-            <img
-              className="detail-img"
-              alt="image_home"
-              src="http://www.techtalk.gfi.com/wp-content/uploads/2014/12/30-things-to-do-to-secure-your-network-now_SQ.jpg"
-            />
+            <img className="detail-img" alt="image_home" src="http://www.techtalk.gfi.com/wp-content/uploads/2014/12/30-things-to-do-to-secure-your-network-now_SQ.jpg" />
           </div>
           <div className="col-md">
             <div className="detail-cont">
@@ -219,11 +151,7 @@ export default function Home() {
             </div>
           </div>
           <div className="col-md">
-            <img
-              className="detail-img"
-              alt="image_home"
-              src="https://sa.visamiddleeast.com/dam/VCOM/global/run-your-business/images/visa-direct-overview-hero-640x640.jpg"
-            />
+            <img className="detail-img" alt="image_home" src="https://sa.visamiddleeast.com/dam/VCOM/global/run-your-business/images/visa-direct-overview-hero-640x640.jpg" />
           </div>
         </div>
       </div>

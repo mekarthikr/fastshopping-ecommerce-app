@@ -21,19 +21,11 @@ export default function Header() {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light nav-bar">
-        <img src={remove} width="40" height="40" className="" alt="img" />
+      <img src={remove} width="40" height="40" className="" alt="img" />
       <Link to="/home">
-        <a href="home" className="a red">FAST SHOPPING</a>
+        <a href="home" className="a red"> FAST SHOPPING </a>
       </Link>
-      <button
-        className="button navbar-toggler "
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button className="button navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" >
         <span className="">
           <img src={coll} className="icon" width={"60px"} alt="img" />
         </span>
@@ -42,4 +34,3 @@ export default function Header() {
     </nav>
   );
 }
-

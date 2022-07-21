@@ -5,12 +5,11 @@ export default function Footer() {
 
 
   return (
-    <>
     <div className="bg-blue" >
 		<div className="footer-container">
 			<div className="row">
 				<div className="col-md-7 color-white">
-					<p>Fastshopping is an Indian e-commerce company, headquartered in Bangalore, and incorporated in Singapore as a private limited company. The company initially focused on online book sales before expanding into other product categories such as consumer electronics, fashion, home essentials, groceries, and lifestyle products.The service competes primarily with Amazon's Indian subsidiary and domestic rival Snapdeal.As of March 2017, Fastshopping held a 39.5% market share of India's e-commerce industry</p>
+					<p>Fastshopping is an Indian e-commerce company, headquartered in Chennai, and incorporated in Singapore as a private limited company. The company initially focused on online book sales before expanding into other product categories such as consumer electronics, fashion, home essentials, groceries, and lifestyle products.The service competes primarily with Amazon's Indian subsidiary and domestic rival Snapdeal.As of March 2017, Fastshopping held a 39.5% market share of India's e-commerce industry</p>
 				</div>
 				<div className="col-md-5" style={{margin:"0"}} >
 					<div className="row">
@@ -32,7 +31,6 @@ export default function Footer() {
 			</div>
 		</div>
     </div>
-    </>
   );
 
 }

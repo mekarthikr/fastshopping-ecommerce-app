@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addProduct ,loadProducts} from "../../action/productaction";
+import { addProduct } from "../../action/productaction";
+
 import FileBase from "react-file-base64";
 import arrow from "../../assets/image/arrowleft.svg";
-
-// import "../../assets/style/register.css";
 
 export default function AddProduct() {
   const [state, setState] = useState({
@@ -14,13 +13,13 @@ export default function AddProduct() {
     color: "",
     price: "",
     category: "",
-    description:""
+    description: "",
   });
 
   let dispatch = useDispatch();
   let navigate = useNavigate();
 
-  const { name, imageurl, color, price, category,description } = state;
+  const { name, imageurl, color, price, category, description } = state;
 
   const handleInputChange = (e) => {
     let { name, value } = e.target;
@@ -34,19 +33,22 @@ export default function AddProduct() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name || !imageurl || !color || !price || !category) {
-      alert("please enter all the details for the product")
-    } 
-    else 
-    {
-      console.log(state)
+      alert("please enter all the details for the product");
+    } else {
+      console.log(state);
       dispatch(addProduct(state));
-     navigate("/adminpanel");
+      navigate("/adminpanel");
     }
   };
 
   return (
     <div className="cart-container">
-    <img src={arrow} width={"30px"} style={{margin:"0 0 10px 0"}} onClick={goBack}/>
+      <img
+        src={arrow}
+        width={"30px"}
+        style={{ margin: "0 0 10px 0" }}
+        onClick={goBack}
+      />
       <div className="edit-product-block bg-blue">
         <h1 className="color-white">Add Product</h1>
         <p className="color-white">Enter the details of the product</p>
@@ -65,14 +67,13 @@ export default function AddProduct() {
               </div>
               <div className="form-group row">
                 <label className="color-white">IMAGE URL</label>
-                {/* <input
-                  className="form-control form-input"
-                  type={"text"}
-                  name="imageurl"
-                  value={imageurl || ""}
-                  onChange={handleInputChange}
-                /> */}
-                <FileBase type="file" multiple={false} onDone={({ base64 }) =>   setState({ ...state, imageurl: base64 })} />
+                <FileBase
+                  type="file"
+                  multiple={false}
+                  onDone={({ base64 }) =>
+                    setState({ ...state, imageurl: base64 })
+                  }
+                />
               </div>
               <div className="form-group row">
                 <label className="color-white">PRODUCT COLOR</label>
@@ -101,7 +102,7 @@ export default function AddProduct() {
                   onChange={handleInputChange}
                   name="category"
                 >
-                  <option  selected value="">
+                  <option selected value="">
                     Select any category
                   </option>
                   <option value="smartphone">smartphone</option>
@@ -112,13 +113,15 @@ export default function AddProduct() {
               </div>
               <div className="form-group row">
                 <label className="color-white">DESCRIPTION</label>
-                <textarea style={{resize:"none"}}
-                rows={5}
-                className="form-control form-input"
-                type={"text"}
-                name="description"
-                value={description || ""}
-                onChange={handleInputChange}></textarea>
+                <textarea
+                  style={{ resize: "none" }}
+                  rows={5}
+                  className="form-control form-input"
+                  type={"text"}
+                  name="description"
+                  value={description || ""}
+                  onChange={handleInputChange}
+                ></textarea>
               </div>
             </div>
             <div className="col edit-product-view">
@@ -129,15 +132,10 @@ export default function AddProduct() {
                 <p className="color-white">{price}</p>
               </div>
             </div>
-            {/* <div>
-
-            </div> */}
           </div>
           <button type="submit" className="login-button">
-            {" "}
-            ADD{" "}
+            ADD
           </button>
-
         </form>
       </div>
     </div>
